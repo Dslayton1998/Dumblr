@@ -6,7 +6,7 @@ def seed_posts():
     post_1 = Post(
         user_id = 1,
         blog_id = 1,
-        image = None,
+        image = 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/demo-post.JPG',
         caption = "The first post for Demo!"
     )
 
@@ -27,7 +27,7 @@ def seed_posts():
     post_4 = Post(
         user_id = 2,
         blog_id = 2,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/oatmeal-post.JPG",
         caption = "Oatmeals first post!"
     )
 
@@ -62,7 +62,7 @@ def seed_posts():
     post_9 = Post(
         user_id = 3,
         blog_id = 3,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/Abby-post.JPEG",
         caption = "Okie doling! Bloodborne remastered? Miyasaki???"
     )
 
@@ -77,10 +77,10 @@ def seed_posts():
     db.session.add(post_9)
     db.session.commit()
 
-def undo_blogs():
+def undo_posts():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM users"))
+        db.session.execute(text("DELETE FROM posts"))
         
     db.session.commit()

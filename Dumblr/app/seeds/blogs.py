@@ -7,7 +7,7 @@ def seed_blogs():
         title = "Demey",
         blog_name = "Demolition",
         owner_id = 1,
-        profile_picture = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fcharming-pixel-dog-illustration-with-hyperrealistic-details_65397856.htm&psig=AOvVaw2yEvcJ7xoziHRjrYlZ8m0b&ust=1704413442055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJD3goO5woMDFQAAAAAdAAAAABAD",
+        profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/demo-profile-img.JPG",
         background_image = None,
         primary_blog = True,
         public = True
@@ -17,7 +17,7 @@ def seed_blogs():
         title = "Honey and Oats",
         blog_name = "H-and-O",
         owner_id = 2,
-        profile_picture = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fcharming-pixel-dog-illustration-with-hyperrealistic-details_65397856.htm&psig=AOvVaw2yEvcJ7xoziHRjrYlZ8m0b&ust=1704413442055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJD3goO5woMDFQAAAAAdAAAAABAD",
+        profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/Oatmeal-profile-img.PNG",
         background_image = None,
         primary_blog = True,
         public = True
@@ -27,7 +27,7 @@ def seed_blogs():
         title = "Bloodbored of You",
         blog_name = "piss-piss-piss",
         owner_id = 2,
-        profile_picture = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fcharming-pixel-dog-illustration-with-hyperrealistic-details_65397856.htm&psig=AOvVaw2yEvcJ7xoziHRjrYlZ8m0b&ust=1704413442055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJD3goO5woMDFQAAAAAdAAAAABAD",
+        profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/Abby-profile-pic.JPG",
         background_image = None,
         primary_blog = True,
         public = True
@@ -42,8 +42,8 @@ def seed_blogs():
 
 def undo_blogs():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.blogs RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM users"))
+        db.session.execute(text("DELETE FROM blogs"))
         
     db.session.commit()
