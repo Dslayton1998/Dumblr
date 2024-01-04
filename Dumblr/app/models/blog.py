@@ -7,8 +7,8 @@ class Blog(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(50), nullable=False)
-    blog_name = db.Column(db.String(50), nullable=False, unique=True)
+    title = db.Column(db.String(50), nullable=False)                   # Title users will see on blog page
+    blog_name = db.Column(db.String(50), nullable=False, unique=True)  # Unique identifier for users to find the blog
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     profile_picture = db.Column(db.String(255), nullable=False)
     background_image = db.Column(db.String(255))
