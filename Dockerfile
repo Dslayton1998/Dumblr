@@ -12,6 +12,7 @@ ARG SECRET_KEY
 ARG S3_BUCKET
 ARG S3_KEY
 ARG S3_SECRET
+
 WORKDIR /var/www
 
 COPY requirements.txt .
