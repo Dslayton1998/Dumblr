@@ -1,0 +1,12 @@
+.post-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px
+}
+
+.post-image {
+    height: 200px;
+    width: 200px;
+}
