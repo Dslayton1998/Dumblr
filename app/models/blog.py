@@ -11,9 +11,9 @@ class Blog(db.Model):
     blog_name = db.Column(db.String(50), nullable=False, unique=True)  # Unique identifier for users to find the blog
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     profile_picture = db.Column(db.String(255), nullable=False)
-    background_image = db.Column(db.String(255))
-    primary_blog = db.Column(db.Boolean, nullable=False)
-    public = db.Column(db.Boolean, nullable=False)
+    background_image = db.Column(db.String(255), nullable=False)
+    primary_blog = db.Column(db.Boolean) #! Default value ?
+    public = db.Column(db.Boolean)
 
     owner = db.relationship("User", back_populates="blogs")
     posts = db.relationship("Post", back_populates="blog")

@@ -38,17 +38,20 @@ export const thunkOneBlog = (blogId) => async (dispatch) => {
 
 
 export const thunkCreateBlog = (formData) => async (dispatch) => {
-    const res = await fetch('api/blog/new', {
+    const res = await fetch('/api/blog/new', {
         method: 'POST',
         body: formData
     });
+    console.log('TOP')
 
     if(res.ok) {
         const blog = await res.json()
+        console.log(blog)
         dispatch(newBlog(blog))
         return blog
     } else {
         const error = await res.json()
+        console.log('ELSE')
         console.log(error)
         return error
     }
