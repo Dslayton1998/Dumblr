@@ -8,7 +8,7 @@ def seed_blogs():
         blog_name = "Demolition",
         owner_id = 1,
         profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/demo-profile-img.JPG",
-        background_image = None,
+        background_image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/background-img.JPG",
         primary_blog = True,
         public = True
     )
@@ -18,7 +18,7 @@ def seed_blogs():
         blog_name = "H-and-O",
         owner_id = 2,
         profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/Oatmeal-profile-img.PNG",
-        background_image = None,
+        background_image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/background-img.JPG",
         primary_blog = True,
         public = True
     )
@@ -28,7 +28,7 @@ def seed_blogs():
         blog_name = "piss-piss-piss",
         owner_id = 2,
         profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/Abby-profile-pic.JPG",
-        background_image = None,
+        background_image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/background-img.JPG",
         primary_blog = True,
         public = True
     )
