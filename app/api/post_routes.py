@@ -9,7 +9,7 @@ def get_all_posts():
     """
     Returns a list of all public blogs
     """
-# todo: If I can but blog information into the store from here blog page won't need so may checks
+# todo: If I can put blog information into the store from here blog page won't need so may checks
 
     posts = [post.to_dict() for post in Post.query.all()]
     return posts

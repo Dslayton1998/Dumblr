@@ -1,0 +1,17 @@
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+export default function UpdateButton ()  { 
+    const navigate = useNavigate()
+    const { blogId } = useParams()
+
+    const handleSubmit = () => { 
+        navigate(`/blog/${blogId}/update`)
+    }
+    
+  return (
+    <>
+      <div onClick={handleSubmit} >Update</div>
+    </>
+  )
+}

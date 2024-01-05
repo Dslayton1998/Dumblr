@@ -10,11 +10,25 @@ export default function BlogPage() {
     const dispatch = useDispatch();
     const { blogId } = useParams();
     const blog = useSelector(state => state.blogs[blogId])
+    const currentUser = useSelector(state => state.session.user)
+
     let posts;
     if(blog) {
         if(blog.posts) {
             posts = blog.posts
             console.log(posts)
+        }
+    }
+
+    const ownerOptions = () => {
+        if (currentUser != null) {
+            if(album.artist_id == currentUser.id) {
+                return <div className="album-details-button-container">
+                    <UpdateAlbum />
+                    <DeleteAlbum />
+                    <div className="fake-button" onClick={addSongButton}>Add a Song</div>
+                </div>
+            }
         }
     }
 
