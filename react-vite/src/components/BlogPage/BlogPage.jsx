@@ -25,7 +25,7 @@ export default function BlogPage() {
         oneBlog()
     }, [dispatch])
     
-// todo: create a blog NEEDS to be it's own component so it can be rendered on any page of the site (dry)
+// todo: create a blog NEEDS to be it's own component so it can be rendered on any page of the site (dry) OR on navbar
     return (
         <>
         <button>Create a new blog</button>
