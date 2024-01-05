@@ -15,7 +15,8 @@ export default function CreateBlogForm() {
     const [publicStatus, setPublicStatus] = useState(true)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
-    const user = useSelector(state => state.session ? state.session.user : null)
+    // const user = useSelector(state => state.session ? state.session.user : null)
+    // console.log(typeof user.id)
 
     useEffect(() => {
         const errors = {}
@@ -51,14 +52,15 @@ export default function CreateBlogForm() {
             return;
         }
 
+        // todo: Owner_id is an issue
         const formData = new FormData();
         formData.append("title", title);
         formData.append("blog_name", blogName)
-        formData.append("owner_id", user.id)
+        // formData.append("owner_id", userId)
         formData.append("profile_picture", profilePicture)
         formData.append("background_image", backgroundImage)
-        // formData.append("primary_blog", false)
-        // formData.append("public", publicStatus)
+        formData.append("primary_blog", false)
+        formData.append("public", publicStatus)
         let blog = await dispatch(thunkCreateBlog(formData))
         // navigate(`/blog/${blog.id}`)
     }
@@ -81,6 +83,8 @@ export default function CreateBlogForm() {
                     {hasSubmitted && validationErrors.title && (
                         <span className="error">{validationErrors.title}</span> )}
                 </label>
+
+
                 <label>
                     <span>Provide a handle for your new blog (This is a unique identifier and is how your blog is displayed to other users feeds)</span>
                     <input
@@ -93,6 +97,8 @@ export default function CreateBlogForm() {
                     {hasSubmitted && validationErrors.blogName && (
                         <span className="error">{validationErrors.blogName}</span> )}
                 </label>
+
+
                 <label>
                     <span>Please provide a profile picture for your blog (this can be changed later)</span>
                     <input
@@ -103,6 +109,8 @@ export default function CreateBlogForm() {
                     {hasSubmitted && validationErrors.profilePicture && (
                         <span className="error">{validationErrors.profilePicture}</span> )}
                 </label>
+
+
                 <label>
                     <span>Spice up your new blog page with a background image (this can be changed later)</span>
                     <input
@@ -113,6 +121,8 @@ export default function CreateBlogForm() {
                     {hasSubmitted && validationErrors.backgroundImage && (
                         <span className="error">{validationErrors.backgroundImage}</span> )}
                 </label>
+
+
                 <label>
                     <span>Is this a public blog (public blogs can be viewed by anyone)</span>
                     <select onChange={(e) => setPublicStatus(e.target.value)}>

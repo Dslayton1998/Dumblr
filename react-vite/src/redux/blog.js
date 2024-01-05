@@ -1,5 +1,6 @@
 const GET_A_BLOG = 'blog/GET_A_BLOG'
 const CREATE_BLOG = 'blog/CREATE_BLOG'
+const DELETE_BLOG = 'blog/DELETE_BLOG'
 
 const oneBlog = (blog) => ({
     type: GET_A_BLOG,
@@ -11,6 +12,10 @@ const newBlog = (blog) => ({
     payload: blog
 })
 
+const deleteBlog = (blogId) => ({
+    type: DELETE_BLOG,
+    payload: blogId
+})
 
 // export const thunkAllBlogs = () => async (dispatch) => {
 //     const res = await fetch("/api/blog");
@@ -42,16 +47,28 @@ export const thunkCreateBlog = (formData) => async (dispatch) => {
         method: 'POST',
         body: formData
     });
-    console.log('TOP')
 
     if(res.ok) {
         const blog = await res.json()
-        console.log(blog)
         dispatch(newBlog(blog))
         return blog
     } else {
         const error = await res.json()
-        console.log('ELSE')
+        console.log(error)
+        return error
+    }
+}
+
+export const thunkDeleteBlog = (blogId) => async (dispatch) => {
+    const res = await fetch(`/api/blog/${blogId}/delete`, {
+        method: 'DELETE'
+    })
+
+    if(res.ok) {
+        const blog = await res.json()
+        dispatch(deleteBlog(blogId))
+    } else {
+        const error = res.json()
         console.log(error)
         return error
     }
@@ -75,6 +92,12 @@ function blogReducer(state = {}, action) {
         case CREATE_BLOG: {
             const newState = {...state}
             return {...newState, [action.payload.id]: action.payload}
+        }
+
+        case DELETE_BLOG: {
+            const newState = {...state}
+            delete newState[action.payload]
+            return newState
         }
 
         default:
