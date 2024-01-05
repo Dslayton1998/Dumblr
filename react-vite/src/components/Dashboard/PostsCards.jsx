@@ -8,7 +8,7 @@ export default function PostsCards({ post }) {
 
     const onClick = () => {
     //todo: if blog_name is on post table it will be easier to navigate as we intended ??
-        return redirect(`blog/${post.blog_id}`)
+        return redirect(`/blog/${post.blog_id}`)
     }
 
     return (
