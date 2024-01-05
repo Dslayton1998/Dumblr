@@ -11,3 +11,22 @@ def get_all_blogs():
     """
     blogs = [blog.to_dict() for blog in db.session.query(Blog).filter(Blog.public == True)]
     return blogs
+
+
+@blog_routes.route("/<int:id>")
+def get_blog_by_id(id):
+    """
+    Returns a specific blog specified by id
+    """
+    blog = Blog.query.get(id)
+
+    posts = [post.to_dict() for post in blog.posts]
+
+    owner = blog.owner
+    owner_dict = owner.to_dict()
+
+    return_dict = blog.to_dict()
+    return_dict['owner'] = owner_dict
+    return_dict["posts"] = posts
+
+    return return_dict
