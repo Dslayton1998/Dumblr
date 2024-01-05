@@ -1,4 +1,5 @@
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
+from flask_login import login_required
 from app.models import Blog, db 
 from flask import Blueprint
 
@@ -30,3 +31,12 @@ def get_blog_by_id(id):
     return_dict["posts"] = posts
 
     return return_dict
+
+
+@blog_routes.route('/new', methods=['POST'])
+@login_required
+def create_blog():
+    """
+    Creates a new blog
+    """
+    
