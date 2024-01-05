@@ -40,7 +40,6 @@ def create_blog():
     """
     Creates a new blog
     """
-    print("MADE IT HERE")
     form = BlogForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -63,15 +62,15 @@ def create_blog():
         # it means that there was an error when you tried to upload
         # so you send back that error message (and you printed it above)
             return upload
-# todo: get owner_id somehow, was throwing 500 error until hard coded
+# todo: get owner_id somehow, was throwing 500 error until hard coded possibly receiving it as a string?
         new_blog = Blog(
             title = form.data['title'],
             blog_name = form.data['blog_name'],
             owner_id = 1,
             profile_picture = upload['url'],
             background_image = background_upload['url'],
-            # primary_blog = form.data['primary_blog'],
-            # public = form.data['public']
+            primary_blog = False, # form.data['primary_blog']
+            public = form.data['public']
         )
 
         db.session.add(new_blog)
