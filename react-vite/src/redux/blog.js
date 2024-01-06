@@ -1,6 +1,7 @@
 const GET_A_BLOG = 'blog/GET_A_BLOG'
 const CREATE_BLOG = 'blog/CREATE_BLOG'
 const DELETE_BLOG = 'blog/DELETE_BLOG'
+const UPDATE_BLOG = 'blog/UPDATE_BLOG'
 
 const oneBlog = (blog) => ({
     type: GET_A_BLOG,
@@ -14,6 +15,11 @@ const newBlog = (blog) => ({
 
 const deleteBlog = (blogId) => ({
     type: DELETE_BLOG,
+    payload: blogId
+})
+
+const updateBlog = (blogId) => ({
+    type: UPDATE_BLOG,
     payload: blogId
 })
 
@@ -75,6 +81,23 @@ export const thunkDeleteBlog = (blogId) => async (dispatch) => {
 }
 
 
+export const thunkUpdateBlog = (blogId, formData) => async (dispatch) => {
+    const res = await fetch(`/api/blog/${blogId}/update`, {
+        method: 'PUT',
+        body: formData
+    })
+
+    if(res.ok) {
+        const blog = await res.json()
+        dispatch(updateBlog(blogId))
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
+
 function blogReducer(state = {}, action) {
     switch (action.type) {
         // case GET_BLOGS: {
@@ -98,6 +121,10 @@ function blogReducer(state = {}, action) {
             const newState = {...state}
             delete newState[action.payload]
             return newState
+        }
+
+        case UPDATE_BLOG: {
+            return {...state, [action.payload]:{...state[action.payload]}}
         }
 
         default:
