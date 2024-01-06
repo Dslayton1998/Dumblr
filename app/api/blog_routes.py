@@ -60,8 +60,9 @@ def create_blog():
         if "url" not in upload:
         # if the dictionary doesn't have a url key
         # it means that there was an error when you tried to upload
-        # so you send back that error message (and you printed it above)
+        # so you send back that error message
             return upload
+        
 # todo: get owner_id somehow, was throwing 500 error until hard coded possibly receiving it as a string?
         new_blog = Blog(
             title = form.data['title'],
@@ -109,6 +110,7 @@ def update_blog(id):
     # print("FORM CSRF TOKEN: ", form["csrf_token"])
     if form.validate_on_submit():
         blog = Blog.query.get(id)
+        
         profile_picture_url = blog.profile_picture
         background_image = blog.background_image
 
@@ -117,28 +119,27 @@ def update_blog(id):
         if not isinstance(updated_profile_picture, str):
             updated_profile_picture.filename = get_unique_filename(profile_picture_url)
             upload_profile_picture = upload_file_to_s3(updated_profile_picture)
+            if "url" not in upload_profile_picture:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when you tried to upload
+            # so you send back that error message
+                return upload_profile_picture
+            remove_file_from_s3(profile_picture_url)
+            blog.profile_picture = upload_profile_picture["url"]
         
         if not isinstance(updated_background_image, str):
             updated_background_image.filename = get_unique_filename(background_image)
             upload_background_image = upload_file_to_s3(updated_background_image)
 
-        if "url" not in upload_profile_picture:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when you tried to upload
-        # so you send back that error message (and you printed it above)
-            return upload_profile_picture
-        if "url" not in upload_background_image:
-            return upload_background_image
+            if "url" not in upload_background_image:
+                return upload_background_image
 
-        remove_file_from_s3(profile_picture_url)
-        remove_file_from_s3(background_image)
-        blog.profile_picture = upload_profile_picture["url"]
-        blog.background_image = upload_background_image["url"]
+            remove_file_from_s3(background_image)
+            blog.background_image = upload_background_image["url"]
 
-        if form.data["title"]:
+        if (form.data['title']):
             blog.title = form.data["title"]
-
-        if form.data["public"]:
+        if (form.data['public']):
             blog.public =form.data["public"]
 
         db.session.commit()

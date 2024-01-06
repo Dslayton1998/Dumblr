@@ -62,7 +62,7 @@ export default function CreateBlogForm() {
         formData.append("primary_blog", false)
         formData.append("public", publicStatus)
         let blog = await dispatch(thunkCreateBlog(formData))
-        // navigate(`/blog/${blog.id}`)
+        navigate(`/blog/${blog.id}`)
     }
 
 

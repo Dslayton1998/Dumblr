@@ -15,7 +15,7 @@ class BlogForm(FlaskForm):
     public = BooleanField("Public")
 
 class BlogUpdateForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    profile_picture = FileField("Profile picture", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    background_image = FileField("Background image", validators=[DataRequired()])
+    title = StringField('Title')
+    profile_picture = FileField("Profile picture", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
+    background_image = FileField("Background image")
     public = BooleanField("Public")

@@ -4,8 +4,9 @@ import SignupFormPage from '../components/SignupFormPage';
 import BlogPage from '../components/BlogPage/BlogPage';
 import Dashboard from '../components/Dashboard/Dashboard';
 import CreateBlogForm from '../components/CreateBlogForm/CreateBlogForm';
-import Layout from './Layout';
 import UpdateBlog from '../components/UpdateBlog/UpdateBlog';
+import Layout from './Layout';
+import LandingPage from '../components/LandingPage/LandingPage';
 
 
 export const router = createBrowserRouter([
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <LandingPage />,
       },
       {
         path: "login",

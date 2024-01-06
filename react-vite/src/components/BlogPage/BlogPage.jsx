@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Posts from "./Posts";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
+import './BlogPage.css'
 
 //todo: styles!
 
@@ -41,19 +42,21 @@ export default function BlogPage() {
     
 // todo: create a blog button NEEDS to be it's own component so it can be rendered on any page of the site (dry) OR on navbar
     return (
-        <>
-        {ownerOptions()}
-        <button>Create a new blog</button>
-        <img src={blog ? blog.background_image : null} />
-            <div>
-                <img src={blog ? blog.profile_picture : null} />
-                <h2>{blog ? blog.title : null}</h2>
+        <div className="blog-page-container">
+        {/* <button>Create a new blog</button> */}
+            <div className="blog-images-container">
+                <img className="background-image" src={blog ? blog.background_image : null} />
+                <img className="profile-picture" src={blog ? blog.profile_picture : null} />
+                <h1 className="blog-title">{blog ? blog.title : null}</h1>
+            </div>
+            <div className="blog-owner-options">
+                {ownerOptions()}
             </div>
             <div>
                 {posts ? posts.map(post => (
                     <Posts post={post} key={post.id} />
                 )) : null}
             </div>
-        </>
+        </div>
     )
 }

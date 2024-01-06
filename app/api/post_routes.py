@@ -1,5 +1,5 @@
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
-from app.models import Post, db
+from app.models import Post, Blog, db
 from flask import Blueprint
 
 post_routes = Blueprint('post', __name__)
