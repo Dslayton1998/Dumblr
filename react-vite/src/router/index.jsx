@@ -5,6 +5,8 @@ import BlogPage from '../components/BlogPage/BlogPage';
 import Dashboard from '../components/Dashboard/Dashboard';
 import CreateBlogForm from '../components/CreateBlogForm/CreateBlogForm';
 import Layout from './Layout';
+import UpdateBlog from '../components/UpdateBlog/UpdateBlog';
+
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "blog/new",
         element: <CreateBlogForm />
+      },
+      {
+        path: "blog/:blogId/update",
+        element: <UpdateBlog />
       }
     ],
   },
