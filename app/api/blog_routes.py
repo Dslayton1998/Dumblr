@@ -77,5 +77,21 @@ def create_blog():
         db.session.commit()
         return new_blog.to_dict()
     else:
-        print(form.errors, "HI!")
+        print(form.errors)
         return form.errors
+    
+
+@blog_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_album(id):
+    target_blog = Blog.query.get(id)
+
+    profile_picture_url = target_blog.profile_picture
+    background_img_url = target_blog.background_image
+
+    db.session.delete(target_blog)
+    db.session.commit()
+
+    remove_file_from_s3(profile_picture_url)
+    remove_file_from_s3(background_img_url)
+    return {"message": "Successfully Deleted"}

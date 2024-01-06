@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-export default function UpdateButton ()  { 
+export default function UpdateBlog ()  { 
     const navigate = useNavigate()
     const { blogId } = useParams()
 
