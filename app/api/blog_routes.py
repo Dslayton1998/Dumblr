@@ -2,7 +2,7 @@ from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from
 from flask_login import login_required, current_user
 from app.models import Blog, db 
 from flask import Blueprint, request
-from ..forms import BlogForm
+from ..forms import BlogForm, BlogUpdateForm
 
 blog_routes = Blueprint('blog', __name__)
 
@@ -95,3 +95,54 @@ def delete_album(id):
     remove_file_from_s3(profile_picture_url)
     remove_file_from_s3(background_img_url)
     return {"message": "Successfully Deleted"}
+
+
+
+@blog_routes.route('/<int:id>/update', methods=['PUT'])
+@login_required
+def update_blog(id):
+    """
+    Updates a form
+    """
+    form = BlogUpdateForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print("FORM CSRF TOKEN: ", form["csrf_token"])
+    if form.validate_on_submit():
+        blog = Blog.query.get(id)
+        profile_picture_url = blog.profile_picture
+        background_image = blog.background_image
+
+        updated_profile_picture = form.data["profile_picture"]
+        updated_background_image = form.data["background_image"]
+        if not isinstance(updated_profile_picture, str):
+            updated_profile_picture.filename = get_unique_filename(profile_picture_url)
+            upload_profile_picture = upload_file_to_s3(updated_profile_picture)
+        
+        if not isinstance(updated_background_image, str):
+            updated_background_image.filename = get_unique_filename(background_image)
+            upload_background_image = upload_file_to_s3(updated_background_image)
+
+        if "url" not in upload_profile_picture:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when you tried to upload
+        # so you send back that error message (and you printed it above)
+            return upload_profile_picture
+        if "url" not in upload_background_image:
+            return upload_background_image
+
+        remove_file_from_s3(profile_picture_url)
+        remove_file_from_s3(background_image)
+        blog.profile_picture = upload_profile_picture["url"]
+        blog.background_image = upload_background_image["url"]
+
+        if form.data["title"]:
+            blog.title = form.data["title"]
+
+        if form.data["public"]:
+            blog.public =form.data["public"]
+
+        db.session.commit()
+        return blog.to_dict()
+    else:
+        print(form.errors)
+        return form.errors
