@@ -29,3 +29,7 @@
     margin-left: 20px;
     justify-content: space-between;
 }
+
+.submit-button {
+    align-self: center;
+}
