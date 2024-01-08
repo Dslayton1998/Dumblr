@@ -64,7 +64,6 @@ def create_blog():
         # so you send back that error message
             return upload
         
-# todo: get owner_id somehow, was throwing 500 error until hard coded possibly receiving it as a string?
         print(form.data['owner_id'])
         new_blog = Blog(
             title = form.data['title'],
