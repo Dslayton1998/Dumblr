@@ -11,7 +11,7 @@ export default function UpdateBlog ()  {
     
   return (
     <>
-      <div onClick={handleSubmit} >Update</div>
+      <button onClick={handleSubmit} >Update</button>
     </>
   )
 }
