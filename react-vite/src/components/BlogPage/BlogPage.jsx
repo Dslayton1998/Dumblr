@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { thunkOneBlog } from "../../redux/blog"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
-import Posts from "./Posts";
+import Posts from "../PostCards/Posts";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
 import './BlogPage.css'
@@ -40,7 +40,6 @@ export default function BlogPage() {
         oneBlog()
     }, [dispatch])
     
-// todo: create a blog button NEEDS to be it's own component so it can be rendered on any page of the site (dry) OR on navbar
     return (
         <div className="blog-page-container">
         {/* <button>Create a new blog</button> */}

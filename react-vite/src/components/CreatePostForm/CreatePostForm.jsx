@@ -34,7 +34,7 @@ export default function CreatePostForm() {
         if(!caption && !image) {
             errors.input = "A caption OR an image must be provided"
         }
-        console.log(blog)
+
         if(!blog) {
             errors.blog = "Please select a blog to post to."
         }
@@ -51,15 +51,14 @@ export default function CreatePostForm() {
             return;
         }
 
-        console.log(typeof blog)
         const formData = new FormData();
         formData.append("image", image)
         formData.append('caption', caption)
         formData.append('blog_id', Number(blog))
         formData.append('user_id', user.id)
 
-        let post = await dispatch(thunkCreatePost(formData))
-        // navigate(`/blog/${blog.id}`)
+        await dispatch(thunkCreatePost(formData))
+        navigate(`/dashboard`)
     }
 
 
