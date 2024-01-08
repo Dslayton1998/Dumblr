@@ -1,6 +1,8 @@
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
+from flask_login import login_required, current_user
 from app.models import Post, Blog, db
-from flask import Blueprint
+from flask import Blueprint, request
+from ..forms import PostForm
 
 post_routes = Blueprint('post', __name__)
 
@@ -13,3 +15,48 @@ def get_all_posts():
 
     posts = [post.to_dict() for post in Post.query.all()]
     return posts
+
+@post_routes.route('/new', methods=['POST'])
+def create_post():
+    """
+    Creates a post
+    """
+    form = PostForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    print(form["csrf_token"])
+
+    if form.validate_on_submit():
+        if(form.data['image']):
+            image = form.data['image']
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload
+        
+            new_post = Post(
+                user_id = form.data['user_id'],
+                blog_id = form.data['blog_id'],
+                image = upload['url'],
+                caption = form.data['caption']
+            )
+
+            db.session.add(new_post)
+            db.session.commit()
+            return new_post.to_dict()
+        else:
+            new_post = Post(
+                user_id = form.data['user_id'],
+                blog_id = form.data['blog_id'],
+                image = None,
+                caption = form.data['caption']
+            )
+
+            db.session.add(new_post)
+            db.session.commit()
+            return new_post.to_dict()
+    else:
+        print(form.errors)
+        return form.errors
+

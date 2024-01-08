@@ -16,8 +16,7 @@ export default function CreateBlogForm() {
     const [publicStatus, setPublicStatus] = useState(true)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
-    // const user = useSelector(state => state.session ? state.session.user : null)
-    // console.log(typeof user.id)
+    const user = useSelector(state => state.session ? state.session.user : null)
 
     useEffect(() => {
         const errors = {}
@@ -57,7 +56,7 @@ export default function CreateBlogForm() {
         const formData = new FormData();
         formData.append("title", title);
         formData.append("blog_name", blogName)
-        // formData.append("owner_id", userId)
+        formData.append("owner_id", user.id)
         formData.append("profile_picture", profilePicture)
         formData.append("background_image", backgroundImage)
         formData.append("primary_blog", false)

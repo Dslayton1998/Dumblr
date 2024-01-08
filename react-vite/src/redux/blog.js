@@ -1,7 +1,14 @@
+const GET_BLOGS = 'blog/GET_BLOGS'
 const GET_A_BLOG = 'blog/GET_A_BLOG'
 const CREATE_BLOG = 'blog/CREATE_BLOG'
 const DELETE_BLOG = 'blog/DELETE_BLOG'
 const UPDATE_BLOG = 'blog/UPDATE_BLOG'
+
+
+const usersBlogs = (blogs) => ({
+    type: GET_BLOGS,
+    payload: blogs
+})
 
 const oneBlog = (blog) => ({
     type: GET_A_BLOG,
@@ -23,17 +30,17 @@ const updateBlog = (blogId) => ({
     payload: blogId
 })
 
-// export const thunkAllBlogs = () => async (dispatch) => {
-//     const res = await fetch("/api/blog");
-//     if(res.ok) {
-//         const blogs = await res.json();
-//         dispatch(getBlog(blogs))
-//     } else {
-//         error = await res.json()
-//         console.log(error)
-//         return error
-//     }
-// }
+export const thunkAllUserBlogs = () => async (dispatch) => {
+    const res = await fetch("/api/blog");
+    if(res.ok) {
+        const blogs = await res.json();
+        dispatch(usersBlogs(blogs))
+    } else {
+        error = await res.json()
+        console.log(error)
+        return error
+    }
+}
 
 export const thunkOneBlog = (blogId) => async (dispatch) => {
     const res = await fetch(`/api/blog/${blogId}`);
@@ -49,6 +56,7 @@ export const thunkOneBlog = (blogId) => async (dispatch) => {
 
 
 export const thunkCreateBlog = (formData) => async (dispatch) => {
+    console.log(formData)
     const res = await fetch('/api/blog/new', {
         method: 'POST',
         body: formData
@@ -100,13 +108,13 @@ export const thunkUpdateBlog = (blogId, formData) => async (dispatch) => {
 
 function blogReducer(state = {}, action) {
     switch (action.type) {
-        // case GET_BLOGS: {
-        //     const newState = {}
-        //     action.payload.forEach(blog => {
-        //         newState[blog.id] = blog
-        //     });
-        //     return newState
-        // }
+        case GET_BLOGS: {
+            const newState = {}
+            action.payload.forEach(blog => {
+                newState[blog.id] = blog
+            });
+            return newState
+        }
 
         case GET_A_BLOG: {
             return {...state, [action.payload.id]: action.payload}

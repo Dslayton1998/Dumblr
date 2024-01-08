@@ -9,9 +9,10 @@ blog_routes = Blueprint('blog', __name__)
 @blog_routes.route('/')
 def get_all_blogs():
     """
-    Returns a list of all public blogs
+    Returns a list of users blogs
     """
-    blogs = [blog.to_dict() for blog in db.session.query(Blog).filter(Blog.public == True)]
+    # blogs = [blog.to_dict() for blog in db.session.query(Blog).filter(Blog.owner_id == )]
+    blogs = [blog.to_dict() for blog in Blog.query.all()]
     return blogs
 
 
@@ -35,10 +36,10 @@ def get_blog_by_id(id):
 
 
 @blog_routes.route('/new', methods=['POST'])
-# @login_required
+@login_required
 def create_blog():
     """
-    Creates a new blog
+    Creates a blog
     """
     form = BlogForm()
 
@@ -64,10 +65,11 @@ def create_blog():
             return upload
         
 # todo: get owner_id somehow, was throwing 500 error until hard coded possibly receiving it as a string?
+        print(form.data['owner_id'])
         new_blog = Blog(
             title = form.data['title'],
+            owner_id = form.data['owner_id'],
             blog_name = form.data['blog_name'],
-            owner_id = 1,
             profile_picture = upload['url'],
             background_image = background_upload['url'],
             primary_blog = False, # form.data['primary_blog']
