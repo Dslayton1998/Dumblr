@@ -10,3 +10,7 @@ class PostForm(FlaskForm):
     caption = StringField('Caption')
     blog_id = IntegerField('Blog id', validators=[DataRequired()])
     user_id = IntegerField('User id', validators=[DataRequired()])
+
+class PostUpdateForm(FlaskForm):
+    image = FileField('Image', validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
+    caption = StringField('Caption')

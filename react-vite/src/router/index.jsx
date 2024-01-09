@@ -8,6 +8,7 @@ import UpdateBlog from '../components/UpdateBlog/UpdateBlog';
 import Layout from './Layout';
 import LandingPage from '../components/LandingPage/LandingPage';
 import CreatePostForm from '../components/CreatePostForm/CreatePostForm';
+import UpdatePost from '../components/UpdatePost/UpdatePost';
 
 
 export const router = createBrowserRouter([
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "post/new",
         element: <CreatePostForm />
+      },
+      {
+        path: 'post/:postId/update',
+        element: <UpdatePost />
       }
     ],
   },
