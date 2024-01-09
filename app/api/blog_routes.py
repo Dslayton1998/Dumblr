@@ -104,7 +104,7 @@ def delete_album(id):
 @login_required
 def update_blog(id):
     """
-    Updates a form
+    Updates a blog
     """
     form = BlogUpdateForm()
     form["csrf_token"].data = request.cookies["csrf_token"]

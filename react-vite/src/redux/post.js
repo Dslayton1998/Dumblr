@@ -1,6 +1,7 @@
 const GET_POSTS = 'posts/GET_POSTS'
 const CREATE_POST = 'posts/CREATE_POST'
 const DELETE_POST = 'posts/DELETE_POST'
+const UPDATE_POST = 'posts/UPDATE_POST'
 
 
 const getPosts = (posts) => ({
@@ -15,6 +16,11 @@ const newPost = (post) => ({
 
 const deletePost = (postId) => ({
     type: DELETE_POST,
+    payload: postId
+})
+
+const updatePost = (postId) => ({
+    type: UPDATE_POST,
     payload: postId
 })
 
@@ -54,6 +60,24 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
 
     if (res.ok) {
         dispatch(deletePost(postId))
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
+export const thunkUpdatePost = (postId, formData) => async (dispatch) => {
+    console.log(postId)
+    console.log(formData)
+    const res = await fetch(`/api/post/${postId}/update`, {
+        method: 'PUT',
+        body: formData
+    })
+
+    if(res.ok) {
+        const post = await res.json()
+        dispatch(updatePost(postId))
     } else {
         const error = await res.json()
         console.log(error)

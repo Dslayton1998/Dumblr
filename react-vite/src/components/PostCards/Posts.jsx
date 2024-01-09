@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import DeletePost from "./PostOptions/DeletePost"
+import UpdatePost from "./PostOptions/UpdatePost"
 
 export default function Posts({ post }) {
     const user = useSelector(state => state.session.user)
@@ -7,12 +8,12 @@ export default function Posts({ post }) {
     const userOptions = () => {
         if(post.user_id == user.id) {
             return  <div>
-                {/* <UpdatePost /> */}
+                <UpdatePost postId={post.id}/>
                 <DeletePost postId={post.id} />
             </div>
         }
     }
-    console.log(user)
+
     return (
         <div className="post-container">
             {userOptions()}

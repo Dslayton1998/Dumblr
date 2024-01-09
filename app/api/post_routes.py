@@ -2,7 +2,7 @@ from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from
 from flask_login import login_required, current_user
 from app.models import Post, Blog, db
 from flask import Blueprint, request
-from ..forms import PostForm
+from ..forms import PostForm, PostUpdateForm
 
 post_routes = Blueprint('post', __name__)
 
@@ -12,8 +12,9 @@ def get_all_posts():
     Returns a list of all public blogs
     """
 # todo: If I can put blog information into the store from here blog page won't need so may checks
-
+    
     posts = [post.to_dict() for post in Post.query.all()]
+    # blogs = [blog.to_dict() for blog in posts.blog]
     return posts
 
 
@@ -90,4 +91,39 @@ def delete_post(id):
     return {"message": "Successfully Deleted"}
 
 
-# @post_routes.route()
+@post_routes.route('/<int:id>/update', methods=['PUT'])
+@login_required
+def update_post(id):
+    """
+    Updates a post
+    """
+    form = PostUpdateForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print("FORM CSRF TOKEN: ", form["csrf_token"])
+
+    if form.validate_on_submit():
+        target_post = Post.query.get(id)
+        new_image = form.data["image"]
+
+        if not isinstance(new_image, str):
+            new_image.filename = get_unique_filename(new_image.filename)
+            upload = upload_file_to_s3(new_image)
+
+            if "url" not in upload:
+                return upload
+            
+            if target_post.image == str:
+                old_image = target_post.image
+                remove_file_from_s3(old_image)
+
+            target_post.image = upload["url"]
+
+
+        if form.data['caption']:
+            target_post.caption = form.data['caption']
+
+        db.session.commit()
+        return target_post.to_dict()
+    else:
+        print(form.errors)
+        return form.errors
