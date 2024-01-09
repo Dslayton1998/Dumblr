@@ -1,20 +1,20 @@
 import { useModal } from "../../context/Modal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { thunkAllPosts } from "../../redux/post";
-import { thunkDeleteBlog } from "../../redux/blog";
+import { thunkAllPosts, thunkDeletePost } from "../../redux/post";
 
 
-export default function DeleteBlogModal( {blogId} ) {
+export default function DeletePostModal( { postId } ) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { blogId } = useParams();
   const { closeModal } = useModal()
 
   const handleConfirm = async () => {
-    await dispatch(thunkDeleteBlog(blogId))
+    await dispatch(thunkDeletePost(postId))
     await dispatch(thunkAllPosts());
     closeModal()
-    navigate('/dashboard')
+    navigate(`/dashboard`)
   }
 
   const close = () => {
@@ -23,7 +23,7 @@ export default function DeleteBlogModal( {blogId} ) {
 
   return (
     <div>
-      <h1>Are you sure you want to delete this Blog?</h1>
+      <h1>Are you sure you want to delete this post?</h1>
       <button onClick={handleConfirm} >Yes</button>
       <button onClick={close} >No</button>
     </div>

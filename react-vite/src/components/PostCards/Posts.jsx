@@ -1,11 +1,8 @@
-import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
-import './PostsCards.css'
-import UpdatePost from "./OptionButtons/UpdatePost";
-import DeletePost from "./OptionButtons/DeletePost";
+import DeletePost from "./PostOptions/DeletePost"
+import UpdatePost from "./PostOptions/UpdatePost"
 
-export default function PostsCards({ post }) {
-    const redirect = useNavigate();
+export default function Posts({ post }) {
     const user = useSelector(state => state.session.user)
     
     const userOptions = () => {
@@ -15,11 +12,6 @@ export default function PostsCards({ post }) {
                 <DeletePost postId={post.id} />
             </div>
         }
-    }
-    const onClick = () => {
-
-    //todo: if blog_name is on post table it will be easier to navigate as we intended ??
-        return redirect(`/blog/${post.blog_id}`)
     }
 
     return (

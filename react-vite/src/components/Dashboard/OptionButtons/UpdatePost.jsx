@@ -1,12 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
-export default function UpdateBlog ()  { 
+export default function UpdatePost ({ postId })  { 
     const navigate = useNavigate()
-    const { blogId } = useParams()
-
     const handleSubmit = () => { 
-        navigate(`/blog/${blogId}/update`)
+        navigate(`/post/${postId}/update`)
     }
     
   return (

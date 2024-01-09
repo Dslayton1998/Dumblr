@@ -2,7 +2,10 @@ import { useEffect } from "react"
 import { thunkOneBlog } from "../../redux/blog"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
-import Posts from "./Posts";
+import Posts from "../PostCards/Posts";
+import UpdateBlog from "./OptionButtons/UpdateButton";
+import DeleteBlog from "./OptionButtons/DeleteButton";
+import './BlogPage.css'
 
 //todo: styles!
 
@@ -16,17 +19,15 @@ export default function BlogPage() {
     if(blog) {
         if(blog.posts) {
             posts = blog.posts
-            console.log(posts)
         }
     }
 
     const ownerOptions = () => {
-        if (currentUser != null) {
-            if(album.artist_id == currentUser.id) {
-                return <div className="album-details-button-container">
-                    <UpdateAlbum />
-                    <DeleteAlbum />
-                    <div className="fake-button" onClick={addSongButton}>Add a Song</div>
+        if (currentUser != null && blog)  {
+            if(blog.owner_id == currentUser.id) {
+                return <div>
+                    <UpdateBlog />
+                    <DeleteBlog />
                 </div>
             }
         }
@@ -39,20 +40,22 @@ export default function BlogPage() {
         oneBlog()
     }, [dispatch])
     
-// todo: create a blog button NEEDS to be it's own component so it can be rendered on any page of the site (dry) OR on navbar
     return (
-        <>
-        <button>Create a new blog</button>
-        <img src={blog ? blog.background_image : null} />
-            <div>
-                <img src={blog ? blog.profile_picture : null} />
-                <h2>{blog ? blog.title : null}</h2>
+        <div className="blog-page-container">
+        {/* <button>Create a new blog</button> */}
+            <div className="blog-images-container">
+                <img className="background-image" src={blog ? blog.background_image : null} />
+                <img className="profile-picture" src={blog ? blog.profile_picture : null} />
+                <h1 className="blog-title">{blog ? blog.title : null}</h1>
+            </div>
+            <div className="blog-owner-options">
+                {ownerOptions()}
             </div>
             <div>
                 {posts ? posts.map(post => (
                     <Posts post={post} key={post.id} />
                 )) : null}
             </div>
-        </>
+        </div>
     )
 }
