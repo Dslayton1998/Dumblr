@@ -1,1 +1,6 @@
 /* TODO: Add sitewide styles */
+.error {
+    color: red;
+    margin-top: 8px;
+    font-weight: bold;
+}

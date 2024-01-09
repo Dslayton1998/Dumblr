@@ -1,0 +1,57 @@
+.login-modal-container {
+    display: flex;
+    background-color: white ;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    width: 300px;
+    /* border-radius: 10px; */
+}
+
+.login-modal-header {
+    font-size: 40px;
+}
+
+.login-modal-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-modal-input {
+    display: flex;
+    flex-direction: column;
+    background-color: darkgray;
+    border: 2px solid black;
+    border-radius: 20px;
+    align-items: center;
+    margin: 10px 0;
+    padding: 16px;
+    width: 75%;
+}
+
+.login-modal-input-area {
+    width: 80%
+}
+
+.error-container {
+    display: flex;
+    text-wrap: wrap;
+    align-self: center;
+    justify-content: center;
+    height: max(20px);
+    width: max(200px);
+    margin-bottom: 10px;
+}
+
+.login-modal-submit-button {
+    background-color: red;
+    color: white;
+    margin: 10px;
+    height: 40px;
+    width: 60%;
+
+    &:hover {
+        box-shadow: 2px 2px black;
+    }
+}

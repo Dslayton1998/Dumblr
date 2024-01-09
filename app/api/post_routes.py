@@ -18,6 +18,13 @@ def get_all_posts():
     return posts
 
 
+@post_routes.route('/<int:id>')
+@login_required
+def get_one_post(id):
+    post = Post.query.get(id)
+    return post.to_dict()
+
+
 @post_routes.route('/new', methods=['POST'])
 @login_required
 def create_post():

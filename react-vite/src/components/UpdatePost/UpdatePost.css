@@ -1,18 +1,18 @@
-.blog-update-container {
+.post-update-container {
     display: flex;
     flex-direction: column;
 }
 
-.blog-update-heading {
+.post-update-heading {
     align-self: center;
 }
 
-.blog-update-form {
+.post-update-form {
     display: flex;
     flex-direction: column;
 }
 
-.blog-update-input {
+.post-update-input {
     display: flex;
     justify-content: space-between;
     width: 500px;
@@ -23,13 +23,31 @@
     border: solid black 2px
 }
 
-.blog-update-select {
+.post-update-select {
     display: flex;
     width: 50px;
     margin-left: 20px;
     justify-content: space-between;
 }
 
-.submit-button {
+.error-container {
+    display: flex;
+    text-wrap: wrap;
     align-self: center;
+    height: max(20px);
+    width: max(200px);
+    margin-bottom: 10px;
+}
+
+.submit-button {
+
+    align-self: center;
+}
+
+.disabled {
+    align-self: center;
+    margin-top: 10px;
+    cursor: not-allowed;
+    pointer-events: none;
+    color: gray;
 }

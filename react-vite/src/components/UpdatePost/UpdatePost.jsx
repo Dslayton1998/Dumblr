@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom";
-import { thunkUpdatePost } from "../../redux/post";
-// import './Updatepost.css'
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { thunkOnePost, thunkUpdatePost } from "../../redux/post";
+import './UpdatePost.css'
 
 //todo: useState variables should be assigned to target post values
 
@@ -10,14 +10,16 @@ export default function UpdatePost() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { postId } = useParams();
-    const [image, setImage] = useState("")
-    const [caption, setCaption] = useState("")
+    const post = useSelector(state => state?.posts[postId])
+    const [image, setImage] = useState(post ? post.image : "")
+    const [caption, setCaption] = useState(post ? post.caption : "")
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
     // const user = useSelector(state => state.session ? state.session.user : null)
     // console.log(typeof user.id)
 
     useEffect(() => {
+        dispatch(thunkOnePost(postId))
         const errors = {}
 
         if(caption && caption.length < 10) {
@@ -25,7 +27,7 @@ export default function UpdatePost() {
         }
 
         setValidationsErrors(errors)
-    }, [caption])
+    }, [dispatch, caption]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,16 +41,28 @@ export default function UpdatePost() {
         formData.append('image', image)
         formData.append('caption', caption)
         await dispatch(thunkUpdatePost(Number(postId), formData))
-        // navigate(`/post/${postId}`)
+        navigate(-1) // -1
+    };
+
+
+    console.log(image)
+    console.log(caption)
+    const disableButton = () => {
+        if(image == "" && caption == "") {
+            return <button className='disabled' type="submit">Submit</button>
+        } else {
+           return <button className='submit-button' type="submit">Submit</button>
+        }
     }
 
 
 // todo: change form depending on if the post has an image 
     return (
-        <div>
-            <h1>Update your post!</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <label>
+        <div className="post-update-container">
+            <NavLink to={-1}>{'<'}Back</NavLink>
+            <h1 className="post-update-heading">Update your post!</h1>
+            <form className="post-update-form" onSubmit={handleSubmit} encType="multipart/form-data">
+                <label className="post-update-input">
                     <span>Do you want to change the caption?</span>
                     <input
                     type='text'
@@ -65,13 +79,13 @@ export default function UpdatePost() {
                     <input
                     type="file"
                     accept="image/*"
-                    // value={image}
+                    placeholder={image}
                     onChange={(e) => setImage(e.target.files[0])}
                     />
                     {hasSubmitted && validationErrors.image && (
                         <span className="error">{validationErrors.image}</span> )}
                 </label>
-                <button className='submit-button' type="submit">Submit</button>
+                {disableButton()}
             </form>
         </div>
     )
