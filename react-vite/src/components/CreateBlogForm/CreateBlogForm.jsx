@@ -63,6 +63,13 @@ export default function CreateBlogForm() {
         formData.append("public", publicStatus)
         let blog = await dispatch(thunkCreateBlog(formData))
         navigate(`/blog/${blog.id}`)
+    };
+
+
+    if(user == null){
+        return (
+            <h1>Please sign in to create a blog!</h1>
+        )
     }
 
 
