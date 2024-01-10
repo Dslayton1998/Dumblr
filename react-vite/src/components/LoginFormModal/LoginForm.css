@@ -36,7 +36,7 @@
 
 .error-container {
     display: flex;
-    text-wrap: wrap;
+    /* text-wrap: wrap; */
     align-self: center;
     justify-content: center;
     height: max(20px);

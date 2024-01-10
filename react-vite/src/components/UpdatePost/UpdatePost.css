@@ -1,6 +1,7 @@
 .post-update-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .post-update-heading {
@@ -15,12 +16,19 @@
 .post-update-input {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    flex-direction: column;
     width: 500px;
     align-items: center;
     align-self: center;
     padding: 20px;
     margin: 10px;
     border: solid black 2px
+}
+
+.post-update-text-box {
+    height: 50px;
+    width: 400px;
 }
 
 .post-update-select {
@@ -30,17 +38,16 @@
     justify-content: space-between;
 }
 
-.error-container {
+.post-update-error-container {
     display: flex;
     text-wrap: wrap;
     align-self: center;
     height: max(20px);
-    width: max(200px);
+    width: max(350px);
     margin-bottom: 10px;
 }
 
 .submit-button {
-
     align-self: center;
 }
 

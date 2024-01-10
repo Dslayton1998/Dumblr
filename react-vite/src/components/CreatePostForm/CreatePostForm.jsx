@@ -76,7 +76,7 @@ export default function CreatePostForm() {
                     />
                 </label>
 
-                    <div className="error-container">
+                    <div className="create-post-error-container">
                         {hasSubmitted && validationErrors.input && (
                             <span className="error">{validationErrors.input}</span> )}
                     </div>

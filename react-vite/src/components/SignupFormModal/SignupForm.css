@@ -51,7 +51,7 @@
 
 .error-container {
     display: flex;
-    text-wrap: wrap;
+    /* text-wrap: wrap; */
     align-self: center;
     height: max(15px);
     margin: 5px

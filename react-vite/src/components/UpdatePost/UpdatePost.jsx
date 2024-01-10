@@ -4,8 +4,6 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { thunkOnePost, thunkUpdatePost } from "../../redux/post";
 import './UpdatePost.css'
 
-//todo: useState variables should be assigned to target post values
-
 export default function UpdatePost() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,14 +13,22 @@ export default function UpdatePost() {
     const [caption, setCaption] = useState(post ? post.caption : "")
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
-    // const user = useSelector(state => state.session ? state.session.user : null)
-    // console.log(typeof user.id)
 
     useEffect(() => {
-        dispatch(thunkOnePost(postId))
+    // For populating values into update form
+        const getPost = async () => {
+          const post = await dispatch(thunkOnePost(postId))
+          setCaption(post.caption)
+          setImage(post.image)
+        }
+        getPost()
+    }, [dispatch, postId]);
+
+    useEffect(() => {
+    // For error validations
         const errors = {}
 
-        if(caption && caption.length < 10) {
+        if(caption.length < 10) {
             errors.caption = "New caption must be at least 10 characters long."
         }
 
@@ -44,9 +50,6 @@ export default function UpdatePost() {
         navigate(-1) // -1
     };
 
-
-    console.log(image)
-    console.log(caption)
     const disableButton = () => {
         if(image == "" && caption == "") {
             return <button className='disabled' type="submit">Submit</button>
@@ -65,17 +68,21 @@ export default function UpdatePost() {
                 <label className="post-update-input">
                     <span>Do you want to change the caption?</span>
                     <input
+                    className="post-update-text-box"
                     type='text'
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                     />
-                    {hasSubmitted && validationErrors.caption && (
-                        <span className="error">{validationErrors.caption}</span> )}
+                    
+                        <div className="post-update-error-container">
+                            {hasSubmitted && validationErrors.caption && (
+                                <span className="error">{validationErrors.caption}</span> )}
+                        </div>
                 </label>
 
 
                 <label className='post-update-input'>
-                    <span>Add an image?</span>
+                    <span>Add or update an image?</span>
                     <input
                     type="file"
                     accept="image/*"

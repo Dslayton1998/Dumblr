@@ -40,11 +40,12 @@
     border: solid black 2px
 }
 
-.error-container {
+.create-post-error-container {
     display: flex;
     text-wrap: wrap;
     align-self: center;
     height: max(20px);
+    width: max(300px);
     margin-bottom: 10px;
 }
 

@@ -12,15 +12,25 @@
     flex-direction: column;
 }
 
+.create-blog-span {
+    margin-bottom: 10px;
+}
+
 .create-blog-input {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 500px;
+    width: 600px;
     align-items: center;
     align-self: center;
     padding: 20px;
     margin: 10px;
     border: solid black 2px
+}
+
+.create-blog-error-container {
+    margin-top: 10px;
+    height: max(20px);
 }
 
 

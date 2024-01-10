@@ -48,6 +48,7 @@ export const thunkOnePost = (postId) => async (dispatch) => {
     if(res.ok) {
         const post = await res.json();
         dispatch(getOnePost(post))
+        return post
     } else {
         const error = await res.json()
         console.log(error)
