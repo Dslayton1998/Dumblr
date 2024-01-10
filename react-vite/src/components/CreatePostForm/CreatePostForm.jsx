@@ -18,8 +18,10 @@ export default function CreatePostForm() {
 
     let userBlogs = [];
     blogs.map(blog => {
-        if (blog.owner_id == user.id) {
-            userBlogs.push(blog)
+        if(user != null) {
+            if (blog.owner_id == user.id) {
+                userBlogs.push(blog)
+            }
         }
     })
 
@@ -62,6 +64,12 @@ export default function CreatePostForm() {
         navigate(`/dashboard`)
     }
 
+
+    if(user == null){
+        return (
+            <h1>Please sign in to create a post!</h1>
+        )
+    };
 
     return (
         <div className="create-post-container">
