@@ -13,7 +13,7 @@ export default function CreateBlogForm() {
     const [blogName, setBlogName] = useState("")
     const [profilePicture, setProfilePicture] = useState("")
     const [backgroundImage, setBackgroundImage] = useState("")
-    const [publicStatus, setPublicStatus] = useState(true)
+    const [publicStatus, setPublicStatus] = useState("")
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
     const user = useSelector(state => state.session ? state.session.user : null)
@@ -34,7 +34,7 @@ export default function CreateBlogForm() {
         }
 
         if(!backgroundImage || backgroundImage?.length < 1) {
-            errors.backgroundImage = "A profile picture is required."
+            errors.backgroundImage = "A background image is required."
         }
 
         if(!publicStatus) {
@@ -72,7 +72,7 @@ export default function CreateBlogForm() {
             <h1 className='create-blog-heading'>Create a new blog!</h1>
             <form className='create-blog-form' onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className='create-blog-input'>
-                    <span>What is the title of your new blog?</span>
+                    <span className="create-blog-span">What is the title of your new blog?</span>
                     <input
                     type='text'
                     value={title}
@@ -80,13 +80,17 @@ export default function CreateBlogForm() {
                     onChange={(e) => setTitle(e.target.value)}
                     // required
                     />
-                    {hasSubmitted && validationErrors.title && (
-                        <span className="error">{validationErrors.title}</span> )}
+
+                    <div className="create-blog-error-container">
+                        {hasSubmitted && validationErrors.title && (
+                            <span className="error">{validationErrors.title}</span> )}
+                    </div>
+
                 </label>
 
 
                 <label className='create-blog-input'>
-                    <span>Provide a handle for your new blog (This is a unique identifier and is how your blog is displayed to other users feeds)</span>
+                    <span className="create-blog-span">Provide a handle for your new blog (This is how your blog is displayed to other users feeds)</span>
                     <input
                     type='text'
                     value={blogName}
@@ -94,43 +98,60 @@ export default function CreateBlogForm() {
                     onChange={(e) => setBlogName(e.target.value)}
                     // required
                     />
-                    {hasSubmitted && validationErrors.blogName && (
-                        <span className="error">{validationErrors.blogName}</span> )}
+
+                    <div className="create-blog-error-container">
+                        {hasSubmitted && validationErrors.blogName && (
+                            <span className="error">{validationErrors.blogName}</span> )}
+                    </div>
+
                 </label>
 
 
                 <label className='create-blog-input'>
-                    <span>Please provide a profile picture for your blog (this can be changed later)</span>
+                    <span className="create-blog-span">Please provide a profile picture for your blog (this can be changed later)</span>
                     <input
                     type="file"
                     accept="image/*"
                     onChange={(e) => setProfilePicture(e.target.files[0])}
                     />
-                    {hasSubmitted && validationErrors.profilePicture && (
-                        <span className="error">{validationErrors.profilePicture}</span> )}
+
+                    <div className="create-blog-error-container">
+                        {hasSubmitted && validationErrors.profilePicture && (
+                            <span className="error">{validationErrors.profilePicture}</span> )}
+                    </div>
+
                 </label>
 
 
                 <label className='create-blog-input'>
-                    <span>Spice up your new blog page with a background image (this can be changed later)</span>
+                    <span className="create-blog-span">Spice up your new blog page with a background image (this can be changed later)</span>
                     <input
                     type="file"
                     accept="image/*"
                     onChange={(e) => setBackgroundImage(e.target.files[0])}
                     />
-                    {hasSubmitted && validationErrors.backgroundImage && (
-                        <span className="error">{validationErrors.backgroundImage}</span> )}
+
+                    <div className="create-blog-error-container">
+                        {hasSubmitted && validationErrors.backgroundImage && (
+                            <span className="error">{validationErrors.backgroundImage}</span> )}
+                    </div>
+
                 </label>
 
 
                 <label className='create-blog-input'>
-                    <span>Is this a public blog (public blogs can be viewed by anyone)</span>
+                    <span className="create-blog-span">Is this a public blog (public blogs can be viewed by anyone)</span>
                     <select onChange={(e) => setPublicStatus(e.target.value)}>
+                        <option value="" disabled selected key='0'>Select</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>
                     </select>
-                    {hasSubmitted && validationErrors.publicStatus && (
-                        <span className="error">{validationErrors.publicStatus}</span> )}
+
+                    <div className="create-blog-error-container">
+                        {hasSubmitted && validationErrors.publicStatus && (
+                            <span className="error">{validationErrors.publicStatus}</span> )}
+                    </div>
+
                 </label>
                 <button className='submit-button' type="submit">Submit</button>
             </form>

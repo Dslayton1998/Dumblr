@@ -1,0 +1,60 @@
+.post-update-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.post-update-heading {
+    align-self: center;
+}
+
+.post-update-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-update-input {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column;
+    width: 500px;
+    align-items: center;
+    align-self: center;
+    padding: 20px;
+    margin: 10px;
+    border: solid black 2px
+}
+
+.post-update-text-box {
+    height: 50px;
+    width: 400px;
+}
+
+.post-update-select {
+    display: flex;
+    width: 50px;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.post-update-error-container {
+    display: flex;
+    text-wrap: wrap;
+    align-self: center;
+    height: max(20px);
+    width: max(350px);
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    align-self: center;
+}
+
+.disabled {
+    align-self: center;
+    margin-top: 10px;
+    cursor: not-allowed;
+    pointer-events: none;
+    color: gray;
+}

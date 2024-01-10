@@ -1,4 +1,5 @@
 const GET_POSTS = 'posts/GET_POSTS'
+const GET_ONE_POST = 'post/GET_ONE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const DELETE_POST = 'posts/DELETE_POST'
 const UPDATE_POST = 'posts/UPDATE_POST'
@@ -7,6 +8,11 @@ const UPDATE_POST = 'posts/UPDATE_POST'
 const getPosts = (posts) => ({
     type: GET_POSTS,
     payload: posts
+})
+
+const getOnePost = (post) => ({
+    type: GET_ONE_POST,
+    payload: post
 })
 
 const newPost = (post) => ({
@@ -32,6 +38,19 @@ export const thunkAllPosts = () => async (dispatch) => {
         dispatch(getPosts(posts))
     } else {
         error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
+export const thunkOnePost = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/post/${postId}`);
+    if(res.ok) {
+        const post = await res.json();
+        dispatch(getOnePost(post))
+        return post
+    } else {
+        const error = await res.json()
         console.log(error)
         return error
     }
@@ -94,6 +113,10 @@ function postReducer(state = {}, action) {
                 newState[post.id] = post
             });
             return newState
+        }
+
+        case GET_ONE_POST: {
+            return {...state, [action.payload.id]: action.payload}
         }
 
         case CREATE_POST: {

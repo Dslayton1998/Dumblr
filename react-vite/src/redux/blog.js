@@ -47,6 +47,7 @@ export const thunkOneBlog = (blogId) => async (dispatch) => {
     if(res.ok) {
         const blog = await res.json();
         dispatch(oneBlog(blog))
+        return blog
     } else {
         error = await res.json();
         console.log(error)
