@@ -49,7 +49,7 @@ def seed_posts():
         user_id = 3,
         blog_id = 3,
         image = None,
-        caption = "I'm Abby! Piss piss piss."
+        caption = "I'm THE Mr.Bloodborne."
     )
 
     post_8 = Post(

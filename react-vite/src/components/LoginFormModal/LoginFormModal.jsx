@@ -26,6 +26,7 @@ function LoginFormModal() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
+      navigate('/dashboard')
       closeModal();
     }
   };
@@ -42,7 +43,7 @@ function LoginFormModal() {
     if(serverResponse){
       setErrors(serverResponse)
     } else {
-      navigate('/')
+      navigate('/dashboard')
       closeModal()
     }
   }
