@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { thunkOneBlog } from "../../redux/blog"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Posts from "../PostCards/Posts";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
@@ -23,12 +23,14 @@ export default function BlogPage() {
     }
 
     const ownerOptions = () => {
-        if (currentUser != null && blog)  {
-            if(blog.owner_id == currentUser.id) {
-                return <div>
-                    <UpdateBlog />
-                    <DeleteBlog />
-                </div>
+        if (currentUser != null)  {
+            if(blog) {
+                if(blog.owner_id == currentUser.id) {
+                    return <div>
+                        <UpdateBlog />
+                        <DeleteBlog />
+                    </div>
+                }
             }
         }
     }
@@ -42,7 +44,6 @@ export default function BlogPage() {
     
     return (
         <div className="blog-page-container">
-        {/* <button>Create a new blog</button> */}
             <div className="blog-images-container">
                 <img className="background-image" src={blog ? blog.background_image : null} />
                 <img className="profile-picture" src={blog ? blog.profile_picture : null} />
