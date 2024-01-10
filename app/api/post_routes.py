@@ -9,15 +9,21 @@ post_routes = Blueprint('post', __name__)
 @post_routes.route('/')
 def get_all_posts():
     """
-    Returns a list of all public blogs
+    Returns a list of all post with blog information included for easier navigation (refactor)
     """
-# todo: If I can put blog information into the store from here blog page won't need so may checks
-    # query blogs
-    # if post.blog_id == blog.id
-    #   post.blog = blog
-    
+# todo: add profile image for posts to render
     posts = [post.to_dict() for post in Post.query.all()]
-    # blogs = [blog.to_dict() for blog in posts.blog]
+    blogs = [blog.to_dict() for blog in Blog.query.all()]
+    for post in posts:
+        current_blog = None
+        for blog in blogs:
+            if blog['id'] == post['blog_id']:
+                """
+                Only sending blog name to lighten up the load
+                """
+                current_blog = blog['blog_name']
+                post['blog_name'] = current_blog
+
     return posts
 
 

@@ -25,7 +25,7 @@ def seed_blogs():
 
     blog_3 = Blog(
         title = "Bloodbored of You",
-        blog_name = "piss-piss-piss",
+        blog_name = "Bloodbored of You",
         owner_id = 2,
         profile_picture = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/Abby-profile-pic.JPG",
         background_image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/small-background.jpg",

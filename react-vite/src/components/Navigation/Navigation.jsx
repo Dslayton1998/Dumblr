@@ -12,6 +12,19 @@ function Navigation() {
       <li>
         <ProfileButton />
       </li>
+
+      <li>
+        <NavLink to="/Dashboard">Dashboard</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/blog/new">Create blog</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/post/new">Create post</NavLink>
+      </li>
+
     </ul>
   );
 }

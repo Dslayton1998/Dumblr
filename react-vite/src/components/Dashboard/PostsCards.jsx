@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import './PostsCards.css'
 import UpdatePost from "./OptionButtons/UpdatePost";
@@ -9,21 +9,23 @@ export default function PostsCards({ post }) {
     const user = useSelector(state => state.session.user)
     
     const userOptions = () => {
-        if(post.user_id == user.id) {
-            return  <div>
-                <UpdatePost postId={post.id}/>
-                <DeletePost postId={post.id} />
-            </div>
+        if(user != null) {
+            if(post.user_id == user.id) {
+                return  <div>
+                    <UpdatePost postId={post.id}/>
+                    <DeletePost postId={post.id} />
+                </div>
+            }
         }
     }
     const onClick = () => {
 
-    //todo: if blog_name is on post table it will be easier to navigate as we intended ??
         return redirect(`/blog/${post.blog_id}`)
     }
 
     return (
         <div className="post-container">
+            <NavLink to={`/blog/${post.blog_id}`}>{post.blog_name}</NavLink>
             {userOptions()}
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <p>{post.caption}</p>
