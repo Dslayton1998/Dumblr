@@ -39,53 +39,69 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
+    <div className="sign-up-container">
+      <h1 className="sign-up-header">Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
+        <label className="sign-up-input">
           Email
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            // required
           />
+        <div className="error-container">
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
         </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
+
+
+        <label className="sign-up-input">
           Username
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
+            // required
           />
+        <div className="error-container">
+            {errors.username && <p className="error">{errors.username}</p>}
+          </div>
         </label>
-        {errors.username && <p>{errors.username}</p>}
-        <label>
+
+
+        <label className="sign-up-input">
           Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            // required
           />
+          <div className="error-container">
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
         </label>
-        {errors.password && <p>{errors.password}</p>}
-        <label>
+
+
+        <label className="sign-up-input">
           Confirm Password
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
+            // required
           />
+        <div className="error-container">
+            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          </div>
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+
+
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

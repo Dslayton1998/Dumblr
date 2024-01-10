@@ -12,10 +12,20 @@ def get_all_posts():
     Returns a list of all public blogs
     """
 # todo: If I can put blog information into the store from here blog page won't need so may checks
+    # query blogs
+    # if post.blog_id == blog.id
+    #   post.blog = blog
     
     posts = [post.to_dict() for post in Post.query.all()]
     # blogs = [blog.to_dict() for blog in posts.blog]
     return posts
+
+
+@post_routes.route('/<int:id>')
+@login_required
+def get_one_post(id):
+    post = Post.query.get(id)
+    return post.to_dict()
 
 
 @post_routes.route('/new', methods=['POST'])

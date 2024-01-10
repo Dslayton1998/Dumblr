@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import { thunkCreatePost } from "../../redux/post";
 import { thunkAllUserBlogs } from "../../redux/blog";
+import './CreatePostForm.css'
 
 export default function CreatePostForm() {
     const dispatch = useDispatch();
@@ -63,47 +64,50 @@ export default function CreatePostForm() {
 
 
     return (
-        <div>
-            <h1 >Create a new post!</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <label >
+        <div className="create-post-container">
+            <h1 className="create-post-heading">Create a new post!</h1>
+            <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">
+                <label className="create-post-input">
+                    <span>Would you like to post with an image?</span>
+                    <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    />
+                </label>
+
+                    <div className="create-post-error-container">
+                        {hasSubmitted && validationErrors.input && (
+                            <span className="error">{validationErrors.input}</span> )}
+                    </div>
+
+                <label className="create-post-input">
                     <span>Provide a caption for your post?</span>
                     <textarea
+                    className="create-post-text-box"
                     type='text'
                     value={caption}
                     placeholder="What's on your mind?"
                     onChange={(e) => setCaption(e.target.value)}
                     // required
                     />
-                    {hasSubmitted && validationErrors.input && (
-                        <span className="error">{validationErrors.input}</span> )}
                 </label>
 
 
-                <label>
-                    <span>Would you like to add an image to your post?</span>
-                    <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    />
-                    {hasSubmitted && validationErrors.input && (
-                        <span className="error">{validationErrors.input}</span> )}
-                </label>
-
-
-                <label >
+                <label className="create-post-select">
                     <span>Select a blog to post to!</span>
                     <select onChange={(e) => setBlog(e.target.value)}>
-                    <option value="" disabled selected key="0">Select your option</option>
+                    <option value="" disabled selected key="0">Select a blog</option>
                          {userBlogs.map(blog => (
                             <option value={blog.id}>{blog.title}</option>
                         ))}
                     </select>
-                    {hasSubmitted && validationErrors.blog && (
-                        <span className="error">{validationErrors.blog}</span> )}
+                    <div className="error-container-select">
+                        {hasSubmitted && validationErrors.blog && (
+                            <span className="error">{validationErrors.blog}</span> )}
+                    </div>
                 </label>
-                <button type="submit">Submit</button>
+                <button className="submit-button" type="submit">Submit</button>
             </form>
         </div>
     )
