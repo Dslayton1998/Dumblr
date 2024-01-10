@@ -10,10 +10,6 @@ function Navigation() {
       </li>
 
       <li>
-        <ProfileButton />
-      </li>
-
-      <li>
         <NavLink to="/Dashboard">Dashboard</NavLink>
       </li>
 
@@ -25,6 +21,9 @@ function Navigation() {
         <NavLink to="/post/new">Create post</NavLink>
       </li>
 
+      <li>
+        <ProfileButton />
+      </li>
     </ul>
   );
 }
