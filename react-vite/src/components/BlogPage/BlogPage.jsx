@@ -5,9 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Posts from "../PostCards/Posts";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
-import './BlogPage.css'
-
-//todo: styles!
+import './BlogPage.css';
 
 export default function BlogPage() {
     const dispatch = useDispatch();
@@ -26,7 +24,7 @@ export default function BlogPage() {
         if (currentUser != null)  {
             if(blog) {
                 if(blog.owner_id == currentUser.id) {
-                    return <div>
+                    return <div className="blog-owner-buttons">
                         <UpdateBlog />
                         <DeleteBlog />
                     </div>
@@ -48,9 +46,9 @@ export default function BlogPage() {
                 <img className="background-image" src={blog ? blog.background_image : null} />
                 <img className="profile-picture" src={blog ? blog.profile_picture : null} />
                 <h1 className="blog-title">{blog ? blog.title : null}</h1>
-            </div>
-            <div className="blog-owner-options">
+                <div className="blog-owner-options">
                 {ownerOptions()}
+                </div>
             </div>
             <div>
                 {posts ? posts.map(post => (

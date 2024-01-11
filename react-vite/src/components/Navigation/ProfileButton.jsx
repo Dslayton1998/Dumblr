@@ -4,9 +4,11 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useNavigate } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
@@ -38,9 +40,16 @@ function ProfileButton() {
     closeMenu();
   };
 
+  const onClick = () => {
+    if (user != null) {
+      // todo: redirect to my blogs page
+      navigate(`/blog/users/${user.id}`)
+    }
+  }
+
   return (
     <>
-      <button onClick={toggleMenu}>
+      <button className="profile-dropdown-button" onClick={toggleMenu}>
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
@@ -49,6 +58,7 @@ function ProfileButton() {
             <>
               <li>{user.username}</li>
               <li>{user.email}</li>
+              <div onClick={onClick}>My blogs</div>
               <li>
                 <button onClick={logout}>Log Out</button>
               </li>

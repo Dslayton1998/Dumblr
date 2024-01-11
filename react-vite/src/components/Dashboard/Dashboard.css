@@ -1,0 +1,11 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.dashboard-header {
+    color: white;
+    margin-top: 20px;
+}

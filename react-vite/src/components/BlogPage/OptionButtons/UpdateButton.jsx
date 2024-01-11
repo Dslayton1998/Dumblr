@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import '../BlogPage.css'
 
 export default function UpdateBlog ()  { 
     const navigate = useNavigate()
@@ -11,7 +12,7 @@ export default function UpdateBlog ()  {
     
   return (
     <>
-      <button onClick={handleSubmit} >Update</button>
+      <button className="blog-update-button" onClick={handleSubmit} >Update</button>
     </>
   )
 }
