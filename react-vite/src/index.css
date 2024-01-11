@@ -1,4 +1,10 @@
 /* TODO: Add sitewide styles */
+* {
+    margin: 0px;
+    padding: 0px;
+    /* box-sizing: border-box; */
+}
+
 .error {
     color: red;
     margin-top: 8px;

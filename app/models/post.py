@@ -21,7 +21,8 @@ class Post(db.Model):
             "user_id": self.user_id,
             "blog_id": self.blog_id,
             "image": self.image,
-            "caption": self.caption
+            "caption": self.caption,
+            "blog": self.blog.to_dict()
         }
 
         if printer:

@@ -11,22 +11,21 @@ export default function PostsCards({ post }) {
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {
-                return  <div>
+                return  <div className="dashboard-user-options">
                     <UpdatePost postId={post.id}/>
                     <DeletePost postId={post.id} />
                 </div>
             }
         }
     }
-    const onClick = () => {
-
-        return redirect(`/blog/${post.blog_id}`)
-    }
 
     return (
         <div className="post-container">
-            <NavLink to={`/blog/${post.blog_id}`}>{post.blog_name}</NavLink>
-            {userOptions()}
+            <div className="dashboard-blog-info">
+                <img className="dashboard-blog-image" src={post.blog.profile_picture} />
+                <NavLink to={`/blog/${post.blog.id}`}>{post.blog.blog_name}</NavLink>
+                {userOptions()}
+            </div>
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <p>{post.caption}</p>
         </div>
