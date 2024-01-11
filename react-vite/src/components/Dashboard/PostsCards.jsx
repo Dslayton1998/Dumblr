@@ -5,7 +5,6 @@ import DeletePost from "./OptionButtons/DeletePost";
 import './PostsCards.css'
 
 export default function PostsCards({ post }) {
-    const redirect = useNavigate();
     const user = useSelector(state => state.session.user)
     
     const userOptions = () => {
