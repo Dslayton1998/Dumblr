@@ -12,15 +12,16 @@
     display: grid;
     grid-column: 1;
     grid-row: 1;
-    /* height: 100vh; */
-    /* width: 100vh */
+    height: 500px;
+    width: 100%;
     /* cursor: none; */
+    /* border: red 5px solid; */
 }
 
 .background-image {
     display: grid;
-    height: 500px;
-    width: 800px;
+    /* height: 500px; */
+    width: 100%;
     grid-column: 1;
     grid-row: inherit;
     /* cursor: none; */

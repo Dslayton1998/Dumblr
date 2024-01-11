@@ -6,7 +6,7 @@
     border: 2px solid white;
     color: white;
     padding: 15px;
-    margin: 20px 50px 0px 50px;
+    margin: 20px 50px 15px 50px;
     width: 600px;
     background-color: rgba(50, 50, 50, 1);
     box-shadow: 1px 1px 3px 3px white;
@@ -46,8 +46,29 @@
     display: flex;
     justify-self: flex-end;
     align-items: flex-end;
-    margin-left: 350px;
+    margin-left: 250px;
+    background-color: transparent;
 }
+
+.post-update-button {
+    /* background-color: white; */
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px 2px white;
+    cursor: pointer;
+}
+
+.post-delete-button {
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px 2px white;
+    cursor: pointer;
+}
+
 
 .post-image {
     height: 250px;
@@ -59,6 +80,6 @@
     text-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-top: 10px;
+    margin: 10px 0px 10px 0px;
     background-color: rgba(50, 50, 50, 1);
 }
