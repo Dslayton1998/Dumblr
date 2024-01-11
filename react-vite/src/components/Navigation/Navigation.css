@@ -1,3 +1,20 @@
 .profile-dropdown {
   position: absolute;
 }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(32, 32, 32, 1);;
+}
+
+.nav-component {
+  margin: 5px 15px 5px 15px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  }

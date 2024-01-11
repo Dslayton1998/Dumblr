@@ -51,7 +51,7 @@ export default function UpdatePost() {
     };
 
     const disableButton = () => {
-        if(image == "" && caption == "") {
+        if((image == "" && caption == "") || (image == post.image && caption == post.caption)) {
             return <button className='disabled' type="submit">Submit</button>
         } else {
            return <button className='submit-button' type="submit">Submit</button>

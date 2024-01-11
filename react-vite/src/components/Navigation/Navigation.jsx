@@ -1,30 +1,50 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import { useSelector } from "react-redux";
 
 function Navigation() {
+  const user = useSelector(state => state.session.user)
+  // todo: render elements based off of session status
+
+  if (user == null) {
+    return (
+      <div className="nav-container">
+        <div className="nav-component">
+          {/* needs a logo */}
+          <NavLink className="nav-link" to="/">Home</NavLink>
+        </div>
+
+        <div className="nav-component">
+          <NavLink className="nav-link" to="/Dashboard">Dashboard</NavLink>
+        </div>
+
+        <div className="nav-component">
+          <ProfileButton className="nav-link" />
+        </div>
+    </div>
+    )
+  }
+
   return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+    <div className="nav-container">
 
-      <li>
-        <NavLink to="/Dashboard">Dashboard</NavLink>
-      </li>
+      <div className="nav-component">
+        <NavLink className="nav-link" to="/Dashboard">Dashboard</NavLink>
+      </div>
 
-      <li>
-        <NavLink to="/blog/new">Create blog</NavLink>
-      </li>
+      <div className="nav-component">
+        <NavLink className="nav-link" to="/blog/new">Create blog</NavLink>
+      </div>
 
-      <li>
-        <NavLink to="/post/new">Create post</NavLink>
-      </li>
+      <div className="nav-component">
+        <NavLink className="nav-link" to="/post/new">Create post</NavLink>
+      </div>
 
-      <li>
+      <div className="nav-component">
         <ProfileButton />
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
