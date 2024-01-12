@@ -10,12 +10,14 @@
 
 .login-modal-header {
     font-size: 40px;
+    background-color: transparent;
 }
 
 .login-modal-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
 }
 
 .login-modal-input {
@@ -30,9 +32,9 @@
     width: 75%;
 }
 
-.login-modal-input-area {
+/* .login-modal-input-area {
     width: 80%
-}
+} */
 
 .error-container {
     display: flex;
@@ -42,6 +44,7 @@
     height: max(20px);
     width: max(200px);
     margin-bottom: 10px;
+    background-color: transparent;
 }
 
 .login-modal-submit-button {

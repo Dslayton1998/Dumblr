@@ -1,10 +1,13 @@
 .create-blog-container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .create-blog-heading {
     align-self: center;
+    color: white;
+    margin-top: 15px;
 }
 
 .create-blog-form {
@@ -14,6 +17,9 @@
 
 .create-blog-span {
     margin-bottom: 10px;
+    background-color: rgba(50, 50, 50, 1);
+    padding-bottom: 5px;
+    border-bottom: solid 2px white;
 }
 
 .create-blog-input {
@@ -25,16 +31,34 @@
     align-self: center;
     padding: 20px;
     margin: 10px;
-    border: solid black 2px
+    border: solid black 2px;
+    background-color: rgba(50, 50, 50, 1);
+    color: white;
+}
+
+.create-blog-input > input{
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.create-blog-input > select {
+    background-color: rgba(50, 50, 50, 1);
+    color: white
 }
 
 .create-blog-error-container {
     margin-top: 10px;
     height: max(20px);
+    background-color: rgba(50, 50, 50, 1);
 }
 
 
 
 .submit-button {
     align-self: center;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 0px 0px 2px 2px white;
+    cursor: pointer;
 }

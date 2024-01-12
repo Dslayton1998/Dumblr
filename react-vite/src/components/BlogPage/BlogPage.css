@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* height: 100vh; */
+    /* width: 100vh */
 }
 
 .blog-images-container {
@@ -10,14 +12,19 @@
     display: grid;
     grid-column: 1;
     grid-row: 1;
+    height: 500px;
+    width: 100%;
+    /* cursor: none; */
+    /* border: red 5px solid; */
 }
 
 .background-image {
     display: grid;
-    height: 500px;
-    width: 800px;
+    /* height: 500px; */
+    width: 100%;
     grid-column: 1;
     grid-row: inherit;
+    /* cursor: none; */
 }
 
 .profile-picture {
@@ -39,6 +46,8 @@
     grid-row: 1;
     align-self: flex-end;
     justify-self: center;
+    margin-bottom: 5px;
+    background-color: transparent;
     font-size: 50px;
     text-shadow: -1px -1px 0 white,
     1px -1px 0 white,
@@ -47,10 +56,44 @@
 }
 
 .blog-owner-options {
+    display: grid;
+    grid-column: 1;
+    grid-row: inherit;
+    align-items: center;
+    height: max-content;
+    width: max-content;
+    background-color: transparent;
+}
+
+.blog-owner-buttons {
     display: flex;
-    /* align-items: ; */
+    /* flex-direction: column; */
+    padding: 10px;
+    background-color: transparent;
+}
+
+.blog-update-button {
+    /* background-color: white; */
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px 2px white;
+    cursor: pointer;
+}
+
+.blog-delete-button {
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px 2px white;
+    cursor: pointer;
 }
 
 .fake-button {
     text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    /* margin-right: 10px; */
 }

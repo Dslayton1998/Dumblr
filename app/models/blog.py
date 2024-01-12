@@ -16,7 +16,7 @@ class Blog(db.Model):
     public = db.Column(db.Boolean)
 
     owner = db.relationship("User", back_populates="blogs")
-    posts = db.relationship("Post", back_populates="blog")
+    posts = db.relationship("Post", back_populates="blog", cascade="all, delete")
 
     def to_dict(self, printer=False):
         return_dict = {

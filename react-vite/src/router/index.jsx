@@ -9,6 +9,7 @@ import Layout from './Layout';
 import LandingPage from '../components/LandingPage/LandingPage';
 import CreatePostForm from '../components/CreatePostForm/CreatePostForm';
 import UpdatePost from '../components/UpdatePost/UpdatePost';
+import MyBlogs from '../components/MyBlogs/MyBlogs';
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />
+      },
+      {
+        path: "blog/users/:userId",
+        element: <MyBlogs />
       },
       {
         path: "blog/:blogId",

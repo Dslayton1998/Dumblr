@@ -1,12 +1,86 @@
 .post-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
-    padding: 10px;
-    margin: 5px
+    align-items: center;
+    /* justify-items: center;  */
+    border: 2px solid white;
+    color: white;
+    padding: 15px;
+    margin: 20px 50px 15px 50px;
+    width: 600px;
+    background-color: rgba(50, 50, 50, 1);
+    box-shadow: 1px 1px 3px 3px white;
 }
 
+.dashboard-blog {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px;
+    padding: 10px;
+    border-bottom: solid 2px white;
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.dashboard-blog-info {
+    display: flex;
+    align-items: center;
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.dashboard-blog-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+.dashboard-blog-link {
+    color: white;
+    text-decoration: none;
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.dashboard-user-options {
+    display: flex;
+    justify-self: flex-end;
+    align-items: flex-end;
+    margin-left: 250px;
+    background-color: transparent;
+}
+
+.post-update-button {
+    /* background-color: white; */
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px 2px white;
+    cursor: pointer;
+}
+
+.post-delete-button {
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px 2px white;
+    cursor: pointer;
+}
+
+
 .post-image {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
+}
+
+.post-caption {
+    display: flex;
+    overflow-wrap: anywhere;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 10px 0px 10px 0px;
+    background-color: rgba(50, 50, 50, 1);
+    /* width: 350px */
 }

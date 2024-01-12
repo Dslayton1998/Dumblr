@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import '../PostsCards.css'
 
 export default function UpdatePost ({ postId })  { 
     const navigate = useNavigate()
@@ -8,7 +9,7 @@ export default function UpdatePost ({ postId })  {
     
   return (
     <>
-      <button onClick={handleSubmit} >Update</button>
+      <button className="post-update-button" onClick={handleSubmit} >Update</button>
     </>
   )
 }
