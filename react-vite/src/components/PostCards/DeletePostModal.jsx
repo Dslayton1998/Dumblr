@@ -1,7 +1,8 @@
 import { useModal } from "../../context/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { thunkAllPosts, thunkDeletePost } from "../../redux/post";
+import { thunkDeletePost } from "../../redux/post";
+import { thunkOneBlog } from "../../redux/blog";
 
 
 export default function DeletePostModal( { postId } ) {
@@ -12,7 +13,7 @@ export default function DeletePostModal( { postId } ) {
 
   const handleConfirm = async () => {
     await dispatch(thunkDeletePost(postId))
-    await dispatch(thunkAllPosts());
+    await dispatch(thunkOneBlog(blogId))
     closeModal()
     navigate(`/blog/${blogId}`)
   }

@@ -27,39 +27,46 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/");
+      navigate("/dashboard");
     }
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      {errors.length > 0 &&
-        errors.map((message) => <p key={message}>{message}</p>)}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <div className="login-page">
+      <div className="login-page-container">
+        <h1 className="login-page-header">Log In</h1>
+        <form className="login-page-form" onSubmit={handleSubmit}>
+          <label className="login-page-input">
+            Email
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              // required
+            />
+            <div className="error-container">
+              {errors.email && <p className="error">{errors.email}</p>}
+            </div>
+          </label>
+
+
+          <label  className="login-page-input">
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              // required
+            />
+            <div className="error-container">
+              {errors.password && <p className="error">{errors.password}</p>}
+            </div>
+          </label>
+
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
