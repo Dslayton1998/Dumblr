@@ -32,9 +32,13 @@ export default function UpdateBlog() {
 
     useEffect(() => {
         const errors = {}
-// todo: if !profilePicture or !backgroundImage
+
         if(title.length < 4) {
             errors.title = "New title must be at least 4 characters long."
+        }
+
+        if (title.length > 50) {
+            errors.title = "New title must be less than 50 characters."
         }
 
         setValidationsErrors(errors)

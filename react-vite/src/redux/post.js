@@ -125,6 +125,7 @@ function postReducer(state = {}, action) {
         }
 
         case DELETE_POST: {
+            //todo: refresh bug!
             const newState = {...state}
             delete newState[action.payload]
             return newState
