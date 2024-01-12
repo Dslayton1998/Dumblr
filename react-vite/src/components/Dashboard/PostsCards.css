@@ -77,9 +77,10 @@
 
 .post-caption {
     display: flex;
-    text-wrap: wrap;
+    overflow-wrap: anywhere;
     align-items: flex-start;
     justify-content: flex-start;
     margin: 10px 0px 10px 0px;
     background-color: rgba(50, 50, 50, 1);
+    /* width: 350px */
 }

@@ -3,7 +3,8 @@ import './LandingPage.css'
 
 export default function LandingPage() {
 const navigate = useNavigate();
-const backgrounds = ['https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background.jpeg', 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background2.jpg']
+const backgrounds = ['https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background.jpeg']
+// 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background2.jpg'
 const numImages = backgrounds.length
 const randomInt = (max) => {
     return Math.floor(Math.random() * max)

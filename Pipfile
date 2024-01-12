@@ -32,6 +32,7 @@ zipp = "==3.17.0"
 jmespath = "==1.0.1"
 s3transfer = "==0.8.2"
 urllib3 = "==1.26.18"
+email-validator = "*"
 
 [dev-packages]
 

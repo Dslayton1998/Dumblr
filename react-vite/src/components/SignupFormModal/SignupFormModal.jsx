@@ -16,10 +16,24 @@ function SignupFormModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (username.length < 4) {
+      return setErrors({
+        username:
+          "Username must me at least 4 characters.",
+      });
+    }
+
+    if (password.length < 8) {
+      return setErrors({
+        password:
+          "Password must be at least 8 characters.",
+      });
+    }
+
     if (password !== confirmPassword) {
       return setErrors({
         confirmPassword:
-          "Confirm Password field must be the same as the Password field",
+          "Password fields do not match.",
       });
     }
 

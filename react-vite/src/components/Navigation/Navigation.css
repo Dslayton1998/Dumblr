@@ -10,7 +10,7 @@
 .profile-dropdown {
   display: flex;
   flex-direction: column;
-  /* background-color: rgba(50, 50, 50, 1); */
+  background-color: rgba(50, 50, 50, 1);
   color: white;
   border: 2px white solid;
   justify-content: end;

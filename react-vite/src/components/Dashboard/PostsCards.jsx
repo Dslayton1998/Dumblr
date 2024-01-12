@@ -28,7 +28,7 @@ export default function PostsCards({ post }) {
                 {userOptions()}
             </div>
             {post.image ? <img className="post-image" src={post.image}/> : null}
-            <p className="post-caption">{post.caption}</p>
+            <div className="post-caption">{post.caption}</div>
         </div>
     )
 }

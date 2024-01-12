@@ -54,6 +54,7 @@
     /* text-wrap: wrap; */
     align-self: center;
     height: max(15px);
+    width: max(300px);
     margin: 5px
 }
 
