@@ -36,6 +36,10 @@ export default function UpdatePost() {
             errors.caption = "New caption must be less than 2000 characters."
         }
 
+        if(!image && !caption) {
+            errors.input = "Image OR caption required (choose one)."
+        }
+
         setValidationsErrors(errors)
     }, [dispatch, caption]);
 
@@ -66,6 +70,7 @@ export default function UpdatePost() {
         <div className="post-update-container">
             <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
             <h1 className="post-update-heading">Update your post!</h1>
+            <p className="update-post-required">Caption and image are optional, however you cannot publish a blank post (choose at least one).</p>
             <form className="post-update-form" onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className="post-update-input">
                     <span className="post-update-span">Do you want to change the caption?</span>
@@ -82,6 +87,11 @@ export default function UpdatePost() {
                                 <span className="error">{validationErrors.caption}</span> )}
                         </div>
                 </label>
+
+                <div className="post-update-error-container">
+                        {hasSubmitted && validationErrors.input && (
+                        <span className="error">{validationErrors.input}</span> )}
+                </div>
 
 
                 <label className='post-update-input'>

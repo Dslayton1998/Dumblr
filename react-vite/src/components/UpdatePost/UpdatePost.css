@@ -54,11 +54,18 @@
     width: 400px;
 }
 
+.update-post-required {
+    color: white;
+    align-self: center;
+    font-size: 12px;
+}
+
 
 .post-update-error-container {
     display: flex;
     text-wrap: wrap;
     align-self: center;
+    justify-content: center;
     height: max(20px);
     width: max(350px);
     margin-bottom: 10px;
