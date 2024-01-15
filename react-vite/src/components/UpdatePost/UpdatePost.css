@@ -38,17 +38,22 @@
     background-color: rgba(50, 50, 50, 1)
 }
 
+.post-update-input > input {
+    background-color: rgba(50, 50, 50, 1);
+    border-radius: 5px;
+    color: white;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
+}
+
 .post-update-text-box {
     height: 50px;
     width: 400px;
 }
 
-.post-update-select {
-    display: flex;
-    width: 50px;
-    margin-left: 20px;
-    justify-content: space-between;
-}
 
 .post-update-error-container {
     display: flex;

@@ -40,9 +40,17 @@
     width: 75%;
 }
 
-/* .login-page-input-area {
-    width: 80%
-} */
+.login-page-input > input {
+    padding: 5px;
+    background-color: gray;
+    border: solid 2px white;
+    border-radius: 5px;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
+}
 
 .error-container {
     display: flex;

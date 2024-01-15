@@ -45,7 +45,7 @@
 
 .create-blog-input > input{
     background-color: rgba(50, 50, 50, 1);
-    /* color: white; */
+    color: white;
     border-radius: 5px;
     padding: 5px;
 

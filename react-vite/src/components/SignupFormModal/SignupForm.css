@@ -37,8 +37,18 @@
 }
 
 
-.sign-up-input > input::placeholder {
-    color:black
+.sign-up-input > input {
+    padding: 5px;
+    margin: 2px;
+    background-color: rgba(50, 50, 50, 1);
+    border: solid 2px white;
+    color: white;
+    border-radius: 5px;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
 }
 
 .sign-up-submit-button {

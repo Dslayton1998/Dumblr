@@ -28,11 +28,11 @@ export default function UpdatePost() {
     // For error validations
         const errors = {}
 
-        if(caption.length < 10) {
+        if(caption && caption.length < 10) {
             errors.caption = "New caption must be at least 10 characters long."
         }
 
-        if(caption.length > 2000) {
+        if(caption && caption.length > 2000) {
             errors.caption = "New caption must be less than 2000 characters."
         }
 
@@ -71,6 +71,7 @@ export default function UpdatePost() {
                     <span className="post-update-span">Do you want to change the caption?</span>
                     <input
                     className="post-update-text-box"
+                    style={{'border': 'solid 2px white'}}
                     type='text'
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}

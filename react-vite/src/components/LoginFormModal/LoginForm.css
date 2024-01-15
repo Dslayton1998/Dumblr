@@ -36,9 +36,19 @@
     font-size: 16px;
 }
 
-/* .login-modal-input-area {
-    width: 80%
-} */
+.login-modal-input > input {
+    padding: 5px;
+    margin: 3px;
+    background-color: rgba(50, 50, 50, 1);
+    border: solid 2px white;
+    color: white;
+    border-radius: 5px;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
+}
 
 .error-container {
     display: flex;

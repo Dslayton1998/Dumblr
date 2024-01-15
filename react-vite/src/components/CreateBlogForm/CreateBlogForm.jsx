@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { NavLink ,useNavigate } from "react-router-dom";
 import { thunkCreateBlog } from "../../redux/blog";
 import './CreateBlogForm.css'
 
@@ -82,6 +82,7 @@ export default function CreateBlogForm() {
 
     return (
         <div className='create-blog-container'>
+            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
             <h1 className='create-blog-heading'>Create a new blog!</h1>
             <p className="create-required">( Please fill out *ALL entry fields.)</p>
             <form className='create-blog-form' onSubmit={handleSubmit} encType="multipart/form-data">
@@ -91,6 +92,7 @@ export default function CreateBlogForm() {
                     type='text'
                     value={title}
                     placeholder="Blog Title"
+                    style={{'border': 'solid 2px white'}}
                     onChange={(e) => setTitle(e.target.value)}
                     // required
                     />
@@ -109,6 +111,7 @@ export default function CreateBlogForm() {
                     type='text'
                     value={blogName}
                     placeholder="Blog Name"
+                    style={{'border': 'solid 2px white'}}
                     onChange={(e) => setBlogName(e.target.value)}
                     // required
                     />
@@ -155,8 +158,8 @@ export default function CreateBlogForm() {
 
                 <label className='create-blog-input'>
                     <span className="create-blog-span">* Is this a public blog? (public blogs can be viewed by anyone)</span>
-                    <select className="create-select-option" onChange={(e) => setPublicStatus(e.target.value)}>
-                        <option value="" disabled selected key='0'>Select</option>
+                    <select className="create-select-option" style={{'border': 'solid 2px white'}} onChange={(e) => setPublicStatus(e.target.value)}>
+                        <option value="" disabled selected key='0'>Select an option</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>
                     </select>

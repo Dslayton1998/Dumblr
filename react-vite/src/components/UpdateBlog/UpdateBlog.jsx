@@ -72,6 +72,7 @@ export default function UpdateBlog() {
                     type='text'
                     value={title}
                     placeholder="Blog Title"
+                    style={{'border': 'solid 2px white'}}
                     onChange={(e) => setTitle(e.target.value)}
                     />
                     <div className="blog-update-error-container">
@@ -112,8 +113,8 @@ export default function UpdateBlog() {
 
                 <label className='blog-update-input'>
                     <span className="update-blog-span">Share your blog with other users?</span>
-                    <select className='blog-update-select' onChange={(e) => setPublicStatus(e.target.value)}>
-                        <option value={publicStatus} disabled selected key="0">select a public option</option>
+                    <select className='blog-update-select' style={{'border': 'solid 2px white'}} onChange={(e) => setPublicStatus(e.target.value)}>
+                        <option value={publicStatus} disabled selected key="0">Select a public option</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>
                     </select>

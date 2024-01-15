@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { NavLink ,useNavigate } from "react-router-dom";
 import { thunkCreatePost } from "../../redux/post";
 import { thunkAllUserBlogs } from "../../redux/blog";
 import './CreatePostForm.css'
@@ -81,6 +81,7 @@ export default function CreatePostForm() {
 
     return (
         <div className="create-post-container">
+            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
             <h1 className="create-post-heading">Create a new post!</h1>
             <p className="create-required">( * You must add a caption OR an image, and select a blog you wish to post to.)</p>
             <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">

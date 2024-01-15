@@ -36,6 +36,61 @@
     background-color: rgba(50, 50, 50, 1)
 }
 
+.blog-update-input > input {
+    background-color: rgba(50, 50, 50, 1);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+
+    &&::placeholder {
+        color: white;
+    }
+
+    &&:focus {
+        background-color: white;
+        color: black;
+
+        &&::placeholder {
+            color: black;
+        }
+    }
+}
+
+.blog-update-input > select {
+    background-color: rgba(50, 50, 50, 1);
+    border-radius: 5px;
+    color: white;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
+} 
+
+input::file-selector-button {
+    font-weight: bold;
+    color: black;
+    text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    padding: 0.5em;
+    border: 2px solid black;
+    /* todo: consider different styles */
+
+    background: linear-gradient(to right,red, orange, yellow, green, blue) ;
+    border-radius: 5px;
+
+    &&:focus {
+        background-color: white;
+        
+
+        &&::placeholder {
+            color: black;
+        }
+    }
+}
+
 .blog-update-select {
     display: flex;
     width: 160px;

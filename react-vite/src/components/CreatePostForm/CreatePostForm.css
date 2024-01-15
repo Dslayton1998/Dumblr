@@ -52,6 +52,7 @@
 .create-post-text-box {
     background-color: rgba(50, 50, 50, 1);
     border: solid 2px white;
+    color: white;
     border-radius: 5px;
     padding: 5px;
     width: 400px;
@@ -88,6 +89,7 @@
 .create-post-select > select {
     background-color: rgba(50, 50, 50, 1);
     border-radius: 5px;
+    border: solid white 2px;
     color: white;
 
     &&:focus {

@@ -12,7 +12,7 @@
     display: grid;
     grid-column: 1;
     grid-row: 1;
-    height: 500px;
+    height: 600px;
     width: 100%;
     /* cursor: none; */
     /* border: red 5px solid; */
@@ -46,7 +46,7 @@
     grid-row: 1;
     align-self: flex-end;
     justify-self: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     background-color: transparent;
     font-size: 50px;
     text-shadow: -1px -1px 0 white,

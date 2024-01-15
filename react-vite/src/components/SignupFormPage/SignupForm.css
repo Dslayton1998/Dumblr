@@ -32,7 +32,7 @@
     margin: 5px 0;
     background-color: rgba(51, 51, 51, 1);
     color: white;
-    border: 2px solid black;
+    border: 2px solid white;
     padding: 12px;
     border-radius: 20px;
     width: 80%;
@@ -41,8 +41,16 @@
 }
 
 
-.sign-up-page-input > input::placeholder {
-    color:black
+.sign-up-page-input > input {
+    padding: 5px;
+    background-color: gray;
+    border: solid 2px white;
+    border-radius: 5px;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
 }
 
 .sign-up-page-submit-button {
