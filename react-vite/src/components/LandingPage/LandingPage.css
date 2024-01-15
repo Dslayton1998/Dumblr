@@ -24,7 +24,6 @@
     height: 300px;
     width: 420px;
     padding: 20px;
-    /* opacity: 90%; */
 }
 
 .landing-options {
@@ -69,4 +68,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.landing-dashboard-button {
+    color: white;
+    background-color: rgba(32, 32, 32, 0.1);
+    border: solid white 2px;
+    border-radius: 10px;
+
+    &:hover{
+        color: black;
+        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
+        box-shadow: 2px 2px;
+        text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+        transition: all .7s ease-in-out; 
+    }
+}
+
+
+
+/* todo: hover effects! */
+
+.landing-link {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(50, 50, 50, 1);
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px white;
+    cursor: pointer;
+
+    &:hover{
+        color: black;
+        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
+        box-shadow: 2px 2px;
+        text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+        transition: all .8s ease-in-out; 
+    }
 }

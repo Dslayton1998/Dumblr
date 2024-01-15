@@ -28,7 +28,7 @@ export default function UpdateBlog() {
             setPublicStatus(blog.public)
         }
         getBlog()
-    }, [dispatch])
+    }, [dispatch, blogId])
 
     useEffect(() => {
         const errors = {}
@@ -60,21 +60,19 @@ export default function UpdateBlog() {
         await dispatch(thunkUpdateBlog(Number(blogId), formData))
         navigate(`/blog/${blogId}`)
     }
-
-// console.log(profilePicture)
-// console.log(backgroundImage)
-// todo: implement a default background image, that can be changed during blog update ??
+ // todo: disable submit if no changes were made
     return (
         <div className="blog-update-container">
-            <NavLink to={-1}>{'<'}Back</NavLink>
+            <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
             <h1 className='blog-update-heading'>Update your blog!</h1>
             <form className='blog-update-form' onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className='blog-update-input'>
-                    <span>Do you want to change your blog title?</span>
+                    <span className="update-blog-span">Do you want to change your blog title?</span>
                     <input
                     type='text'
                     value={title}
                     placeholder="Blog Title"
+                    style={{'border': 'solid 2px white'}}
                     onChange={(e) => setTitle(e.target.value)}
                     />
                     <div className="blog-update-error-container">
@@ -85,7 +83,7 @@ export default function UpdateBlog() {
 
 
                 <label className='blog-update-input'>
-                    <span>Set a new profile picture?</span>
+                    <span className="update-blog-span">Would you like to set a new profile picture?</span>
                     <input
                     type="file"
                     accept="image/*"
@@ -100,7 +98,7 @@ export default function UpdateBlog() {
 
 
                 <label className='blog-update-input'>
-                    <span>Do you want to change this blogs background image?</span>
+                    <span className="update-blog-span">Do you want to change this blogs background image?</span>
                     <input
                     type="file"
                     accept="image/*"
@@ -114,9 +112,9 @@ export default function UpdateBlog() {
 
 
                 <label className='blog-update-input'>
-                    <span>Share your blog with other users?</span>
-                    <select className='blog-update-select' onChange={(e) => setPublicStatus(e.target.value)}>
-                        <option value={publicStatus} disabled selected key="0">select a public option</option>
+                    <span className="update-blog-span">Share your blog with other users?</span>
+                    <select className='blog-update-select' style={{'border': 'solid 2px white'}} onChange={(e) => setPublicStatus(e.target.value)}>
+                        <option value={publicStatus} disabled selected key="0">Select a public option</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>
                     </select>

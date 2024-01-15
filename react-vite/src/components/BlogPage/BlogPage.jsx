@@ -6,6 +6,7 @@ import Posts from "../PostCards/Posts";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
 import './BlogPage.css';
+import { thunkAllPosts } from "../../redux/post";
 
 export default function BlogPage() {
     const dispatch = useDispatch();

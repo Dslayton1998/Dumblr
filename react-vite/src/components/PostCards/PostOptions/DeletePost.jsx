@@ -6,7 +6,7 @@ export default function DeletePost({ postId }) {
     return (
         <>
         <button className="post-delete-button">
-            <OpenModalMenuItem itemText={"Delete"} modalComponent={<DeletePostModal postId={postId} />} className={'fake-button'} />
+            <OpenModalMenuItem itemText={"Delete"} modalComponent={<DeletePostModal postId={postId} />} />
         </button>
         </>
     )

@@ -55,7 +55,6 @@ function LoginFormModal() {
         <label className="login-modal-input">
           Email
           <input
-            style={{'backgroundColor': 'white'}}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +69,6 @@ function LoginFormModal() {
         <label className="login-modal-input">
           Password
           <input
-            style={{'backgroundColor': 'white'}}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

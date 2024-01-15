@@ -124,8 +124,8 @@ def update_post(id):
             target_post.image = upload["url"]
 
 
-        if form.data['caption']:
-            target_post.caption = form.data['caption']
+        # if form.data['caption']:
+        target_post.caption = form.data['caption']
 
         db.session.commit()
         return target_post.to_dict()

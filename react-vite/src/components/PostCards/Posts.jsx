@@ -22,7 +22,7 @@ export default function Posts({ post }) {
             <div className="dashboard-blog">
                 <div className="dashboard-blog-info">
                     <img className="dashboard-blog-image" src={post.blog.profile_picture} />
-                    <div className='dashboard-blog-link' to={`/blog/${post.blog.id}`}>{post.blog.blog_name}</div>
+                    <div className='blog-page-blog-link' to={`/blog/${post.blog.id}`}>{post.blog.blog_name}</div>
                 </div>
                 {userOptions()}
             </div>
