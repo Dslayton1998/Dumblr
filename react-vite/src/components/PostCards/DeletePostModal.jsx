@@ -1,7 +1,8 @@
 import { useModal } from "../../context/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { thunkAllPosts, thunkDeletePost } from "../../redux/post";
+import { thunkDeletePost } from "../../redux/post";
+import { thunkOneBlog } from "../../redux/blog";
 
 
 export default function DeletePostModal( { postId } ) {
@@ -12,7 +13,7 @@ export default function DeletePostModal( { postId } ) {
 
   const handleConfirm = async () => {
     await dispatch(thunkDeletePost(postId))
-    await dispatch(thunkAllPosts());
+    await dispatch(thunkOneBlog(blogId))
     closeModal()
     navigate(`/blog/${blogId}`)
   }
@@ -22,10 +23,10 @@ export default function DeletePostModal( { postId } ) {
   }
 
   return (
-    <div>
-      <h1>Are you sure you want to delete this post?</h1>
-      <button onClick={handleConfirm} >Yes</button>
-      <button onClick={close} >No</button>
+    <div className="delete-modal-container">
+      <h1 className="delete-modal-header">Are you sure you want to delete this post?</h1>
+      <button className="delete-modal-button" onClick={handleConfirm} >Yes</button>
+      <button className="delete-modal-button-no" onClick={close} >No</button>
     </div>
   )
 }

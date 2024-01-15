@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { NavLink ,useNavigate } from "react-router-dom";
 import { thunkCreatePost } from "../../redux/post";
 import { thunkAllUserBlogs } from "../../redux/blog";
 import './CreatePostForm.css'
@@ -38,6 +38,14 @@ export default function CreatePostForm() {
             errors.input = "A caption OR an image must be provided"
         }
 
+        if(caption.length > 2000) {
+            errors.input = "Caption must be less than 2000 characters."
+        }
+
+        if(caption.length < 4) {
+            errors.input = "Caption must be at least 4 characters long."
+        }
+
         if(!blog) {
             errors.blog = "Please select a blog to post to."
         }
@@ -73,10 +81,12 @@ export default function CreatePostForm() {
 
     return (
         <div className="create-post-container">
+            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
             <h1 className="create-post-heading">Create a new post!</h1>
+            <p className="create-required">( * You must add a caption OR an image, and select a blog you wish to post to.)</p>
             <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className="create-post-input">
-                    <span>Would you like to post with an image?</span>
+                    <span className="create-post-span">* Would you like to post with an image?</span>
                     <input
                     type="file"
                     accept="image/*"
@@ -90,7 +100,7 @@ export default function CreatePostForm() {
                     </div>
 
                 <label className="create-post-input">
-                    <span>Provide a caption for your post?</span>
+                    <span className="create-post-span">* Provide a caption for your post?</span>
                     <textarea
                     className="create-post-text-box"
                     type='text'
@@ -103,7 +113,7 @@ export default function CreatePostForm() {
 
 
                 <label className="create-post-select">
-                    <span>Select a blog to post to!</span>
+                    <span className="create-post-span">* Select a blog to post to!</span>
                     <select onChange={(e) => setBlog(e.target.value)}>
                     <option value="" disabled selected key="0">Select a blog</option>
                          {userBlogs.map(blog => (

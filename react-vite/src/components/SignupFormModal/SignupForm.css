@@ -1,4 +1,5 @@
 .sign-up-header {
+    color: white;
     font-size: 40px;
 }
 
@@ -7,7 +8,9 @@
     flex-direction: column;
     align-items: center;
     color: black;
-    width: 400px
+    width: 400px;
+    border: solid 2px white;
+    border-radius: 5px;
 }
 
 .sign-up-form {
@@ -30,19 +33,31 @@
     width: 80%;
     align-items: center;
     justify-self: center;
+    font-size: 16px;
 }
 
 
-.sign-up-input > input::placeholder {
-    color:black
+.sign-up-input > input {
+    padding: 5px;
+    margin: 2px;
+    background-color: rgba(50, 50, 50, 1);
+    border: solid 2px white;
+    color: white;
+    border-radius: 5px;
+
+    &&:focus {
+        background-color: white;
+        color: black;
+    }
 }
 
 .sign-up-submit-button {
 
     width: 300px;
     height: 40px;
-    background-color: #74A2FF ;
+    background-color: red ;
     color: white;
+    margin: 10px 0px 10px 0px;
 
     &:hover {
         box-shadow: 2px 2px black;
