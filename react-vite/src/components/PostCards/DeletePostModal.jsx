@@ -23,10 +23,10 @@ export default function DeletePostModal( { postId } ) {
   }
 
   return (
-    <div>
-      <h1>Are you sure you want to delete this post?</h1>
-      <button onClick={handleConfirm} >Yes</button>
-      <button onClick={close} >No</button>
+    <div className="delete-modal-container">
+      <h1 className="delete-modal-header">Are you sure you want to delete this post?</h1>
+      <button className="delete-modal-button" onClick={handleConfirm} >Yes</button>
+      <button className="delete-modal-button-no" onClick={close} >No</button>
     </div>
   )
 }

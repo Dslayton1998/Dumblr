@@ -32,6 +32,10 @@ export default function UpdatePost() {
             errors.caption = "New caption must be at least 10 characters long."
         }
 
+        if(caption.length > 2000) {
+            errors.caption = "New caption must be less than 2000 characters."
+        }
+
         setValidationsErrors(errors)
     }, [dispatch, caption]);
 
@@ -58,15 +62,13 @@ export default function UpdatePost() {
         }
     }
 
-
-// todo: change form depending on if the post has an image 
     return (
         <div className="post-update-container">
-            <NavLink to={-1}>{'<'}Back</NavLink>
+            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
             <h1 className="post-update-heading">Update your post!</h1>
             <form className="post-update-form" onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className="post-update-input">
-                    <span>Do you want to change the caption?</span>
+                    <span className="post-update-span">Do you want to change the caption?</span>
                     <input
                     className="post-update-text-box"
                     type='text'
@@ -82,7 +84,7 @@ export default function UpdatePost() {
 
 
                 <label className='post-update-input'>
-                    <span>Add or update an image?</span>
+                    <span className="post-update-span">Add or update an image?</span>
                     <input
                     type="file"
                     accept="image/*"

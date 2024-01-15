@@ -31,6 +31,23 @@ function LoginFormPage() {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault()
+
+    const serverResponse = await dispatch(
+      thunkLogin({
+        email: "demo@aa.io",
+        password: "password"
+      })
+    )
+    if(serverResponse){
+      setErrors(serverResponse)
+    } else {
+      navigate('/dashboard')
+      closeModal()
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="login-page-container">
@@ -63,7 +80,8 @@ function LoginFormPage() {
             </div>
           </label>
 
-          <button type="submit">Log In</button>
+          <button className="submit-button" onClick={demoLogin}>Demo User</button>
+          <button className='submit-button' type="submit">Log In</button>
         </form>
       </div>
     </div>

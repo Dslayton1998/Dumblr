@@ -10,7 +10,7 @@ export default function DeleteBlog ()  {
   return (
     <>
     <button className="blog-delete-button">
-      <OpenModalMenuItem itemText={'Delete'} modalComponent={<DeleteBlogModal blogId={blogId} />} className={'fake-button'} />
+      <OpenModalMenuItem itemText={'Delete'} modalComponent={<DeleteBlogModal blogId={blogId} />} />
     </button>
     </>
   )

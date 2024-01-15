@@ -5,11 +5,21 @@
 
 .blog-update-heading {
     align-self: center;
+    color: white;
+    margin-top: 15px;
+    font-size: 24px;
 }
 
 .blog-update-form {
     display: flex;
     flex-direction: column;
+}
+
+.update-blog-span {
+    margin-bottom: 10px;
+    background-color: rgba(50, 50, 50, 1);
+    padding-bottom: 5px;
+    border-bottom: solid 2px white;
 }
 
 .blog-update-input {
@@ -21,12 +31,14 @@
     align-self: center;
     padding: 20px;
     margin: 10px;
-    border: solid black 2px
+    border: solid black 2px;
+    color: white;
+    background-color: rgba(50, 50, 50, 1)
 }
 
 .blog-update-select {
     display: flex;
-    width: 50px;
+    width: 160px;
     margin-left: 20px;
     justify-content: space-between;
 }

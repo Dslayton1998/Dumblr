@@ -83,9 +83,10 @@ export default function CreateBlogForm() {
     return (
         <div className='create-blog-container'>
             <h1 className='create-blog-heading'>Create a new blog!</h1>
+            <p className="create-required">( Please fill out *ALL entry fields.)</p>
             <form className='create-blog-form' onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className='create-blog-input'>
-                    <span className="create-blog-span">What is the title of your new blog?</span>
+                    <span className="create-blog-span">* What is the title of your new blog?</span>
                     <input
                     type='text'
                     value={title}
@@ -103,7 +104,7 @@ export default function CreateBlogForm() {
 
 
                 <label className='create-blog-input'>
-                    <span className="create-blog-span">Provide a handle for your new blog! (This is how your blog is displayed on other users feeds)</span>
+                    <span className="create-blog-span">* Provide a handle for your new blog! (This is how your blog is displayed on other users feeds)</span>
                     <input
                     type='text'
                     value={blogName}
@@ -121,7 +122,7 @@ export default function CreateBlogForm() {
 
 
                 <label className='create-blog-input'>
-                    <span className="create-blog-span">Please provide a profile picture for your blog! (this can be changed later)</span>
+                    <span className="create-blog-span">* Please provide a profile picture for your blog! (this can be changed later)</span>
                     <input
                     type="file"
                     accept="image/*"
@@ -137,7 +138,7 @@ export default function CreateBlogForm() {
 
 
                 <label className='create-blog-input'>
-                    <span className="create-blog-span">Spice up your new blog page with a background image! (this can be changed later)</span>
+                    <span className="create-blog-span">* Spice up your new blog page with a background image! (this can be changed later)</span>
                     <input
                     type="file"
                     accept="image/*"
@@ -153,8 +154,8 @@ export default function CreateBlogForm() {
 
 
                 <label className='create-blog-input'>
-                    <span className="create-blog-span">Is this a public blog? (public blogs can be viewed by anyone)</span>
-                    <select onChange={(e) => setPublicStatus(e.target.value)}>
+                    <span className="create-blog-span">* Is this a public blog? (public blogs can be viewed by anyone)</span>
+                    <select className="create-select-option" onChange={(e) => setPublicStatus(e.target.value)}>
                         <option value="" disabled selected key='0'>Select</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>

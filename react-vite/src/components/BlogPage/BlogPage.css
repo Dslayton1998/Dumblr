@@ -67,7 +67,6 @@
 
 .blog-owner-buttons {
     display: flex;
-    /* flex-direction: column; */
     padding: 10px;
     background-color: transparent;
 }
@@ -80,6 +79,18 @@
     margin-right: 10px;
     box-shadow: 1px 1px 2px 2px white;
     cursor: pointer;
+    background-color: rgba(50, 50, 50, 1);
+
+    &:hover{
+        color: black;
+        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
+        box-shadow: 2px 2px;
+        text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+        transition: all .8s ease-in-out; 
+    }
 }
 
 .blog-delete-button {
@@ -89,6 +100,18 @@
     margin-right: 10px;
     box-shadow: 1px 1px 2px 2px white;
     cursor: pointer;
+    background-color: rgba(50, 50, 50, 1);
+
+    &:hover{
+        color: black;
+        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
+        box-shadow: 2px 2px;
+        text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+        transition: all .8s ease-in-out; 
+    }
 }
 
 .fake-button {

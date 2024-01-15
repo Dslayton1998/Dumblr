@@ -26,13 +26,13 @@ const selectedBackground = backgrounds[randomInt(numImages)]
                     <div className="landing-sign-up">
                         <h3>Sign-up!</h3>
                         <p>Don't have an account?</p>
-                        <NavLink to='/signup'>Sign up</NavLink>
+                        <NavLink className="landing-link" to='/signup'>Sign up</NavLink>
                     </div>
 
                     <div className="landing-log-in">
                         <h3>Log-in!</h3>
                         <p>Already a member?</p>
-                        <NavLink to='/login'>Log in</NavLink>
+                        <NavLink className="landing-link" to='/login'>Log in</NavLink>
                     </div>
 
                 </div>
