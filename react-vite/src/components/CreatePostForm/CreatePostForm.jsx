@@ -38,11 +38,11 @@ export default function CreatePostForm() {
             errors.input = "A caption OR an image must be provided"
         }
 
-        if(caption.length > 2000) {
+        if(caption && caption.length > 2000) {
             errors.input = "Caption must be less than 2000 characters."
         }
 
-        if(caption.length < 4) {
+        if(caption && caption.length < 4) {
             errors.input = "Caption must be at least 4 characters long."
         }
 
