@@ -61,8 +61,10 @@
 
 .blog-page-blog-link {
     color: white;
+    width:max-content;
     text-decoration: none;
     padding: 2px;
+    margin-right: 5px;
     background: rgba(50, 50, 50, 0.1);
     border-radius: 5px;
 }
