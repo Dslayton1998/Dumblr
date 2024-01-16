@@ -6,7 +6,7 @@ import './PostsCards.css'
 
 export default function PostsCards({ post }) {
     const user = useSelector(state => state.session.user)
-    
+    // console.log(post)
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {

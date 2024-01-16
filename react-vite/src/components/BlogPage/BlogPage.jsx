@@ -1,12 +1,11 @@
 import { useEffect } from "react"
 import { thunkOneBlog } from "../../redux/blog"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Posts from "../PostCards/Posts";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
 import './BlogPage.css';
-import { thunkAllPosts } from "../../redux/post";
 
 export default function BlogPage() {
     const dispatch = useDispatch();
@@ -17,7 +16,11 @@ export default function BlogPage() {
     let posts;
     if(blog) {
         if(blog.posts) {
-            posts = blog.posts
+            const postsArr = blog.posts
+            const jObj = Object.values(postsArr)
+        // * Using Object.values to parse into javascript object so reverse will work refactor later
+            const reverseArr = jObj.reverse()
+            posts = reverseArr
         }
     }
 
