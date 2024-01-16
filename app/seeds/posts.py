@@ -147,7 +147,7 @@ def seed_posts():
     post_20 = Post(
         user_id = 5,
         blog_id = 10,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/d36de2815b7e4aac8a13dabe1b4afa5a.jpg",
         caption = "One of the most beautiful places I've ever visited!"
     )
 
@@ -246,28 +246,28 @@ def seed_posts():
     post_33 = Post(
         user_id = 9,
         blog_id = 17,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/e29f542a577f44b3a1e9ba27141d624d.jpg",
         caption = "If I can smell you, the deer can too."
     )
 
     post_34 = Post(
         user_id = 9,
         blog_id = 17,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/95ce25d05b3f4a759d2de9ca09fd74fa.jpg",
         caption = "Why does everyone try to schedule stuff during deer season? Don't you know what month it is?"
     )
 # User 9 Blog 18:
     post_35 = Post(
         user_id = 9,
         blog_id = 18,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/54e74446fce140558a0c08cc519cb979.jpg",
         caption = "Watched every show on Netflix, looking for recommendations about which streaming platform to go to now."
     )
 
     post_36 = Post(
         user_id = 9,
         blog_id = 18,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/10ea87af42314a3aac61c0860d59ab47.jpg",
         caption = "Watched every show on Hulu, looking for recommendations about which streaming platform to go to now."
     )
 
@@ -305,7 +305,7 @@ def seed_posts():
     post_41 = Post(
         user_id = 5,
         blog_id = 9,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/dda461b7a9af4179a6c58367b165676f.jpg",
         caption = "What's for dinner tonight?"
     )
 
@@ -321,6 +321,27 @@ def seed_posts():
         blog_id = 11,
         image = None,
         caption = "I made the kids breakfast today. Instead they ate stale Pringles I found while cleaning out the pantry… anyone have any great recipes for kids?"
+    )
+
+    post_44 = Post (
+        user_id = 5,
+        blog_id = 9,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/7cf8ca9acf0e45fdb9b6a71379cf37cc.jpg",
+        caption = None
+    )
+
+    post_45 = Post (
+        user_id = 9,
+        blog_id = 18,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/2b36ae1f9ab44d91913cb7e80c78ab13.jpg",
+        caption = "I got peacock for the chiefs game so im good for a week or two!"
+    )
+
+    post_46 = Post (
+        user_id = 9,
+        blog_id = 17,
+        image = None,
+        caption = "Is it deer season yet?"
     )
 
     db.session.add(post_1)
@@ -366,6 +387,9 @@ def seed_posts():
     db.session.add(post_41)
     db.session.add(post_42)
     db.session.add(post_43)
+    db.session.add(post_44)
+    db.session.add(post_45)
+    db.session.add(post_46)
     db.session.commit()
 
 def undo_posts():
