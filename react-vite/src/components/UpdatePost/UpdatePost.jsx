@@ -37,7 +37,7 @@ export default function UpdatePost() {
         }
 
         if(!image && !caption) {
-            errors.input = "Image OR caption required (choose one)."
+            errors.input = "Image OR caption required (choose at least one)."
         }
 
         setValidationsErrors(errors)

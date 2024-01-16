@@ -4,16 +4,66 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+# User 1
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password'
+    )
+    
+# User 2
     oatmeal = User(
-        username='Oatmeal', email='oatmeal@aa.io', password='password')
+        username='Oatmeal', email='oatmeal@aa.io', password='password'
+    )
+    
+# User 3
     abby = User(
-        username='Abby', email='abby@aa.io', password='password')
+        username='Abby', email='abby@aa.io', password='password'
+    )
+    
+# User 4
+    derek= User (
+        username='Derek', email='derek@aa.io', password='password'
+    )
+
+# User 5
+    mom = User(
+        username='Sharon', email='sharon@aa.io', password='password'
+    )
+
+# User 6
+    brit = User(
+        username='Brittany', email='brit@aa.io', password='password'
+    )
+
+# User 7
+    coco = User(
+        username='Courtney', email='coco@aa.io', password='password'
+    )
+
+# User 8
+    abs = User(
+        username='BabyAbby', email='abs@aa.io', password='password'
+    )
+
+# User 9
+    dad = User(
+        username='Stephen', email='stephen@aa.io', password='password'
+    )
+
+# User 10
+    trouble = User(
+        username='Trouble', email='trouble@aa.io', password='password'
+    )
 
     db.session.add(demo)
     db.session.add(oatmeal)
     db.session.add(abby)
+    db.session.add(derek)
+    db.session.add(mom)
+    db.session.add(brit)
+    db.session.add(coco)
+    db.session.add(abs)
+    db.session.add(dad)
+    db.session.add(trouble)
     db.session.commit()
 
 
