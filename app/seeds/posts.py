@@ -126,21 +126,21 @@ def seed_posts():
     post_17 = Post(
         user_id = 5,
         blog_id = 9,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/766b041a6ce24881b8b35de328287d0a.jpg",
         caption = "Thinking about cooking up something delicious. Who wants some?!"
     )
 
     post_18 = Post(
         user_id = 5,
         blog_id = 9,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/ccfe7e8176d842a59df0ec2972fdb36b.jpg",
         caption = "I could fill this whole house with food, but if it none of it was microwavable this family would starve."
     )
 # User 5 Blog 10:
     post_19 = Post(
         user_id = 5,
         blog_id = 10,
-        image = None,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/f038a5448a8d4bbf92750abb93cd3924.jpg",
         caption = "About to leave the airport. God if it's my time, please just let the plain crash on the way BACK."
     )
 
@@ -301,6 +301,27 @@ def seed_posts():
         caption = "I AM still the problem"
     )
 
+# ADDED
+    post_41 = Post(
+        user_id = 5,
+        blog_id = 9,
+        image = None,
+        caption = "What's for dinner tonight?"
+    )
+
+    post_42 = Post(
+        user_id = 5,
+        blog_id = 10,
+        image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/f8f9802628e1467284bed6c5a2b877fc.jpg",
+        caption = "Take me back"
+    )
+
+    post_43 = Post (
+        user_id = 6,
+        blog_id = 11,
+        image = None,
+        caption = "I made the kids breakfast today. Instead they ate stale Pringles I found while cleaning out the pantry… anyone have any great recipes for kids?"
+    )
 
     db.session.add(post_1)
     db.session.add(post_2)
@@ -342,6 +363,9 @@ def seed_posts():
     db.session.add(post_38)
     db.session.add(post_39)
     db.session.add(post_40)
+    db.session.add(post_41)
+    db.session.add(post_42)
+    db.session.add(post_43)
     db.session.commit()
 
 def undo_posts():
