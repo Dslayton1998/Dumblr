@@ -1,4 +1,4 @@
-"""empty message
+"""MVP Minimum Features
 
 Revision ID: 1c1af49bade1
 Revises: 
