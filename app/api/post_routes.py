@@ -1,6 +1,6 @@
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 from flask_login import login_required, current_user
-from app.models import Post, Blog, db
+from app.models import Post, Comment, db
 from flask import Blueprint, request
 from ..forms import PostForm, PostUpdateForm
 
@@ -11,8 +11,16 @@ def get_all_posts():
     """
     Returns a list of all post with blog information included for easier navigation
     """
-# todo: add profile image for posts to render
+# todo: NEEDS a major refactor! there has to be an easier way. Costly in terms of time and efficiency :(
+    comments = [comment for comment in Comment.query.all()]
     posts = [post.to_dict() for post in Post.query.all()]
+
+    for post in posts:
+        post["comments"] = {}
+        for comment in comments:
+            if comment.post_id == post['id']:
+                post["comments"].update( {comment.id: comment.to_dict()} )
+
     return posts
 
 

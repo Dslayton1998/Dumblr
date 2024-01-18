@@ -1,12 +1,17 @@
-import { NavLink, useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
-import './PostsCards.css'
+import { useState } from "react";
+import './PostsCards.css';
 
 export default function PostsCards({ post }) {
+    const [toggleNotes, setToggleNotes] = useState(false)
     const user = useSelector(state => state.session.user)
     // console.log(post)
+    const commentsArr = Object.values(post.comments)
+    console.log(commentsArr)
+
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {
@@ -17,6 +22,16 @@ export default function PostsCards({ post }) {
             }
         }
     }
+
+    const displayNotes = () => {
+        if(toggleNotes == true) {
+            return ( <div>
+                {commentsArr.length ? commentsArr[0].comment : null}
+            </div> )
+        }
+    }
+
+// todo: when you click on the notes button (toggle), the PostCard extends and allows you to view AND create posts
 
     return (
         <div className="post-container">
@@ -29,6 +44,14 @@ export default function PostsCards({ post }) {
             </div>
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <div className="post-caption">{post.caption}</div>
+
+
+            <div>
+                <button onClick={(e) => setToggleNotes(true)}>Notes</button>
+                {displayNotes()}
+            </div>
+
+
         </div>
     )
 }

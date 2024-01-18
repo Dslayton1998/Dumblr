@@ -8,6 +8,12 @@ def seed_comments():
         comment = "Testing comment for post #1"
     )
 
+    test = Comment(
+        user_id = 1,
+        post_id = 1,
+        comment = "Testing REDUX STORE"
+    )
+
     comment_2 = Comment(
         user_id = 1,
         post_id = 2,
@@ -243,6 +249,7 @@ def seed_comments():
     )
 
     db.session.add(comment_1)
+    db.session.add(test)
     db.session.add(comment_2)
     db.session.add(comment_3)
     db.session.add(comment_4)

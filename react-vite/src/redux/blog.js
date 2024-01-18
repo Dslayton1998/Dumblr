@@ -36,7 +36,7 @@ export const thunkAllUserBlogs = () => async (dispatch) => {
         const blogs = await res.json();
         dispatch(usersBlogs(blogs))
     } else {
-        error = await res.json()
+        const error = await res.json()
         console.log(error)
         return error
     }
@@ -49,7 +49,7 @@ export const thunkOneBlog = (blogId) => async (dispatch) => {
         dispatch(oneBlog(blog))
         return blog
     } else {
-        error = await res.json();
+        const error = await res.json();
         console.log(error)
         return error
     }
@@ -80,7 +80,6 @@ export const thunkDeleteBlog = (blogId) => async (dispatch) => {
     })
 
     if(res.ok) {
-        const blog = await res.json()
         dispatch(deleteBlog(blogId))
     } else {
         const error = res.json()
@@ -97,7 +96,6 @@ export const thunkUpdateBlog = (blogId, formData) => async (dispatch) => {
     })
 
     if(res.ok) {
-        const blog = await res.json()
         dispatch(updateBlog(blogId))
     } else {
         const error = await res.json()
