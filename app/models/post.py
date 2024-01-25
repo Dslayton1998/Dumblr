@@ -24,7 +24,7 @@ class Post(db.Model):
             "image": self.image,
             "caption": self.caption,
             "blog": self.blog.to_dict(),
-            "comments": self.comments.to_dict()
+            # "comments": {{comment.id:comment.to_dict} for comment in self.comments} #?????!?!?
         }
 
         if printer:

@@ -21,7 +21,6 @@ class Comment(db.Model):
             "post_id": self.post_id,
             "comment": self.comment,
             "owner": self.owner.to_dict(),
-            "post": self.post.to_dict()
         }
 
         if printer:
