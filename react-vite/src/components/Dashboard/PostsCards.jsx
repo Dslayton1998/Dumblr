@@ -1,16 +1,14 @@
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import './PostsCards.css';
 
 export default function PostsCards({ post }) {
     const [toggleNotes, setToggleNotes] = useState(false)
     const user = useSelector(state => state.session.user)
-    // console.log(post)
     const commentsArr = Object.values(post.comments)
-    console.log(commentsArr)
 
     const userOptions = () => {
         if(user != null) {
@@ -25,9 +23,10 @@ export default function PostsCards({ post }) {
 
     const displayNotes = () => {
         if(toggleNotes == true) {
-            return ( <div>
+            // todo: Should render a new component with "reply" and "likes" displaying respective functionality
+            return  <div>
                 {commentsArr.length ? commentsArr[0].comment : null}
-            </div> )
+            </div> 
         }
     }
 
@@ -47,7 +46,10 @@ export default function PostsCards({ post }) {
 
 
             <div>
-                <button onClick={(e) => setToggleNotes(true)}>Notes</button>
+                <button onClick={() => setToggleNotes(!toggleNotes)}>Notes</button>
+                <div className="post-options">
+                    <button>Reply</button>
+                </div>
                 {displayNotes()}
             </div>
 
