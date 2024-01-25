@@ -14,6 +14,7 @@ class Post(db.Model):
 
     user = db.relationship("User", back_populates="post")
     blog = db.relationship("Blog", back_populates="posts")
+    comments = db.relationship("Comment", back_populates="post", cascade="all, delete")
 
     def to_dict(self, printer=False):
         return_dict = {
@@ -22,7 +23,8 @@ class Post(db.Model):
             "blog_id": self.blog_id,
             "image": self.image,
             "caption": self.caption,
-            "blog": self.blog.to_dict()
+            "blog": self.blog.to_dict(),
+            # "comments": {{comment.id:comment.to_dict} for comment in self.comments} #?????!?!?
         }
 
         if printer:
