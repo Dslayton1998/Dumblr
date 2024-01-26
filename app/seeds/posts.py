@@ -325,7 +325,7 @@ def seed_posts():
 
     post_44 = Post (
         user_id = 5,
-        blog_id = 9,
+        blog_id = 10,
         image = "https://dumblr-bucket.s3.us-east-2.amazonaws.com/7cf8ca9acf0e45fdb9b6a71379cf37cc.jpg",
         caption = None
     )
@@ -344,20 +344,10 @@ def seed_posts():
         caption = "Is it deer season yet?"
     )
 
-    db.session.add(post_1)
-    db.session.add(post_2)
     db.session.add(post_3)
     db.session.add(post_4)
-    db.session.add(post_5)
-    db.session.add(post_6)
     db.session.add(post_7)
     db.session.add(post_8)
-    db.session.add(post_9)
-    db.session.add(post_10)
-    db.session.add(post_11)
-    db.session.add(post_12)
-    db.session.add(post_13)
-    db.session.add(post_14)
     db.session.add(post_15)
     db.session.add(post_16)
     db.session.add(post_17)
@@ -387,9 +377,19 @@ def seed_posts():
     db.session.add(post_41)
     db.session.add(post_42)
     db.session.add(post_43)
-    db.session.add(post_44)
     db.session.add(post_45)
     db.session.add(post_46)
+    db.session.add(post_1)
+    db.session.add(post_2)
+    db.session.add(post_5)
+    db.session.add(post_6)
+    db.session.add(post_9)
+    db.session.add(post_10)
+    db.session.add(post_11)
+    db.session.add(post_44)
+    db.session.add(post_12)
+    db.session.add(post_13)
+    db.session.add(post_14)
     db.session.commit()
 
 def undo_posts():
