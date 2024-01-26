@@ -45,13 +45,13 @@ export default function PostsCards({ post }) {
             <div className="post-caption">{post.caption}</div>
 
 
-            <div>
+            {/* <div>
                 <button onClick={() => setToggleNotes(!toggleNotes)}>Notes</button>
                 <div className="post-options">
                     <button>Reply</button>
                 </div>
                 {displayNotes()}
-            </div>
+            </div> */}
 
 
         </div>
