@@ -5,10 +5,16 @@ import PostsCards from "./PostsCards";
 import './Dashboard.css'
 
 export default function Dashboard() {
-    //todo: render posts as cards, rest of the dashboard comes later
     const dispatch = useDispatch();
     const allPosts = useSelector(state => Object.values(state.posts))
     const reversePosts = allPosts.reverse()
+    const posts = [];
+    reversePosts.forEach(post => {
+        if(post.blog.public != false) {
+            posts.push(post)
+        }
+    })
+
     useEffect(() => {
         const getPosts = async () => {
             await dispatch(thunkAllPosts())
@@ -23,7 +29,7 @@ export default function Dashboard() {
         <>
         <div className="dashboard-container">
             <h1 className="dashboard-header">Dashboard</h1>
-            {reversePosts.map(post => (
+            {posts.map(post => (
                 <PostsCards post={post} key={post.id}/>
             ))}
         </div>
