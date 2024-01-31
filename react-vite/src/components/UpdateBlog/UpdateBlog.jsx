@@ -44,6 +44,16 @@ export default function UpdateBlog() {
         setValidationsErrors(errors)
     }, [title])
 
+    const selectValue = () => {
+        if(blog != null) {
+            if(blog.public == false) {
+                return "No"
+            } else {
+                return "Yes"
+            }
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true)
@@ -114,7 +124,7 @@ export default function UpdateBlog() {
                 <label className='blog-update-input'>
                     <span className="update-blog-span">Share your blog with other users?</span>
                     <select className='blog-update-select' style={{'border': 'solid 2px white'}} onChange={(e) => setPublicStatus(e.target.value)}>
-                        <option value={publicStatus} disabled selected key="0">Select a public option</option>
+                        <option>{selectValue()}</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>
                     </select>

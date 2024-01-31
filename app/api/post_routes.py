@@ -14,6 +14,7 @@ def get_all_posts():
 # todo: NEEDS a major refactor! there has to be an easier way. Costly in terms of time and efficiency :(
     comments = [comment for comment in Comment.query.all()]
     posts = [post.to_dict() for post in Post.query.all()]
+# posts = [post.to_dict() for post in db.session.query(Post).filter(Post.blog.public == True)]
 
     for post in posts:
         post["comments"] = {}
