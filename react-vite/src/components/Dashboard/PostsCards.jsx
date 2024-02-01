@@ -8,7 +8,7 @@ import './PostsCards.css';
 export default function PostsCards({ post }) {
     const [toggleNotes, setToggleNotes] = useState(false)
     const user = useSelector(state => state.session.user)
-    const commentsArr = Object.values(post.comments)
+    const commentsArr = post.comments ? Object.values(post.comments) : null
 
     const userOptions = () => {
         if(user != null) {

@@ -1,6 +1,7 @@
 .blog-update-container {
     display: flex;
     flex-direction: column;
+    margin-top: 68px;
 }
 
 .blog-update-heading {
