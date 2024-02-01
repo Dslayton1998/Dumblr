@@ -45,6 +45,8 @@ Tools
 
 Email: dslayton1998@gmail.com
 
+## Endpoints
+
 | Request | Purpose | Return Value |
 | ------- | ------- | ------------ |
 | GET /api/auth/ | This fetch is sent upon initial app load and on subsequent refreshes. It returns an dictionary representing the current user, if user is logged in. | {'id': INT, 'username': STRING, 'email': STRING} |
