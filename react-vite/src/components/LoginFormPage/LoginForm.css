@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 90.5vh;
 }
 
 .login-page-container {
@@ -42,7 +43,7 @@
 
 .login-page-input > input {
     padding: 5px;
-    background-color: gray;
+    background-color: rgba(91, 91, 91, 1);
     border: solid 2px white;
     border-radius: 5px;
 

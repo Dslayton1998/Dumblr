@@ -62,13 +62,15 @@
 }
 
 .login-modal-submit-button {
-    background-color: red;
-    color: white;
+    background: linear-gradient(to right,red, orange, yellow, green, blue);
+    color: black;
+    font-weight: bold;
     margin: 10px;
     height: 40px;
     width: 60%;
 
     &:hover {
-        box-shadow: 2px 2px black;
+        box-shadow: 1px 1px 2px 2px white;
+        transition: ease-in 0.8s;
     }
 }

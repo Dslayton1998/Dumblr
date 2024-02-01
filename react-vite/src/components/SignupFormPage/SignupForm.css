@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* margin-top: 68px; */
+    height: 90vh;
 }
 
 .sign-up-page-container {
@@ -43,7 +45,7 @@
 
 .sign-up-page-input > input {
     padding: 5px;
-    background-color: gray;
+    background-color: rgba(91, 91, 91, 1);
     border: solid 2px white;
     border-radius: 5px;
 
