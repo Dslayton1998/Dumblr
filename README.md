@@ -44,7 +44,8 @@ Tools
 [Linked-In]
 Email: dslayton1998@gmail.com
 
-| Request | Purpose | Return Value | 
+| Request | Purpose | Return Value |
+| ------- | ------- | ------------ |
 | GET /api/auth/ | This fetch is sent upon initial app load and on subsequent refreshes. It returns an object representing the current user, if user is logged in | {'id': int, 'username': STRING, 'email': STRING} |
 
 [Derek Slayton]: https://github.com/Dslayton1998
