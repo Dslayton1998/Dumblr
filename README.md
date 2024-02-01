@@ -5,19 +5,19 @@
 Dumblr is a blogging website where you can share your intrests, ideas, and images with other users in a fun, interactive, and customizable way!
 
 ## Technologies:
-###Front-end
+Front-end
 * React
 * Redux
 * JavaScript
 * CSS
 * HTML
   
-###Icons
+Icons
 * FontAwesome
 * React-icons
 * GoogleFonts API
   
-###Back-end
+Back-end
 * Python
 * SQL
 * SQLAlchemy
@@ -28,7 +28,7 @@ Dumblr is a blogging website where you can share your intrests, ideas, and image
 * Flask
 * Docker
   
-###Tools
+Tools
 * VS Code
 * GitHub and Git
 * Render for deployment and publishing
@@ -41,10 +41,11 @@ Dumblr is a blogging website where you can share your intrests, ideas, and image
 ### Color Themes
 
 # Have any feedback or just looking to get in touch? Contact me!
-Linked-In: [https://www.linkedin.com/in/derek-slayton-078b672aa/]
-Email: [dslayton1998@gmail.com]
+[Linked-In]
+Email: dslayton1998@gmail.com
 
 (endpoint)
 
 [Derek Slayton]: https://github.com/Dslayton1998
 [Here]: https://mydumblr-site.onrender.com/
+[Linked-In]: https://www.linkedin.com/in/derek-slayton-078b672aa/
