@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './MyBlogs.css';
 
-// todo: Overflow problems on really long blog names
-
 export default function BlogCard({ blog }) {
     const navigate = useNavigate();
     const onClick = () => {

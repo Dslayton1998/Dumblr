@@ -6,7 +6,7 @@ import './Dashboard.css'
 
 export default function Dashboard() {
     const dispatch = useDispatch();
-    const allPosts = useSelector(state => Object.values(state.posts))
+    const allPosts = useSelector(state => state.posts ? Object.values(state.posts): null)
     const reversePosts = allPosts.reverse()
     const posts = [];
     reversePosts.forEach(post => {

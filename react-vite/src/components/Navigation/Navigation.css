@@ -96,9 +96,10 @@
   display: flex;
   justify-content: space-between;
   background-color: rgba(32, 32, 32, 1);
-  /* border: solid white 2px; */
+  position: fixed;
+  top: 0;
+  width: 100vw;
   box-shadow: 5px 1px 3px 3px white;
-  margin-bottom: 10px;
 }
 
 .nav-component {
