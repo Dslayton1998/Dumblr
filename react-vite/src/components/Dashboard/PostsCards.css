@@ -2,25 +2,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
     /* justify-items: center;  */
-    border: 2px solid white;
+    /* border: 2px solid white; */
     color: white;
-    padding: 15px;
+    /* padding: 0px 15px; */
     margin: 20px 50px 15px 50px;
     width: 600px;
     background-color: rgba(50, 50, 50, 1);
-    box-shadow: 1px 1px 3px 3px white;
+    /* box-shadow: 1px 1px 3px 3px white; */
 }
 
 .dashboard-blog {
     display: flex;
-    align-items: center;
+    align-self: flex-start;
     justify-content: space-between;
-    width: 90%;
-    margin: 10px;
-    padding: 10px;
-    border-bottom: solid 2px white;
+    width: auto;
+    top:0;
+    border-radius: 10px;
+    margin: 2px;
+    padding: 15px 10px;
     background-color: rgba(50, 50, 50, 1);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(70, 70, 70, 1);
+    }
 }
 
 .dashboard-blog-info {
@@ -32,7 +39,7 @@
 .dashboard-blog-image {
     width: 50px;
     height: 50px;
-    border-radius: 100px;
+    border-radius: 5px;
     margin-right: 10px;
 }
 
@@ -43,20 +50,6 @@
     background: rgba(50, 50, 50, 0.1);
     border-radius: 5px;
     width:max-content;
-
-/* todo: RAINBOW HOVER EFFECT! */
-
-    &:hover{
-        color: black;
-        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
-        box-shadow: 2px 2px;
-        text-shadow: -1px -1px 0 white,
-        1px -1px 0 white,
-        -1px 1px 0 white,
-        1px 1px 0 white;
-        transition: all .8s ease-in-out; 
-    }
-
 }
 
 .blog-page-blog-link {
@@ -123,17 +116,19 @@
 
 .post-image {
     height: 500px;
-    width: 500px;
-    border-radius: 5px;
-    border: 2px solid white
+    width: 100%;
+    /* border-radius: 5px; */
+    /* border: 2px solid white */
 }
 
 .post-caption {
     display: flex;
     overflow-wrap: anywhere;
-    align-items: flex-start;
+    align-self: flex-start;
     justify-content: flex-start;
     margin: 10px 0px 10px 0px;
+    padding: 15px 10px;
+    margin: 2px;
     background-color: rgba(50, 50, 50, 1);
     /* width: 350px */
 }

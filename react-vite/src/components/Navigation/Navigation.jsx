@@ -1,8 +1,7 @@
-import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaHome } from "react-icons/fa";
-import { RxDashboard } from "react-icons/rx";
 import "./Navigation.css";
 
 function Navigation() {
@@ -12,7 +11,6 @@ function Navigation() {
     return (
       <div className="nav-container">
         <div className="nav-component">
-          {/* needs a logo */}
           <NavLink to="/"><FaHome className="home-button" style={{"fontSize": "x-large"}}/></NavLink>
         </div>
 
