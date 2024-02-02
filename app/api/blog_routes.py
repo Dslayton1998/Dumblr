@@ -86,6 +86,9 @@ def create_blog():
 @blog_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
 def delete_album(id):
+    """
+    Deletes a blog and removes associated images from AWS bucket
+    """
     target_blog = Blog.query.get(id)
 
     profile_picture_url = target_blog.profile_picture
@@ -104,7 +107,7 @@ def delete_album(id):
 @login_required
 def update_blog(id):
     """
-    Updates a post
+    Updates a post and IF images are updated, it removes old images AWS bucket 
     """
     form = BlogUpdateForm()
     form["csrf_token"].data = request.cookies["csrf_token"]

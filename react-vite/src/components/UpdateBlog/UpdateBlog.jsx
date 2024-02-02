@@ -16,8 +16,6 @@ export default function UpdateBlog() {
     const [publicStatus, setPublicStatus] = useState(blog ? blog.public : true)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
-    // const user = useSelector(state => state.session ? state.session.user : null)
-    // console.log(typeof user.id)
 
     useEffect(() => {
         const getBlog = async () => {
@@ -70,7 +68,7 @@ export default function UpdateBlog() {
         await dispatch(thunkUpdateBlog(Number(blogId), formData))
         navigate(`/blog/${blogId}`)
     }
- // todo: disable submit if no changes were made
+
     return (
         <div className="blog-update-container">
             <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>

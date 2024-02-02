@@ -7,6 +7,7 @@
     bottom: 0;
     width: 100%;
     box-shadow: 5px 1px 3px 3px white;
+    /* position: relative; */
 }
 
 .about-links {
@@ -14,6 +15,8 @@
     align-items: center;
     justify-content: center;
     color: white;
+    background-color: rgba(32, 32, 32, .9);
+    border-radius: 5px;
     padding: 5px;
 }
 
