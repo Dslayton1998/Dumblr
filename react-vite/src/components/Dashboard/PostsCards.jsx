@@ -23,7 +23,7 @@ export default function PostsCards({ post }) {
     }
 
     const onClick = () => {
-        return navigate(`/blog/${post.blog.id}`)
+        navigate(`/blog/${post.blog.id}`)
     }
 
     const displayNotes = () => {
