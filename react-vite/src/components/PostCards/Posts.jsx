@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import DeletePost from "./PostOptions/DeletePost"
 import UpdatePost from "./PostOptions/UpdatePost"
-import '../Dashboard/PostsCards.css';
+import './Posts.css';
 
 export default function Posts({ post }) {
     const user = useSelector(state => state.session.user)
@@ -19,7 +19,7 @@ export default function Posts({ post }) {
 
     return (
         <div className="post-container">
-            <div className="dashboard-blog">
+            <div className="blog-page-heading">
                 <div className="dashboard-blog-info">
                     <img className="dashboard-blog-image" src={post.blog.profile_picture} />
                     <div className='blog-page-blog-link' to={`/blog/${post.blog.id}`}>{post.blog.blog_name}</div>

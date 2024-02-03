@@ -1,18 +1,17 @@
-import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FaHome } from "react-icons/fa";
 import "./Navigation.css";
 
 function Navigation() {
   const user = useSelector(state => state.session.user)
-  // todo: render elements based off of session status
 
   if (user == null) {
     return (
       <div className="nav-container">
         <div className="nav-component">
-          {/* needs a logo */}
-          <NavLink className="nav-link" to="/">Home</NavLink>
+          <NavLink to="/"><FaHome className="home-button" style={{"fontSize": "x-large"}}/></NavLink>
         </div>
 
         <div className="nav-component">

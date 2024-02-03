@@ -12,7 +12,7 @@ class Blog(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     profile_picture = db.Column(db.String(255), nullable=False)
     background_image = db.Column(db.String(255), nullable=False)
-    primary_blog = db.Column(db.Boolean) #! Default value ?
+    primary_blog = db.Column(db.Boolean)
     public = db.Column(db.Boolean)
 
     owner = db.relationship("User", back_populates="blogs")

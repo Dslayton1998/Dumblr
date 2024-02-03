@@ -57,7 +57,6 @@ export const thunkOneBlog = (blogId) => async (dispatch) => {
 
 
 export const thunkCreateBlog = (formData) => async (dispatch) => {
-    console.log(formData)
     const res = await fetch('/api/blog/new', {
         method: 'POST',
         body: formData

@@ -28,6 +28,9 @@ def get_all_posts():
 @post_routes.route('/<int:id>')
 @login_required
 def get_one_post(id):
+    """
+    Returns a single blog, specified by id
+    """
     post = Post.query.get(id)
     return post.to_dict()
 
@@ -87,6 +90,9 @@ def create_post():
 @post_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
 def delete_post(id):
+    """
+    Deletes a post and removes associated images from AWS bucket
+    """
     target_post = Post.query.get(id)
 
     if(target_post.image == str):
@@ -109,7 +115,7 @@ def delete_post(id):
 @login_required
 def update_post(id):
     """
-    Updates a post
+    Updates a post and IF images are updated, it removes old images AWS bucket 
     """
     form = PostUpdateForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
