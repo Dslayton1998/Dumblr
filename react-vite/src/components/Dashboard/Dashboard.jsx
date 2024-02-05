@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { thunkAllPosts } from "../../redux/post";
 import PostsCards from "./PostsCards";
 import './Dashboard.css'
+import Loading from "../Loading/Loading";
 
 export default function Dashboard() {
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(true);
     const allPosts = useSelector(state => state.posts ? Object.values(state.posts): null)
     const reversePosts = allPosts.reverse()
     const posts = [];
@@ -21,8 +23,13 @@ export default function Dashboard() {
         }
 
         getPosts()
+        setIsLoading(false)
     }, [dispatch])
 
+
+    if(isLoading) {
+        return <Loading />
+    }
     
 
     return (

@@ -103,7 +103,3 @@ input::file-selector-button {
     height: max(20px);
     
 }
-
-.submit-button {
-    align-self: center;
-}
