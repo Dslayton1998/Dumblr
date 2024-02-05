@@ -1,6 +1,7 @@
 .blog-update-container {
     display: flex;
     flex-direction: column;
+    margin-top: 68px;
 }
 
 .blog-update-heading {
@@ -101,8 +102,4 @@ input::file-selector-button {
 .blog-update-error-container {
     height: max(20px);
     
-}
-
-.submit-button {
-    align-self: center;
 }

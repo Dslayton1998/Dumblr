@@ -3,7 +3,8 @@ import '../PostsCards.css'
 
 export default function UpdatePost ({ postId })  { 
     const navigate = useNavigate()
-    const handleSubmit = () => { 
+    const handleSubmit = (e) => {
+      e.stopPropagation()
         navigate(`/post/${postId}/update`)
     }
     

@@ -4,7 +4,6 @@ from wtforms import StringField, FileField, BooleanField, IntegerField
 from flask_wtf import FlaskForm
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
-# todo: implement a default background image, that can be changed during blog update
 
 class BlogForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])

@@ -25,10 +25,11 @@
 .sign-up-input {
     display: flex;
     flex-direction: column;
-    margin: 5px 0;
-    background-color: darkgray;
-    border: 2px solid black;
-    padding: 12px;
+    /* margin: 5px 0; */
+    color: white;
+    /* background-color: darkgray;
+    border: 2px solid black; */
+    padding: 10px;
     border-radius: 20px;
     width: 80%;
     align-items: center;
@@ -52,15 +53,20 @@
 }
 
 .sign-up-submit-button {
-
     width: 300px;
     height: 40px;
-    background-color: red ;
+    border-radius: 5px;
+    background-color: rgba(50, 50, 50, 1);
+    border: solid 2px white;
     color: white;
-    margin: 10px 0px 10px 0px;
+    font-weight: bold;
+    margin: 10px 0px 15px 0px;
 
     &:hover {
-        box-shadow: 2px 2px black;
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        transition: ease-in 0.8s;
     }
 }
 

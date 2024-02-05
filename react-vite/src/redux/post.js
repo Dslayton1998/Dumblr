@@ -87,8 +87,6 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
 }
 
 export const thunkUpdatePost = (postId, formData) => async (dispatch) => {
-    console.log(postId)
-    console.log(formData)
     const res = await fetch(`/api/post/${postId}/update`, {
         method: 'PUT',
         body: formData
@@ -125,7 +123,6 @@ function postReducer(state = {}, action) {
         }
 
         case DELETE_POST: {
-            //todo: refresh bug!
             const newState = {...state}
             delete newState[action.payload]
             return newState

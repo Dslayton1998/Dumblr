@@ -1,29 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { thunkAllPosts } from "../../redux/post";
 import PostsCards from "./PostsCards";
 import './Dashboard.css'
+import Loading from "../Loading/Loading";
 
 export default function Dashboard() {
-    //todo: render posts as cards, rest of the dashboard comes later
     const dispatch = useDispatch();
-    const allPosts = useSelector(state => Object.values(state.posts))
+    const [isLoading, setIsLoading] = useState(true);
+    const allPosts = useSelector(state => state.posts ? Object.values(state.posts): null)
     const reversePosts = allPosts.reverse()
+    const posts = [];
+    reversePosts.forEach(post => {
+        if(post.blog.public != false) {
+            posts.push(post)
+        }
+    })
+
     useEffect(() => {
         const getPosts = async () => {
             await dispatch(thunkAllPosts())
         }
 
         getPosts()
+        setIsLoading(false)
     }, [dispatch])
 
+
+    if(isLoading) {
+        return <Loading />
+    }
     
 
     return (
         <>
         <div className="dashboard-container">
             <h1 className="dashboard-header">Dashboard</h1>
-            {reversePosts.map(post => (
+            {posts.map(post => (
                 <PostsCards post={post} key={post.id}/>
             ))}
         </div>

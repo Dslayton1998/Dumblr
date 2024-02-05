@@ -81,7 +81,7 @@ export default function CreatePostForm() {
 
     return (
         <div className="create-post-container">
-            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
+            <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
             <h1 className="create-post-heading">Create a new post!</h1>
             <p className="create-required">( * You must add a caption OR an image, and select a blog you wish to post to.)</p>
             <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">

@@ -16,8 +16,6 @@ export default function UpdateBlog() {
     const [publicStatus, setPublicStatus] = useState(blog ? blog.public : true)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
-    // const user = useSelector(state => state.session ? state.session.user : null)
-    // console.log(typeof user.id)
 
     useEffect(() => {
         const getBlog = async () => {
@@ -44,6 +42,16 @@ export default function UpdateBlog() {
         setValidationsErrors(errors)
     }, [title])
 
+    const selectValue = () => {
+        if(blog != null) {
+            if(blog.public == false) {
+                return "No"
+            } else {
+                return "Yes"
+            }
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true)
@@ -60,7 +68,17 @@ export default function UpdateBlog() {
         await dispatch(thunkUpdateBlog(Number(blogId), formData))
         navigate(`/blog/${blogId}`)
     }
- // todo: disable submit if no changes were made
+
+    const disableButton = () => {
+        if(blog != undefined) {
+            if((title == "" && profilePicture == "" && backgroundImage == "" && publicStatus == "") || (title == blog.title && profilePicture == blog.profile_picture && backgroundImage == blog.background_image && publicStatus == blog.public)) {
+                return <button className='disabled' type="submit">Submit</button>
+            } else {
+               return <button className='submit-button' type="submit">Submit</button>
+            }
+        }
+    }
+
     return (
         <div className="blog-update-container">
             <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
@@ -114,7 +132,7 @@ export default function UpdateBlog() {
                 <label className='blog-update-input'>
                     <span className="update-blog-span">Share your blog with other users?</span>
                     <select className='blog-update-select' style={{'border': 'solid 2px white'}} onChange={(e) => setPublicStatus(e.target.value)}>
-                        <option value={publicStatus} disabled selected key="0">Select a public option</option>
+                        <option>{selectValue()}</option>
                         <option value={true}>Yes</option>
                         <option value={false}>No</option>
                     </select>
@@ -123,7 +141,7 @@ export default function UpdateBlog() {
                             <span className="error">{validationErrors.publicStatus}</span> )}
                     </div>
                 </label>
-                <button className='submit-button' type="submit">Submit</button>
+                {disableButton()}
             </form>
         </div>
     )

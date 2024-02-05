@@ -1,14 +1,15 @@
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import './PostsCards.css';
 
 export default function PostsCards({ post }) {
+    const navigate = useNavigate();
     const [toggleNotes, setToggleNotes] = useState(false)
     const user = useSelector(state => state.session.user)
-    const commentsArr = Object.values(post.comments)
+    const commentsArr = post.comments ? Object.values(post.comments) : null
 
     const userOptions = () => {
         if(user != null) {
@@ -19,6 +20,10 @@ export default function PostsCards({ post }) {
                 </div>
             }
         }
+    }
+
+    const onClick = () => {
+        navigate(`/blog/${post.blog.id}`)
     }
 
     const displayNotes = () => {
@@ -34,7 +39,7 @@ export default function PostsCards({ post }) {
 
     return (
         <div className="post-container">
-            <div className="dashboard-blog">
+            <div className="dashboard-blog" onClick={onClick}>
                 <div className="dashboard-blog-info">
                     <img className="dashboard-blog-image" src={post.blog.profile_picture} />
                     <NavLink className='dashboard-blog-link' to={`/blog/${post.blog.id}`}>{post.blog.blog_name}</NavLink>

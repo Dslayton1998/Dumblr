@@ -46,11 +46,15 @@ export default function BlogPage() {
 
     return (
         <div className="blog-page-container">
-                <div className="blog-images-container" style={{'backgroundImage': `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${blog?.background_image})`, 'backgroundSize': `100% 100%`}}>
-                    <img className="profile-picture" src={blog ? blog.profile_picture : null} />
-                    <h1 className="blog-title">{blog ? blog.title : null}</h1>
+                <div className="blog-images-container" style={{'backgroundImage': `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${blog?.background_image})`, 'backgroundSize': `100% 100%`}}/>
+
+                <img className="profile-picture" src={blog ? blog.profile_picture : null} />
+
+                <div className="blog-details">
                     <div className="blog-owner-options">{ownerOptions()}</div>
+                    <h1 className="blog-title">{blog ? blog.title : null}</h1>
                 </div>
+
             <div>
                 {posts ? posts.map(post => (
                     <Posts post={post} key={post.id} />

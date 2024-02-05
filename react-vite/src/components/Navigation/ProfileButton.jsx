@@ -42,7 +42,6 @@ function ProfileButton() {
 
   const onClick = () => {
     if (user != null) {
-      // todo: redirect to my blogs page
       navigate(`/blog/users/${user.id}`)
     }
   }
@@ -58,7 +57,9 @@ function ProfileButton() {
             <>
               <li>Username: {user.username}</li>
               <li>Email: {user.email}</li>
-              <div onClick={onClick}>My blogs</div>
+              <li>
+                <button onClick={onClick}>My blogs</button>
+              </li>
               <li>
                 <button onClick={logout}>Log Out</button>
               </li>
