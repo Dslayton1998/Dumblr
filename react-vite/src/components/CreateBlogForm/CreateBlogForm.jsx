@@ -4,8 +4,6 @@ import { NavLink ,useNavigate } from "react-router-dom";
 import { thunkCreateBlog } from "../../redux/blog";
 import './CreateBlogForm.css'
 
-// todo: finish up here!
-
 export default function CreateBlogForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -82,7 +80,7 @@ export default function CreateBlogForm() {
 
     return (
         <div className='create-blog-container'>
-            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
+            <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
             <h1 className='create-blog-heading'>Create a new blog!</h1>
             <p className="create-required">( Please fill out *ALL entry fields.)</p>
             <form className='create-blog-form' onSubmit={handleSubmit} encType="multipart/form-data">

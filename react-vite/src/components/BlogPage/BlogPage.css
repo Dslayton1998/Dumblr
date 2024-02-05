@@ -13,54 +13,54 @@
     display: grid;
     grid-column: 1;
     grid-row: 1;
-    height: 600px;
+    height: 500px;
     width: 100%;
+    border: solid black 2pxx;
     /* cursor: none; */
     /* border: red 5px solid; */
 }
 
-.background-image {
-    display: grid;
-    /* height: 500px; */
-    width: 100%;
-    grid-column: 1;
-    grid-row: inherit;
-    /* cursor: none; */
-}
-
 .profile-picture {
-    display: grid;
+    display: flex;
+    /* display: grid;
+    grid-column: 1;
+    grid-row: 1; */
     height: 200px;
     width: 200px;
-    grid-column: 1;
-    grid-row: 1;
     border-radius: 100px;
-    align-self: flex-end;
+    align-self:center;
     justify-self: center;
-    border: 2px solid white;
-    margin-bottom: 80px;
+    position: absolute;
+    border: 5px solid rgba(50, 50, 50, 1);;
+    margin-bottom: 75px;
+    margin-top: 350px;
+}
+
+.blog-details {
+    /* display: flex; */
+    width: 100%;
+    background-color: rgba(50, 50, 50, 1);;
+    /* justify-content: center; */
 }
 
 .blog-title {
-    display: grid;
-    grid-column: 1;
-    grid-row: 1;
-    align-self: flex-end;
+    display: flex;
+    align-self: center;
     justify-self: center;
-    margin-bottom: 10px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin: 30px 0px 20px 0px;
     background-color: transparent;
+    color: white;
     font-size: 50px;
-    text-shadow: -1px -1px 0 white,
-    1px -1px 0 white,
-    -1px 1px 0 white,
-    1px 1px 0 white;
 }
 
 .blog-owner-options {
-    display: grid;
-    grid-column: 1;
-    grid-row: inherit;
-    align-items: center;
+    display: flex;
+    /* align-self: flex-start;
+    justify-self: flex-start; */
     height: max-content;
     width: max-content;
     background-color: transparent;
@@ -78,19 +78,14 @@
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
     margin-right: 10px;
-    box-shadow: 1px 1px 2px 2px white;
+    border: solid white 1px;
     cursor: pointer;
     background-color: rgba(50, 50, 50, 1);
 
     &:hover{
-        color: black;
-        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
-        box-shadow: 2px 2px;
-        text-shadow: -1px -1px 0 white,
-        1px -1px 0 white,
-        -1px 1px 0 white,
-        1px 1px 0 white;
-        transition: all .8s ease-in-out; 
+        cursor: pointer;
+        background-color: rgba(70, 70, 70, 1);
+        transition: all .5s ease-in-out; 
     }
 }
 
@@ -99,19 +94,14 @@
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
     margin-right: 10px;
-    box-shadow: 1px 1px 2px 2px white;
+    border: solid white 1px;
     cursor: pointer;
     background-color: rgba(50, 50, 50, 1);
 
     &:hover{
-        color: black;
-        background: linear-gradient(to right,red, orange, yellow, green, blue) ;
-        box-shadow: 2px 2px;
-        text-shadow: -1px -1px 0 white,
-        1px -1px 0 white,
-        -1px 1px 0 white,
-        1px 1px 0 white;
-        transition: all .8s ease-in-out; 
+        cursor: pointer;
+        background-color: rgba(70, 70, 70, 1);
+        transition: all .5s ease-in-out; 
     }
 }
 
