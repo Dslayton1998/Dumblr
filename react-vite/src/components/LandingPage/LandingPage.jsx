@@ -45,7 +45,7 @@ export default function LandingPage() {
                 <div className="landing-options">
 
                     <div className="landing-sign-up">
-                        <p style={{"font-weight": "bold", "font-size": "16px"}} >Sign-up!</p>
+                        <p style={{"fontWeight": "bold", "fontSize": "16px"}} >Sign-up!</p>
                         <p>Don't have an account?</p>
                         <OpenModalMenuItem
                             itemText="Sign Up"
@@ -56,7 +56,7 @@ export default function LandingPage() {
                     </div>
 
                     <div className="landing-log-in">
-                        <p style={{"font-weight": "bold", "font-size": "16px"}} >Log-in!</p>
+                        <p style={{"fontWeight": "bold", "fontSize": "16px"}} >Log-in!</p>
                         <p>Already a member?</p>
                         <OpenModalMenuItem
                             itemText="Log In"
@@ -69,7 +69,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="landing-description">
-                    <p style={{"font-size": "16px"}}>Dumblr is a blogging website where you can share your interests, ideas, and images with other users in a intuitive and customizable way!</p>
+                    <p style={{"fontSize": "16px"}}>Dumblr is a blogging website where you can share your interests, ideas, and images with other users in a intuitive and customizable way!</p>
                 </div>
 
             </div>

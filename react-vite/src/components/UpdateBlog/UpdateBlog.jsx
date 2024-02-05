@@ -69,6 +69,16 @@ export default function UpdateBlog() {
         navigate(`/blog/${blogId}`)
     }
 
+    const disableButton = () => {
+        if(blog != undefined) {
+            if((title == "" && profilePicture == "" && backgroundImage == "" && publicStatus == "") || (title == blog.title && profilePicture == blog.profile_picture && backgroundImage == blog.background_image && publicStatus == blog.public)) {
+                return <button className='disabled' type="submit">Submit</button>
+            } else {
+               return <button className='submit-button' type="submit">Submit</button>
+            }
+        }
+    }
+
     return (
         <div className="blog-update-container">
             <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
@@ -131,7 +141,7 @@ export default function UpdateBlog() {
                             <span className="error">{validationErrors.publicStatus}</span> )}
                     </div>
                 </label>
-                <button className='submit-button' type="submit">Submit</button>
+                {disableButton()}
             </form>
         </div>
     )

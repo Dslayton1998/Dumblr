@@ -68,7 +68,7 @@ export default function UpdatePost() {
 
     return (
         <div className="post-update-container">
-            <NavLink className="back-button" to={-1}>{'<'}Back</NavLink>
+            <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
             <h1 className="post-update-heading">Update your post!</h1>
             <p className="update-post-required">Caption and image are optional, however you cannot publish a blank post (choose at least one).</p>
             <form className="post-update-form" onSubmit={handleSubmit} encType="multipart/form-data">
