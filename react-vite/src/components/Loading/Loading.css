@@ -1,0 +1,12 @@
+.loader-container {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100%;
+}
+
+.loader {
+    color: white;
+    font-size: 20px;
+}
