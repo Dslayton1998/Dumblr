@@ -20,10 +20,10 @@ export default function Dashboard() {
     useEffect(() => {
         const getPosts = async () => {
             await dispatch(thunkAllPosts())
+            setIsLoading(false)
         }
 
         getPosts()
-        setIsLoading(false)
     }, [dispatch])
 
 
