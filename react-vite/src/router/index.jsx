@@ -1,15 +1,15 @@
-import { createBrowserRouter } from 'react-router-dom';
-import LoginFormPage from '../components/LoginFormPage';
-import SignupFormPage from '../components/SignupFormPage';
-import BlogPage from '../components/BlogPage/BlogPage';
-import Dashboard from '../components/Dashboard/Dashboard';
-import CreateBlogForm from '../components/CreateBlogForm/CreateBlogForm';
-import UpdateBlog from '../components/UpdateBlog/UpdateBlog';
-import Layout from './Layout';
-import LandingPage from '../components/LandingPage/LandingPage';
 import CreatePostForm from '../components/CreatePostForm/CreatePostForm';
+import CreateBlogForm from '../components/CreateBlogForm/CreateBlogForm';
+import LandingPage from '../components/LandingPage/LandingPage';
+import UpdateBlog from '../components/UpdateBlog/UpdateBlog';
 import UpdatePost from '../components/UpdatePost/UpdatePost';
+import SignupFormPage from '../components/SignupFormPage';
+import Dashboard from '../components/Dashboard/Dashboard';
+import LoginFormPage from '../components/LoginFormPage';
+import BlogPage from '../components/BlogPage/BlogPage';
+import { createBrowserRouter } from 'react-router-dom';
 import MyBlogs from '../components/MyBlogs/MyBlogs';
+import Layout from './Layout';
 
 
 export const router = createBrowserRouter([

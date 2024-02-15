@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { thunkSignup } from "../../redux/session";
+import { useState } from "react";
 import "./SignupForm.css"
 
 function SignupFormPage() {
@@ -61,6 +61,7 @@ function SignupFormPage() {
         <h1 className="sign-up-page-header">Sign Up</h1>
         {errors.server && <p>{errors.server}</p>}
         <form className="sign-up-page-form" onSubmit={handleSubmit}>
+
           <label className="sign-up-page-input">
             Email
             <input
@@ -117,6 +118,7 @@ function SignupFormPage() {
           </label>
 
           <button className='submit-button' type="submit">Sign Up</button>
+          
         </form>
       </div>
     </div>

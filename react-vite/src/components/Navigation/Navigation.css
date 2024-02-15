@@ -41,7 +41,6 @@
 .profile-dropdown > li{
   list-style: none;
   padding: 2px;
-  /* cursor: pointer; */
 }
 
 .profile-dropdown > li > button{

@@ -77,7 +77,6 @@ input::file-selector-button {
         1px 1px 0 white;
     padding: 0.5em;
     border: 2px solid black;
-    /* todo: consider different styles */
 
     background: linear-gradient(to right,red, orange, yellow, green, blue) ;
     border-radius: 5px;
