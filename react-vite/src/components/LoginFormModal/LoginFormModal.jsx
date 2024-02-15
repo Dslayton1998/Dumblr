@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
-import { useDispatch } from "react-redux";
-import { useModal } from "../../context/Modal";
-import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
+import { useModal } from "../../context/Modal";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import "./LoginForm.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -52,6 +52,7 @@ function LoginFormModal() {
     <div className="login-modal-container">
       <h1 className="login-modal-header">Log In</h1>
       <form className="login-modal-form" onSubmit={handleSubmit}>
+        
         <label className="login-modal-input">
           Email
           <input

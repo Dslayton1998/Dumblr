@@ -1,8 +1,8 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { thunkAllUserBlogs } from "../../redux/blog"
-import BlogCard from "./BlogCard"
-import './MyBlogs.css'
+import { useDispatch, useSelector } from "react-redux";
+import { thunkAllUserBlogs } from "../../redux/blog";
+import { useEffect } from "react";
+import BlogCard from "./BlogCard";
+import './MyBlogs.css';
 
 export default function MyBlogs() {
     const dispatch = useDispatch()

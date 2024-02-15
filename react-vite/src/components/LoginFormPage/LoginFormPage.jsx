@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { thunkLogin } from "../../redux/session";
-import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkLogin } from "../../redux/session";
+import { useState } from "react";
 import "./LoginForm.css";
 
 function LoginFormPage() {
@@ -53,6 +53,7 @@ function LoginFormPage() {
       <div className="login-page-container">
         <h1 className="login-page-header">Log In</h1>
         <form className="login-page-form" onSubmit={handleSubmit}>
+
           <label className="login-page-input">
             Email
             <input

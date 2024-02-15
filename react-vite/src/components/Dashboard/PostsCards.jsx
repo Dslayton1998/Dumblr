@@ -1,6 +1,6 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
-import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import './PostsCards.css';

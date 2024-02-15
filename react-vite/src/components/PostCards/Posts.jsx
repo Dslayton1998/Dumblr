@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux"
-import DeletePost from "./PostOptions/DeletePost"
-import UpdatePost from "./PostOptions/UpdatePost"
+import DeletePost from "./PostOptions/DeletePost";
+import UpdatePost from "./PostOptions/UpdatePost";
+import { useSelector } from "react-redux";
 import './Posts.css';
 
 export default function Posts({ post }) {

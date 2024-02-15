@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
+import { useModal } from "../../context/Modal";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -57,6 +57,7 @@ function SignupFormModal() {
       <h1 className="sign-up-header">Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form className="sign-up-form" onSubmit={handleSubmit}>
+
         <label className="sign-up-input">
           Email
           <input
@@ -114,6 +115,7 @@ function SignupFormModal() {
 
 
         <button className="sign-up-submit-button" type="submit">Sign Up</button>
+        
       </form>
     </div>
   );

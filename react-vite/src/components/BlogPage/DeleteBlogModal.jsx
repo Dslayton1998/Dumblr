@@ -1,8 +1,8 @@
-import { useModal } from "../../context/Modal";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { thunkAllPosts } from "../../redux/post";
 import { thunkDeleteBlog } from "../../redux/blog";
+import { thunkAllPosts } from "../../redux/post";
+import { useNavigate } from "react-router-dom";
+import { useModal } from "../../context/Modal";
+import { useDispatch } from "react-redux";
 
 
 export default function DeleteBlogModal( {blogId} ) {

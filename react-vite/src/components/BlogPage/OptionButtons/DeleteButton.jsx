@@ -1,7 +1,7 @@
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import DeleteBlogModal from "../DeleteBlogModal";
 import { useParams } from "react-router-dom";
-import '../BlogPage.css'
+import '../BlogPage.css';
 
 
 export default function DeleteBlog ()  {

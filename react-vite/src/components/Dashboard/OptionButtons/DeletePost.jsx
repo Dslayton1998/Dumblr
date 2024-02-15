@@ -1,6 +1,6 @@
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import DeletePostModal from "../DeletePostModal";
-import '../PostsCards.css'
+import '../PostsCards.css';
 
 export default function DeletePost({ postId }) {
     return (
