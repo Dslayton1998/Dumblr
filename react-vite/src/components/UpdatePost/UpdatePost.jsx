@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { thunkOnePost, thunkUpdatePost } from "../../redux/post";
-import './UpdatePost.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import './UpdatePost.css';
 
 export default function UpdatePost() {
     const dispatch = useDispatch();
@@ -72,6 +72,7 @@ export default function UpdatePost() {
             <h1 className="post-update-heading">Update your post!</h1>
             <p className="update-post-required">Caption and image are optional, however you cannot publish a blank post (choose at least one).</p>
             <form className="post-update-form" onSubmit={handleSubmit} encType="multipart/form-data">
+
                 <label className="post-update-input">
                     <span className="post-update-span">Do you want to change the caption?</span>
                     <input
@@ -105,6 +106,7 @@ export default function UpdatePost() {
                     {hasSubmitted && validationErrors.image && (
                         <span className="error">{validationErrors.image}</span> )}
                 </label>
+                
                 {disableButton()}
             </form>
         </div>

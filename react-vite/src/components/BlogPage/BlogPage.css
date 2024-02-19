@@ -48,8 +48,6 @@
 
 .blog-owner-options {
     display: flex;
-    /* align-self: flex-start;
-    justify-self: flex-start; */
     height: max-content;
     width: max-content;
     background-color: transparent;
@@ -62,7 +60,6 @@
 }
 
 .blog-update-button {
-    /* background-color: white; */
     color: white;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
@@ -98,5 +95,4 @@
     text-decoration: none;
     color: white;
     border-radius: 5px;
-    /* margin-right: 10px; */
 }

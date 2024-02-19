@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { thunkAllPosts } from "../../redux/post";
-import PostsCards from "./PostsCards";
-import './Dashboard.css'
+import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
+import PostsCards from "./PostsCards";
+import './Dashboard.css';
 
 export default function Dashboard() {
     const dispatch = useDispatch();
@@ -31,7 +31,6 @@ export default function Dashboard() {
         return <Loading />
     }
     
-
     return (
         <>
         <div className="dashboard-container">
