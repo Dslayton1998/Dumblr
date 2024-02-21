@@ -113,7 +113,26 @@
     align-self: flex-start;
     justify-content: flex-start;
     margin: 10px 0px 10px 0px;
-    padding: 15px 10px;
-    margin: 2px;
+    padding: 15px 10px; 
     background-color: rgba(50, 50, 50, 1);
+}
+
+.notes-container {
+    border-top: solid 1px gray;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.post-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.notes {
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px gray;
+    margin-top: 10px;
 }
