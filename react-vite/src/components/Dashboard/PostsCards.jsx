@@ -4,12 +4,27 @@ import DeletePost from "./OptionButtons/DeletePost";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import './PostsCards.css';
+import { FaComment } from "react-icons/fa"
 
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
     const [toggleNotes, setToggleNotes] = useState(false)
     const user = useSelector(state => state.session.user)
     const commentsArr = post.comments ? Object.values(post.comments) : null
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setHasSubmitted(true)
+
+        if (Object.values(validationErrors).length) {
+            return;
+        }
+
+        const formData = new FormData();
+        // formData.append("title", title);
+        // let blog = await dispatch(thunkCreateBlog(formData))
+        // navigate(`/blog/${blog.id}`)
+    };
 
     const userOptions = () => {
         if(user != null) {
@@ -29,7 +44,18 @@ export default function PostsCards({ post }) {
     const displayNotes = () => {
         if(toggleNotes == true) {
             // todo: Should render a new component with "reply" and "likes" displaying respective functionality
-            return  <div>
+//! Will become the create comment "form"
+            return  <div className="notes">
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                    <label>
+                        <input
+                        type="text"
+                        // value={"Comment"}
+                        placeholder="Comment"
+                        // onChange={}
+                        />
+                    </label>
+                </form>
                 {commentsArr.length ? commentsArr[0].comment : null}
             </div> 
         }
@@ -50,10 +76,10 @@ export default function PostsCards({ post }) {
             <div className="post-caption">{post.caption}</div>
 
 
-            <div>
-                <button onClick={() => setToggleNotes(!toggleNotes)}>Notes</button>
+            <div className="notes-container">
                 <div className="post-options">
-                    <button>Reply</button>
+                    <button onClick={() => setToggleNotes(!toggleNotes)}>Notes</button>
+                    <FaComment onClick={() => setToggleNotes(!toggleNotes)}/>
                 </div>
                 {displayNotes()}
             </div>
