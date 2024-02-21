@@ -2,7 +2,7 @@ from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from
 from flask_login import login_required, current_user
 from app.models import Post, Comment, db
 from flask import Blueprint, request
-from ..forms import PostForm, PostUpdateForm
+from ..forms import PostForm, PostUpdateForm, CommentForm
 
 post_routes = Blueprint('post', __name__)
 
@@ -144,6 +144,34 @@ def update_post(id):
 
         db.session.commit()
         return target_post.to_dict()
+    else:
+        print(form.errors)
+        return form.errors
+    
+
+
+######################################## Comments ###########################################
+@post_routes.route('/new/comment', methods=['POST'])
+@login_required
+def create_comment():
+    """
+    Creates a post
+    """
+    form = CommentForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    print(form["csrf_token"])
+
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id = form.data['user_id'],
+            post_id = form.data['post_id'],
+            comment = form.data['comment']
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict()
     else:
         print(form.errors)
         return form.errors
