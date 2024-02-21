@@ -8,6 +8,7 @@ import { FaComment } from "react-icons/fa"
 
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
+    const [comment, setComment] = useState("")
     const [toggleNotes, setToggleNotes] = useState(false)
     const user = useSelector(state => state.session.user)
     const commentsArr = post.comments ? Object.values(post.comments) : null
@@ -21,8 +22,10 @@ export default function PostsCards({ post }) {
         }
 
         const formData = new FormData();
-        // formData.append("title", title);
-        // let blog = await dispatch(thunkCreateBlog(formData))
+        formData.append("user_id", user.id);
+        formData.append("post_id", post.id);
+        formData.append("comment", comment)
+        let comment = await dispatch()
         // navigate(`/blog/${blog.id}`)
     };
 
@@ -44,17 +47,17 @@ export default function PostsCards({ post }) {
     const displayNotes = () => {
         if(toggleNotes == true) {
             // todo: Should render a new component with "reply" and "likes" displaying respective functionality
-//! Will become the create comment "form"
             return  <div className="notes">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
                         <input
                         type="text"
-                        // value={"Comment"}
+                        value={comment}
                         placeholder="Comment"
-                        // onChange={}
+                        onChange={(e) => setComment(e.target.value)}
                         />
                     </label>
+                    <button className='submit-button' type="submit">Create Comment</button>
                 </form>
                 {commentsArr.length ? commentsArr[0].comment : null}
             </div> 
