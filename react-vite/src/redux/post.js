@@ -5,6 +5,9 @@ const DELETE_POST = 'posts/DELETE_POST'
 const UPDATE_POST = 'posts/UPDATE_POST'
 
 
+const CREATE_COMMENT = 'comment/CREATE_COMMENT'
+
+
 const getPosts = (posts) => ({
     type: GET_POSTS,
     payload: posts
@@ -29,6 +32,18 @@ const updatePost = (postId) => ({
     type: UPDATE_POST,
     payload: postId
 })
+
+
+
+
+const newComment = (post, comment) => ({
+    type: CREATE_COMMENT,
+    payload: {post, comment}
+})
+
+
+
+
 
 
 export const thunkAllPosts = () => async (dispatch) => {
@@ -103,6 +118,28 @@ export const thunkUpdatePost = (postId, formData) => async (dispatch) => {
 }
 
 
+
+
+export const thunkCreateComment = (post, formData) => async (dispatch) => {
+    const res = await fetch("api/post/new/comment", {
+        method: 'POST',
+        body: formData
+    })
+    if(res.ok) {
+        const comment = await res.json()
+        dispatch(newComment(post, comment))
+        return comment
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
+
+
+
+
 function postReducer(state = {}, action) {
     switch (action.type) {
         case GET_POSTS: {
@@ -126,6 +163,14 @@ function postReducer(state = {}, action) {
             const newState = {...state}
             delete newState[action.payload]
             return newState
+        }
+
+        case CREATE_COMMENT: {
+            const post = action.payload.post
+            const comment = action.payload.comment
+            const statePost = state[post.id].comments
+            statePost[comment.id] = comment
+            return {...state}
         }
 
         default:

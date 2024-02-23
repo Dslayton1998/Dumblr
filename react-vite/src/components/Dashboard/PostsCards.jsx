@@ -1,17 +1,22 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
-import { useSelector } from "react-redux";
+import { FaComment } from "react-icons/fa";
 import { useState } from "react";
 import './PostsCards.css';
-import { FaComment } from "react-icons/fa"
+import { thunkCreateComment } from "../../redux/post";
 
 export default function PostsCards({ post }) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [comment, setComment] = useState("")
     const [toggleNotes, setToggleNotes] = useState(false)
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [validationErrors, setValidationsErrors] = useState({})
     const user = useSelector(state => state.session.user)
     const commentsArr = post.comments ? Object.values(post.comments) : null
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,9 +30,9 @@ export default function PostsCards({ post }) {
         formData.append("user_id", user.id);
         formData.append("post_id", post.id);
         formData.append("comment", comment)
-        let comment = await dispatch()
-        // navigate(`/blog/${blog.id}`)
+        await dispatch(thunkCreateComment(post, formData))
     };
+
 
     const userOptions = () => {
         if(user != null) {
@@ -40,10 +45,12 @@ export default function PostsCards({ post }) {
         }
     }
 
+
     const onClick = () => {
         navigate(`/blog/${post.blog.id}`)
     }
 
+    
     const displayNotes = () => {
         if(toggleNotes == true) {
             // todo: Should render a new component with "reply" and "likes" displaying respective functionality
@@ -63,8 +70,7 @@ export default function PostsCards({ post }) {
             </div> 
         }
     }
-
-// todo: when you click on the notes button (toggle), the PostCard extends and allows you to view AND create posts
+//! HARD CODE ^ only displays a single comment might need to segment off into its own component!!!!
 
     return (
         <div className="post-container">
