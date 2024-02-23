@@ -1,11 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { thunkCreateComment } from "../../redux/post";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
 import { FaComment } from "react-icons/fa";
+import Comments from "./Comments";
 import { useState } from "react";
 import './PostsCards.css';
-import { thunkCreateComment } from "../../redux/post";
+
 
 export default function PostsCards({ post }) {
     const dispatch = useDispatch();
@@ -50,7 +52,7 @@ export default function PostsCards({ post }) {
         navigate(`/blog/${post.blog.id}`)
     }
 
-    
+//! Need blog info to be passed to comments component !
     const displayNotes = () => {
         if(toggleNotes == true) {
             // todo: Should render a new component with "reply" and "likes" displaying respective functionality
@@ -66,11 +68,17 @@ export default function PostsCards({ post }) {
                     </label>
                     <button className='submit-button' type="submit">Create Comment</button>
                 </form>
-                {commentsArr.length ? commentsArr[0].comment : null}
+
+                <div className="comments-container">
+                    {commentsArr.map(comment => (
+                        <Comments comment={comment} key={comment.id} />
+                    ))}
+                </div>
+
             </div> 
         }
     }
-//! HARD CODE ^ only displays a single comment might need to segment off into its own component!!!!
+//! NAMING IS A NIGHTMARE !
 
     return (
         <div className="post-container">
