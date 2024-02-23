@@ -1,0 +1,1 @@
+//todo: take functionality from PostCards to clean up code and render all comments
