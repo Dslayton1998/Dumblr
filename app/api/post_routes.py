@@ -155,7 +155,7 @@ def update_post(id):
 @login_required
 def create_comment():
     """
-    Creates a post
+    Creates a comment
     """
     form = CommentForm()
 
@@ -182,21 +182,11 @@ def create_comment():
 @login_required
 def delete_comment(id):
     """
-    Deletes a post and removes associated images from AWS bucket
+    Deletes a comment based on Id
     """
-    target_post = Post.query.get(id)
-
-    if(target_post.image == str):
-        post_image = target_post.image
+    target_comment = Comment.query.get(id)
     
-        db.session.delete(target_post)
-        db.session.commit()
-
-        if (post_image):
-            remove_file_from_s3(post_image)
-    else:
-        db.session.delete(target_post)
-        db.session.commit()
-
+    db.session.delete(target_comment)
+    db.session.commit()
 
     return {"message": "Successfully Deleted"}

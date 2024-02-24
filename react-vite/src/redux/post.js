@@ -6,6 +6,7 @@ const UPDATE_POST = 'posts/UPDATE_POST'
 
 
 const CREATE_COMMENT = 'comment/CREATE_COMMENT'
+const DELETE_COMMENT = 'comment/DELETE_COMMENT'
 
 
 const getPosts = (posts) => ({
@@ -39,6 +40,11 @@ const updatePost = (postId) => ({
 const newComment = (post, comment) => ({
     type: CREATE_COMMENT,
     payload: {post, comment}
+})
+
+const deleteComment = (commentId) => ({
+    type: DELETE_COMMENT,
+    payload: commentId
 })
 
 
@@ -125,10 +131,25 @@ export const thunkCreateComment = (post, formData) => async (dispatch) => {
         method: 'POST',
         body: formData
     })
+
     if(res.ok) {
         const comment = await res.json()
         dispatch(newComment(post, comment))
         return comment
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
+export const thunkDeleteComment = (commentId) => async (dispatch) => {
+    const res = await fetch(`api/post/${commentId}/delete/comment`, {
+        method: 'DELETE'
+    })
+
+    if(res.ok) {
+        dispatch(deleteComment(commentId))
     } else {
         const error = await res.json()
         console.log(error)
@@ -164,7 +185,7 @@ function postReducer(state = {}, action) {
             delete newState[action.payload]
             return newState
         }
-
+//###########################################################################################
         case CREATE_COMMENT: {
             const post = action.payload.post
             const comment = action.payload.comment
@@ -174,6 +195,11 @@ function postReducer(state = {}, action) {
             return {...state}
         }
 
+        case DELETE_COMMENT: {
+            console.log(action.payload)
+            return {...state}
+        }
+//##########################################################################################
         default:
             return state
     }
