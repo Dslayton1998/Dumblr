@@ -175,3 +175,28 @@ def create_comment():
     else:
         print(form.errors)
         return form.errors
+    
+
+
+@post_routes.route('/<int:id>/delete/comment', methods=['DELETE'])
+@login_required
+def delete_comment(id):
+    """
+    Deletes a post and removes associated images from AWS bucket
+    """
+    target_post = Post.query.get(id)
+
+    if(target_post.image == str):
+        post_image = target_post.image
+    
+        db.session.delete(target_post)
+        db.session.commit()
+
+        if (post_image):
+            remove_file_from_s3(post_image)
+    else:
+        db.session.delete(target_post)
+        db.session.commit()
+
+
+    return {"message": "Successfully Deleted"}
