@@ -190,8 +190,7 @@ function postReducer(state = {}, action) {
             const post = action.payload.post
             const comment = action.payload.comment
             const statePost = state[post.id].comments
-            const newState = statePost[comment.id] = comment
-            //todo: created comment is showing up but is not causing a rerender!
+            statePost[comment.id] = comment
             return {...state}
         }
 
