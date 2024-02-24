@@ -33,6 +33,8 @@ export default function PostsCards({ post }) {
         formData.append("post_id", post.id);
         formData.append("comment", comment)
         await dispatch(thunkCreateComment(post, formData))
+
+        setComment("")
     };
 
 
@@ -52,8 +54,9 @@ export default function PostsCards({ post }) {
         navigate(`/blog/${post.blog.id}`)
     }
 
-//! Need blog info to be passed to comments component !
+//! Need to give option to create comment under x or y blog
     const displayNotes = () => {
+        // console.log(post.blog)
         if(toggleNotes == true) {
             // todo: Should render a new component with "reply" and "likes" displaying respective functionality
             return  <div className="notes">
@@ -71,7 +74,7 @@ export default function PostsCards({ post }) {
 
                 <div className="comments-container">
                     {commentsArr.map(comment => (
-                        <Comments comment={comment} key={comment.id} />
+                        <Comments comment={comment} blog={post.blog} key={comment.id} />
                     ))}
                 </div>
 
