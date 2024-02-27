@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { useState } from "react";
+import { thunkUpdateComment } from "../../redux/post";
 
 export default function UpdateCommentModal({ comment, post }) {
     const dispatch = useDispatch();
@@ -17,14 +18,9 @@ export default function UpdateCommentModal({ comment, post }) {
 
         const formData = new FormData();
         formData.append("comment", newComment)
-        // await dispatch(thunkCreateComment(post, formData))
+        await dispatch(thunkUpdateComment(post, comment.id, formData))
     };
 
-
-    const handleConfirm = async () => {
-        //todo: dispatch for update thunk
-        closeModal()
-    }
 
     const close = () => {
         closeModal()

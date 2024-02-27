@@ -7,6 +7,7 @@ const UPDATE_POST = 'posts/UPDATE_POST'
 
 const CREATE_COMMENT = 'comment/CREATE_COMMENT'
 const DELETE_COMMENT = 'comment/DELETE_COMMENT'
+const UPDATE_COMMENT = 'comment/UPDATE_COMMENT'
 
 
 const getPosts = (posts) => ({
@@ -44,6 +45,11 @@ const newComment = (post, comment) => ({
 
 const deleteComment = (post, commentId) => ({
     type: DELETE_COMMENT,
+    payload: {post, commentId}
+})
+
+const updateComment = (post, commentId) => ({
+    type: UPDATE_COMMENT,
     payload: {post, commentId}
 })
 
@@ -156,6 +162,22 @@ export const thunkDeleteComment = (post, commentId) => async (dispatch) => {
         return error
     }
 }
+
+export const thunkUpdateComment = (post, commentId, formData) => async (dispatch) => {
+    const res = await fetch(`api/post/${commentId}/update/comment`, {
+        method: 'PUT',
+        body: formData
+    })
+
+    if(res.ok) {
+        dispatch(updateComment(post, commentId))
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
 
 
 
