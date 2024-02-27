@@ -3,14 +3,14 @@
 import { thunkDeleteComment } from "../../redux/post";
 import { useDispatch } from "react-redux";
 
-export default function Comments({ comment, blog }) {
+export default function Comments({ comment, post }) {
     const dispatch = useDispatch();
 
     // console.log(comment)
 
 
     const onClick = () => {
-        dispatch(thunkDeleteComment(comment.id))
+        dispatch(thunkDeleteComment(post, comment.id))
     } 
     
     return (
