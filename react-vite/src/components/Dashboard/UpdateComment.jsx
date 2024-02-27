@@ -4,7 +4,7 @@ import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
 
 export default function UpdateComment ({ comment, post })  {
-
+    console.log(comment)
   return (
     <>
     <button className="">
