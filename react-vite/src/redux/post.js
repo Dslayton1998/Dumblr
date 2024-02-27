@@ -42,9 +42,9 @@ const newComment = (post, comment) => ({
     payload: {post, comment}
 })
 
-const deleteComment = (commentId) => ({
+const deleteComment = (post, commentId) => ({
     type: DELETE_COMMENT,
-    payload: commentId
+    payload: {post, commentId}
 })
 
 
@@ -143,13 +143,13 @@ export const thunkCreateComment = (post, formData) => async (dispatch) => {
     }
 }
 
-export const thunkDeleteComment = (commentId) => async (dispatch) => {
+export const thunkDeleteComment = (post, commentId) => async (dispatch) => {
     const res = await fetch(`api/post/${commentId}/delete/comment`, {
         method: 'DELETE'
     })
 
     if(res.ok) {
-        dispatch(deleteComment(commentId))
+        dispatch(deleteComment(post, commentId))
     } else {
         const error = await res.json()
         console.log(error)
@@ -195,8 +195,11 @@ function postReducer(state = {}, action) {
         }
 
         case DELETE_COMMENT: {
-            console.log(action.payload)
-            return {...state}
+            const post = action.payload.post
+            const commentId = action.payload.commentId
+            const newState ={...state}
+            delete newState[post.id].comments[commentId]
+            return newState
         }
 //##########################################################################################
         default:

@@ -56,9 +56,7 @@ export default function PostsCards({ post }) {
 
 //! Need to give option to create comment under x or y blog
     const displayNotes = () => {
-        // console.log(post.blog)
         if(toggleNotes == true) {
-            // todo: Should render a new component with "reply" and "likes" displaying respective functionality
             return  <div className="notes">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
@@ -74,14 +72,13 @@ export default function PostsCards({ post }) {
 
                 <div className="comments-container">
                     {commentsArr.map(comment => (
-                        <Comments comment={comment} blog={post.blog} key={comment.id} />
+                        <Comments comment={comment} post={post} key={comment.id} />
                     ))}
                 </div>
 
             </div> 
         }
     }
-//! NAMING IS A NIGHTMARE !
 
     return (
         <div className="post-container">
