@@ -2,7 +2,7 @@ from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from
 from flask_login import login_required, current_user
 from app.models import Post, Comment, db
 from flask import Blueprint, request
-from ..forms import PostForm, PostUpdateForm, CommentForm
+from ..forms import PostForm, PostUpdateForm, CommentForm, CommentUpdateForm
 
 post_routes = Blueprint('post', __name__)
 
@@ -190,3 +190,27 @@ def delete_comment(id):
     db.session.commit()
 
     return {"message": "Successfully Deleted"}
+
+
+
+@post_routes.route('/<int:id>/update/comment', methods=['PUT'])
+@login_required
+def update_comment(id):
+    """
+    Updates a comment
+    """
+    form = CommentUpdateForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print("FORM CSRF TOKEN: ", form["csrf_token"])
+
+    if form.validate_on_submit():
+        target_comment = Comment.query.get(id)
+
+        # if form.data['caption']:
+        target_comment.comment = form.data['comment']
+
+        db.session.commit()
+        return target_comment.to_dict()
+    else:
+        print(form.errors)
+        return form.errors
