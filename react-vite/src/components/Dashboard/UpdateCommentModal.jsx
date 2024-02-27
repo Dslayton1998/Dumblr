@@ -18,7 +18,9 @@ export default function UpdateCommentModal({ comment, post }) {
 
         const formData = new FormData();
         formData.append("comment", newComment)
-        await dispatch(thunkUpdateComment(post, comment.id, formData))
+        await dispatch(thunkUpdateComment(post, comment, formData))
+
+        closeModal()
     };
 
 
