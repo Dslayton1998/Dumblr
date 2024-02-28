@@ -34,6 +34,15 @@ def get_blog_by_id(id):
 
     return return_dict
 
+@blog_routes.route('/user/<int:id>')
+def get_user_blogs(id):
+    """
+    Returns the blogs owned by the currently logged in user
+    """
+    blogs = [blog.to_dict() for blog in db.session.query(Blog).filter(Blog.owner_id == id)]
+    print(blogs)
+    return blogs
+
 
 @blog_routes.route('/new', methods=['POST'])
 @login_required

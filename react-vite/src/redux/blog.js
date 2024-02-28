@@ -1,5 +1,6 @@
 const GET_BLOGS = 'blog/GET_BLOGS'
 const GET_A_BLOG = 'blog/GET_A_BLOG'
+const USER_BLOGS = 'blog/USER_BLOGS'
 const CREATE_BLOG = 'blog/CREATE_BLOG'
 const DELETE_BLOG = 'blog/DELETE_BLOG'
 const UPDATE_BLOG = 'blog/UPDATE_BLOG'
@@ -28,6 +29,11 @@ const deleteBlog = (blogId) => ({
 const updateBlog = (blogId) => ({
     type: UPDATE_BLOG,
     payload: blogId
+})
+
+const userBlogs = (blogs) => ({
+    type: USER_BLOGS,
+    payload: blogs
 })
 
 export const thunkAllUserBlogs = () => async (dispatch) => {
@@ -103,6 +109,20 @@ export const thunkUpdateBlog = (blogId, formData) => async (dispatch) => {
     }
 }
 
+export const thunkGetUserBlogs = (userId) => async (dispatch) => {
+    const res = await fetch(`api/blog/user/${userId}`)
+
+    if (res.ok) {
+        const blogs = await res.json()
+        console.log(blogs)
+        dispatch(userBlogs(blogs))
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
 
 function blogReducer(state = {}, action) {
     switch (action.type) {
@@ -131,6 +151,14 @@ function blogReducer(state = {}, action) {
 
         case UPDATE_BLOG: {
             return {...state, [action.payload]:{...state[action.payload]}}
+        }
+
+        case USER_BLOGS: {
+            const newState = {userBlogs:{}}
+            action.payload.forEach(blog => {
+                newState.userBlogs[blog.id] = blog
+            });
+            return newState
         }
 
         default:
