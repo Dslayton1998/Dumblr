@@ -164,7 +164,7 @@ def create_comment():
 
     if form.validate_on_submit():
         new_comment = Comment(
-            user_id = form.data['user_id'],
+            blog_id = form.data['blog_id'],
             post_id = form.data['post_id'],
             comment = form.data['comment']
         )

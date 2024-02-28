@@ -5,7 +5,7 @@ import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
 import { FaComment } from "react-icons/fa";
 import Comments from "./CommentComponents/Comments";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './PostsCards.css';
 
 
@@ -13,11 +13,13 @@ export default function PostsCards({ post }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [comment, setComment] = useState("")
+    const [selectedBlog, setSelectedBlog] = useState("")
     const [toggleNotes, setToggleNotes] = useState(false)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [validationErrors, setValidationsErrors] = useState({})
     const user = useSelector(state => state.session.user)
     const commentsArr = post.comments ? Object.values(post.comments) : null
+    const userBlogs = useSelector(state => state.blogs.userBlogs ? Object.values(state.blogs.userBlogs) : null)
 
 
     const handleSubmit = async (e) => {
@@ -29,12 +31,13 @@ export default function PostsCards({ post }) {
         }
 
         const formData = new FormData();
-        formData.append("user_id", user.id);
+        formData.append("blog_id", Number(selectedBlog));
         formData.append("post_id", post.id);
         formData.append("comment", comment)
         await dispatch(thunkCreateComment(post, formData))
 
         setComment("")
+        setSelectedBlog("")
     };
 
 
@@ -67,6 +70,16 @@ export default function PostsCards({ post }) {
                         onChange={(e) => setComment(e.target.value)}
                         />
                     </label>
+
+                    <label>
+                        <select value={selectedBlog} onChange={(e) => setSelectedBlog(e.target.value)}>
+                            <option>Select a blog</option>
+                                {userBlogs ? userBlogs.map(blog => (
+                                    <option value={blog.id}>{blog.title}</option>
+                                )) : null}
+                        </select>
+                    </label>
+
                     <button className='submit-button' type="submit">Create Comment</button>
                 </form>
 

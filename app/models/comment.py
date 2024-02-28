@@ -7,20 +7,20 @@ class Comment(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    blog_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("blogs.id")))
     post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("posts.id")))
     comment = db.Column(db.String(225), nullable=False)
 
-    owner = db.relationship("User", back_populates="comments")
     post = db.relationship("Post", back_populates="comments")
+    blog = db.relationship("Blog", back_populates="comments")
 
     def to_dict(self, printer=False):
         return_dict = {
             "id": self.id,
-            "user_id": self.user_id,
+            "blog_id": self.blog_id,
             "post_id": self.post_id,
             "comment": self.comment,
-            "owner": self.owner.to_dict(),
+            "post": self.post.to_dict()
         }
 
         if printer:
