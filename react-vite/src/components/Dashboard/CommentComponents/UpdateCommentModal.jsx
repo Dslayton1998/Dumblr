@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux"
-import { useModal } from "../../context/Modal"
+import { useDispatch } from "react-redux";
+import { useModal } from "../../../context/Modal";
 import { useState } from "react";
-import { thunkUpdateComment } from "../../redux/post";
+import { thunkUpdateComment } from "../../../redux/post";
 
 export default function UpdateCommentModal({ comment, post }) {
     const dispatch = useDispatch();
