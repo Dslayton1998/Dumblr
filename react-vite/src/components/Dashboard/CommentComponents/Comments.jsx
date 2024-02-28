@@ -1,8 +1,7 @@
-//todo: Need blog information to give an option to comment under x blog name
-//! DATABASE: models need refactor so comments 
 import { thunkDeleteComment } from "../../../redux/post";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import UpdateComment from "./UpdateComment";
+import './Comment.css';
 
 export default function Comments({ comment, post }) {
     const dispatch = useDispatch();
@@ -13,9 +12,17 @@ export default function Comments({ comment, post }) {
 
     return (
         <div className="comment">
+            <img className="comment-img" src={comment.blog.profile_picture}/>
             {comment.comment}
             <button onClick={onClick}>Delete</button>
             <UpdateComment comment={comment} post={post}>Update</UpdateComment>
         </div>
     )
 }
+
+
+/* 
+   todo: Add special indicator if commenter is the Original poster
+   todo: * blog select options could be blog profile picture * 
+   todo: Submit button is just a "submit-arrow"
+*/

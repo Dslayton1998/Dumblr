@@ -20,7 +20,7 @@ class Comment(db.Model):
             "blog_id": self.blog_id,
             "post_id": self.post_id,
             "comment": self.comment,
-            "post": self.post.to_dict()
+            "blog": self.blog.to_dict()
         }
 
         if printer:

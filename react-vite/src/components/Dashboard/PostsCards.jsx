@@ -3,23 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateComment } from "../../redux/post";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
-import { FaComment } from "react-icons/fa";
 import Comments from "./CommentComponents/Comments";
-import { useEffect, useState } from "react";
+import { FaComment } from "react-icons/fa";
+import { useState } from "react";
 import './PostsCards.css';
 
 
 export default function PostsCards({ post }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [comment, setComment] = useState("")
-    const [selectedBlog, setSelectedBlog] = useState("")
-    const [toggleNotes, setToggleNotes] = useState(false)
-    const [hasSubmitted, setHasSubmitted] = useState(false)
-    const [validationErrors, setValidationsErrors] = useState({})
-    const user = useSelector(state => state.session.user)
-    const commentsArr = post.comments ? Object.values(post.comments) : null
-    const userBlogs = useSelector(state => state.blogs.userBlogs ? Object.values(state.blogs.userBlogs) : null)
+    const [comment, setComment] = useState("");
+    const [selectedBlog, setSelectedBlog] = useState("");
+    const [toggleNotes, setToggleNotes] = useState(false);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [validationErrors, setValidationsErrors] = useState({});
+    const user = useSelector(state => state.session.user);
+    const commentsArr = post.comments ? Object.values(post.comments) : null;
+    const userBlogs = useSelector(state => state.blogs.userBlogs ? Object.values(state.blogs.userBlogs) : null);
 
 
     const handleSubmit = async (e) => {
@@ -57,9 +57,10 @@ export default function PostsCards({ post }) {
         navigate(`/blog/${post.blog.id}`)
     }
 
-//! Need to give option to create comment under x or y blog
+
     const displayNotes = () => {
         if(toggleNotes == true) {
+
             return  <div className="notes">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
@@ -75,7 +76,7 @@ export default function PostsCards({ post }) {
                         <select value={selectedBlog} onChange={(e) => setSelectedBlog(e.target.value)}>
                             <option>Select a blog</option>
                                 {userBlogs ? userBlogs.map(blog => (
-                                    <option value={blog.id}>{blog.title}</option>
+                                    <option key={blog.id} value={blog.id}>{blog.title}</option>
                                 )) : null}
                         </select>
                     </label>
@@ -102,6 +103,7 @@ export default function PostsCards({ post }) {
                 </div>
                 {userOptions()}
             </div>
+
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <div className="post-caption">{post.caption}</div>
 
@@ -113,7 +115,6 @@ export default function PostsCards({ post }) {
                 </div>
                 {displayNotes()}
             </div>
-
 
         </div>
     )
