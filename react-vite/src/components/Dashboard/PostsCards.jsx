@@ -4,7 +4,7 @@ import { thunkCreateComment } from "../../redux/post";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
 import { FaComment } from "react-icons/fa";
-import Comments from "./Comments";
+import Comments from "./CommentComponents/Comments";
 import { useState } from "react";
 import './PostsCards.css';
 

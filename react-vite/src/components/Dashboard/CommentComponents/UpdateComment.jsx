@@ -1,6 +1,6 @@
 
 import UpdateCommentModal from "./UpdateCommentModal";
-import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 
 
 export default function UpdateComment ({ comment, post })  {
