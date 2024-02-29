@@ -118,16 +118,25 @@
 }
 
 .notes-container {
-    border-top: solid 1px gray;
     display: flex;
     flex-direction: column;
+    border-top: solid 1px gray;
     width: 100%;
 }
 
-.post-options {
+.note-options {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
+}
+
+.notes-button {
+    border: solid white .5px;
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 .notes {
@@ -135,6 +144,16 @@
     flex-direction: column;
     border-top: solid 1px gray;
     margin-top: 10px;
+}
+
+.note-blog-select {
+    width: 50px;
+}
+
+.comment-icon {
+    width: 40px;
+    font-size: x-large;
+    cursor: pointer;
 }
 
 .comments-container {

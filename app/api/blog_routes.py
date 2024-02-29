@@ -40,7 +40,6 @@ def get_user_blogs(id):
     Returns the blogs owned by the currently logged in user
     """
     blogs = [blog.to_dict() for blog in db.session.query(Blog).filter(Blog.owner_id == id)]
-    print(blogs)
     return blogs
 
 
