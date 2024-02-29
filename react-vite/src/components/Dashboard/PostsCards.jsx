@@ -64,21 +64,21 @@ export default function PostsCards({ post }) {
             return  <div className="notes">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
-                        <input
-                        type="text"
-                        value={comment}
-                        placeholder="Comment"
-                        onChange={(e) => setComment(e.target.value)}
-                        />
-                    </label>
-
-                    <label>
                         <select value={selectedBlog} onChange={(e) => setSelectedBlog(e.target.value)}>
                             <option>Select a blog</option>
                                 {userBlogs ? userBlogs.map(blog => (
                                     <option key={blog.id} value={blog.id}>{blog.title}</option>
                                 )) : null}
                         </select>
+                    </label>
+                    
+                    <label>
+                        <input
+                        type="text"
+                        value={comment}
+                        placeholder="Comment"
+                        onChange={(e) => setComment(e.target.value)}
+                        />
                     </label>
 
                     <button className='submit-button' type="submit">Create Comment</button>
