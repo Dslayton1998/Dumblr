@@ -64,8 +64,8 @@ export default function PostsCards({ post }) {
             return  <div className="notes">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
-                        <select value={selectedBlog} onChange={(e) => setSelectedBlog(e.target.value)}>
-                            <option>Select a blog</option>
+                        <select className="note-blog-select" value={selectedBlog} onChange={(e) => setSelectedBlog(e.target.value)}>
+                            <option>Blog</option>
                                 {userBlogs ? userBlogs.map(blog => (
                                     <option key={blog.id} value={blog.id}>{blog.title}</option>
                                 )) : null}
@@ -76,7 +76,7 @@ export default function PostsCards({ post }) {
                         <input
                         type="text"
                         value={comment}
-                        placeholder="Comment"
+                        placeholder="Which of your blogs is commenting?"
                         onChange={(e) => setComment(e.target.value)}
                         />
                     </label>
@@ -109,9 +109,9 @@ export default function PostsCards({ post }) {
 
 
             <div className="notes-container">
-                <div className="post-options">
-                    <button onClick={() => setToggleNotes(!toggleNotes)}>Notes</button>
-                    <FaComment onClick={() => setToggleNotes(!toggleNotes)}/>
+                <div className="note-options">
+                    <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
+                    <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
                 </div>
                 {displayNotes()}
             </div>
