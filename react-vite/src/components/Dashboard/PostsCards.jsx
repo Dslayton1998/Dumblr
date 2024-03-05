@@ -60,7 +60,7 @@ export default function PostsCards({ post }) {
 
     const displayNotes = () => {
         if(toggleNotes == true) {
-
+// todo: state variable that pops up a modal that allows you to pick blog and displays profile picture INSTEAD of select
             return  <div className="notes">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
