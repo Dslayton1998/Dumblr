@@ -4,6 +4,7 @@ import { thunkCreateComment } from "../../redux/post";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
 import Comments from "./CommentComponents/Comments";
+import { LuSendHorizonal } from "react-icons/lu";
 import { FaComment } from "react-icons/fa";
 import { useState } from "react";
 import './PostsCards.css';
@@ -62,7 +63,7 @@ export default function PostsCards({ post }) {
         if(toggleNotes == true) {
 // todo: state variable that pops up a modal that allows you to pick blog and displays profile picture INSTEAD of select
             return  <div className="notes">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <form className="comment-form" onSubmit={handleSubmit} encType="multipart/form-data">
                     <label>
                         <select className="note-blog-select" value={selectedBlog} onChange={(e) => setSelectedBlog(e.target.value)}>
                             <option>Blog</option>
@@ -81,7 +82,7 @@ export default function PostsCards({ post }) {
                         />
                     </label>
 
-                    <button className='submit-button' type="submit">Create Comment</button>
+                    <button className='submit-comment' type="submit"><LuSendHorizonal style={{fontSize: "large"}} /></button>
                 </form>
 
                 <div className="comments-container">
