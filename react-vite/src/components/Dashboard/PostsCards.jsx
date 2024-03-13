@@ -79,6 +79,7 @@ export default function PostsCards({ post }) {
                         value={comment}
                         placeholder="Which of your blogs is commenting?"
                         onChange={(e) => setComment(e.target.value)}
+                        style={{width: 450}}
                         />
                     </label>
 
