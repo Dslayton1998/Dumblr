@@ -1,16 +1,22 @@
 import { thunkDeleteComment } from "../../../redux/post";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import UpdateComment from "./UpdateComment";
 import './Comment.css';
 
 export default function Comments({ comment, post }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const user = useSelector(state => state.session.user);
 
     const onClick = () => {
         dispatch(thunkDeleteComment(post, comment.id))
     }
     
+    const goToBlog = () => {
+        navigate(`/blog/${comment.blog.id}`)
+    }
+
     const userCheck = () => {
         if(user != null && comment != null) {
             if(user.id === comment.blog.owner_id) {
@@ -23,15 +29,20 @@ export default function Comments({ comment, post }) {
             }
         }
     }
-    console.log(comment)
+
     return (
         <>
             <div className="comment">
                 <img className="comment-img" src={comment.blog.profile_picture}/>
-                {comment.comment}
+                <div className="comment-details">
+                    <div>
+                        <span onClick={goToBlog} style={{fontWeight: "bold", borderBottom: "solid 1px gray", cursor: "pointer"}}>{comment.blog.blog_name}</span>
+                    </div>
+                    <span style={{paddingTop: 2}}>{comment.comment}</span>
+                </div>
 
             </div>
-            
+
             {userCheck()}
 
         </>

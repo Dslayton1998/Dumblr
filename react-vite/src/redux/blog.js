@@ -114,7 +114,6 @@ export const thunkGetUserBlogs = (userId) => async (dispatch) => {
 
     if (res.ok) {
         const blogs = await res.json()
-        console.log(blogs)
         dispatch(userBlogs(blogs))
     } else {
         const error = await res.json()
