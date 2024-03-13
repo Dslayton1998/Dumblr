@@ -1,22 +1,40 @@
 import { thunkDeleteComment } from "../../../redux/post";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UpdateComment from "./UpdateComment";
 import './Comment.css';
 
 export default function Comments({ comment, post }) {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
 
     const onClick = () => {
         dispatch(thunkDeleteComment(post, comment.id))
-    } 
-
+    }
+    
+    const userCheck = () => {
+        if(user != null && comment != null) {
+            if(user.id === comment.blog.owner_id) {
+                return (
+                <span className="comment-options">
+                    <button  style={{marginRight: 5}} onClick={onClick}>Delete</button>
+                    <UpdateComment comment={comment} post={post}>Update</UpdateComment>
+                </span>
+                )
+            }
+        }
+    }
+    console.log(comment)
     return (
-        <div className="comment">
-            <img className="comment-img" src={comment.blog.profile_picture}/>
-            {comment.comment}
-            <button onClick={onClick}>Delete</button>
-            <UpdateComment comment={comment} post={post}>Update</UpdateComment>
-        </div>
+        <>
+            <div className="comment">
+                <img className="comment-img" src={comment.blog.profile_picture}/>
+                {comment.comment}
+
+            </div>
+            
+            {userCheck()}
+
+        </>
     )
 }
 
