@@ -1,9 +1,13 @@
 import DeletePost from "./PostOptions/DeletePost";
 import UpdatePost from "./PostOptions/UpdatePost";
+import { FaComment } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import Notes from "../Notes/Notes";
+import { useState } from "react";
 import './Posts.css';
 
 export default function Posts({ post }) {
+    const [toggleNotes, setToggleNotes] = useState(false);
     const user = useSelector(state => state.session.user)
     
     const userOptions = () => {
@@ -17,6 +21,12 @@ export default function Posts({ post }) {
         }
     }
 
+    const displayNotes = () => {
+        if(toggleNotes == true) {
+            return <Notes post={post}/>
+        }
+    }
+    console.log(post)
     return (
         <div className="post-container">
             <div className="blog-page-heading">
@@ -26,8 +36,17 @@ export default function Posts({ post }) {
                 </div>
                 {userOptions()}
             </div>
+
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <p className="post-caption">{post.caption}</p>
+
+            <div className="notes-container">
+                <div className="note-options">
+                    <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
+                    <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
+                </div>
+                {displayNotes()}
+            </div>
         </div>
     )
 }
