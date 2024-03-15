@@ -32,7 +32,7 @@ export default function Notes({ post }) {
         setComment("")
         setSelectedBlog("")
     };
-    console.log(post)
+
 // todo: state variable that pops up a modal that allows you to pick blog and displays profile picture INSTEAD of select
     return (
         <div className="notes">

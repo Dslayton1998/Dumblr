@@ -13,6 +13,7 @@ export default function BlogPage() {
     const dispatch = useDispatch();
     const { blogId } = useParams();
     const blog = useSelector(state => state.blogs[blogId])
+    const user = useSelector(state => state.session.user)
     const currentUser = useSelector(state => state.session.user)
 
     let posts;

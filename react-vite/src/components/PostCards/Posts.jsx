@@ -9,7 +9,9 @@ import './Posts.css';
 export default function Posts({ post }) {
     const [toggleNotes, setToggleNotes] = useState(false);
     const user = useSelector(state => state.session.user)
-    
+    const currPost = useSelector(state => state.posts ? state.posts[post.id] : null)
+
+
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {
@@ -21,12 +23,13 @@ export default function Posts({ post }) {
         }
     }
 
+// todo: state does not have user blogs so blog cannot be selected to post a comment with
     const displayNotes = () => {
         if(toggleNotes == true) {
-            return <Notes post={post}/>
+            return <Notes post={currPost}/>
         }
     }
-    console.log(post)
+
     return (
         <div className="post-container">
             <div className="blog-page-heading">
