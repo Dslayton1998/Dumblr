@@ -13,7 +13,7 @@ export default function BlogPage() {
     const dispatch = useDispatch();
     const { blogId } = useParams();
     const blog = useSelector(state => state.blogs[blogId])
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
     const currentUser = useSelector(state => state.session.user)
 
     let posts;
@@ -50,12 +50,12 @@ export default function BlogPage() {
         }
 
         const getCurrUserBlogs = async () => {
-            await dispatch(thunkGetUserBlogs(user.id))
+            await dispatch(thunkGetUserBlogs(currentUser.id))
         }
 
+        oneBlog()
         getPosts()
         getCurrUserBlogs()
-        oneBlog()
     }, [dispatch])
 
     return (

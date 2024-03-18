@@ -110,7 +110,7 @@ export const thunkUpdateBlog = (blogId, formData) => async (dispatch) => {
 }
 
 export const thunkGetUserBlogs = (userId) => async (dispatch) => {
-    const res = await fetch(`api/blog/user/${userId}`)
+    const res = await fetch(`/api/blog/user/${userId}`)
 
     if (res.ok) {
         const blogs = await res.json()
@@ -153,7 +153,7 @@ function blogReducer(state = {}, action) {
         }
 
         case USER_BLOGS: {
-            const newState = {userBlogs:{}}
+            const newState = {...state, userBlogs:{}}
             action.payload.forEach(blog => {
                 newState.userBlogs[blog.id] = blog
             });

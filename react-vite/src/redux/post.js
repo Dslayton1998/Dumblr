@@ -133,7 +133,7 @@ export const thunkUpdatePost = (postId, formData) => async (dispatch) => {
 
 
 export const thunkCreateComment = (post, formData) => async (dispatch) => {
-    const res = await fetch("api/post/new/comment", {
+    const res = await fetch("/api/post/new/comment", {
         method: 'POST',
         body: formData
     })
@@ -150,7 +150,7 @@ export const thunkCreateComment = (post, formData) => async (dispatch) => {
 }
 
 export const thunkDeleteComment = (post, commentId) => async (dispatch) => {
-    const res = await fetch(`api/post/${commentId}/delete/comment`, {
+    const res = await fetch(`/api/post/${commentId}/delete/comment`, {
         method: 'DELETE'
     })
 
@@ -164,7 +164,7 @@ export const thunkDeleteComment = (post, commentId) => async (dispatch) => {
 }
 
 export const thunkUpdateComment = (post, comment, formData) => async (dispatch) => {
-    const res = await fetch(`api/post/${comment.id}/update/comment`, {
+    const res = await fetch(`/api/post/${comment.id}/update/comment`, {
         method: 'PUT',
         body: formData
     })
