@@ -3,7 +3,7 @@ import Comments from "./CommentComponents/Comments";
 import { LuSendHorizonal } from "react-icons/lu";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Notes({ post }) {
     const dispatch = useDispatch();
@@ -14,8 +14,22 @@ export default function Notes({ post }) {
     const commentsArr = post.comments ? Object.values(post.comments) : null;
     const userBlogs = useSelector(state => state.blogs.userBlogs ? Object.values(state.blogs.userBlogs) : null);
 
+    useEffect(() => {
+        const errors = {}
+
+        if(selectedBlog === "") {
+            errors.blog = "Please select a blog."
+        }
+
+        if(comment.length <= 4) {
+            errors.comment = "Comment must me at least 4 characters or longer."
+        }
+
+        setValidationsErrors(errors)
+    }, [selectedBlog])
+
+
     const handleSubmit = async (e) => {
-// todo: Set up error validations (can't submit if blog is not selected, max comment length)
         e.preventDefault();
         setHasSubmitted(true)
 
@@ -34,6 +48,7 @@ export default function Notes({ post }) {
     };
 
 // todo: state variable that pops up a modal that allows you to pick blog and displays profile picture INSTEAD of select
+// todo: Style error validations to appear more pleasing
     return (
         <div className="notes">
                 <form className="comment-form" onSubmit={handleSubmit} encType="multipart/form-data">
@@ -44,6 +59,8 @@ export default function Notes({ post }) {
                                     <option key={blog.id} value={blog.id}>{blog.title}</option>
                                 )) : null}
                         </select>
+                        {hasSubmitted && validationErrors.blog && (
+                            <span className="error">{validationErrors.blog}</span> )}
                     </label>
                     
                     <label>
@@ -54,6 +71,8 @@ export default function Notes({ post }) {
                         onChange={(e) => setComment(e.target.value)}
                         style={{width: 450}}
                         />
+                        {hasSubmitted && validationErrors.comment && (
+                            <span className="error">{validationErrors.comment}</span> )}
                     </label>
 
                     <button className='submit-comment' type="submit"><LuSendHorizonal style={{fontSize: "large"}} /></button>
