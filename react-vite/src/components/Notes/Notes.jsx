@@ -18,7 +18,7 @@ export default function Notes({ post }) {
         const errors = {}
 
         if(selectedBlog === "") {
-            errors.blog = "Please select a blog."
+            errors.blog = "Select a blog."
         }
 
         if(comment.length <= 4) {
@@ -26,7 +26,7 @@ export default function Notes({ post }) {
         }
 
         setValidationsErrors(errors)
-    }, [selectedBlog])
+    }, [selectedBlog, comment])
 
 
     const handleSubmit = async (e) => {
@@ -59,8 +59,10 @@ export default function Notes({ post }) {
                                     <option key={blog.id} value={blog.id}>{blog.title}</option>
                                 )) : null}
                         </select>
-                        {hasSubmitted && validationErrors.blog && (
-                            <span className="error">{validationErrors.blog}</span> )}
+                        <div className="blog-select-error-container">
+                            {hasSubmitted && validationErrors.blog && (
+                                <span className="error">{validationErrors.blog}</span> )}
+                        </div>
                     </label>
                     
                     <label>
@@ -69,10 +71,12 @@ export default function Notes({ post }) {
                         value={comment}
                         placeholder="Which of your blogs is commenting?"
                         onChange={(e) => setComment(e.target.value)}
-                        style={{width: 450}}
+                        style={{width: 400}}
                         />
-                        {hasSubmitted && validationErrors.comment && (
-                            <span className="error">{validationErrors.comment}</span> )}
+                        <div className="create-comment-error-container">
+                            {hasSubmitted && validationErrors.comment && (
+                                <span className="error">{validationErrors.comment}</span> )}
+                        </div>
                     </label>
 
                     <button className='submit-comment' type="submit"><LuSendHorizonal style={{fontSize: "large"}} /></button>
