@@ -147,7 +147,7 @@
 }
 
 .note-blog-select {
-    width: 50px;
+    width: 100px;
 }
 
 .comment-form {
@@ -181,13 +181,26 @@
     align-self: center;
     color: white;
     background-color: rgba(50, 50, 50, 1);
-    padding: 5px 0px 0px 0px;
+    padding: 5px 0px 30px 5px;
     border: none;
     cursor: pointer;
 
     &:hover{
         cursor: pointer;
-        background-color: rgba(70, 70, 70, 1);
         transition: all .5s ease-in-out; 
     }
+}
+
+.create-comment-error-container {
+    margin-top: 10px;
+    margin-left: 50px;
+    height: max(20px);
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.blog-select-error-container {
+    margin-top: 10px;
+    height: max(20px);
+    width: max(100px);
+    background-color: rgba(50, 50, 50, 1);
 }
