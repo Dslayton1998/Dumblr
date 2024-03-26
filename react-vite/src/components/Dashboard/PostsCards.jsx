@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
+import { FaRegHeart } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Notes from "../Notes/Notes";
@@ -54,6 +55,7 @@ export default function PostsCards({ post }) {
                 <div className="note-options">
                     <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
                     <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
+                    <FaRegHeart />
                 </div>
                 {displayNotes()}
             </div>
