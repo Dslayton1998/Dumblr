@@ -84,6 +84,7 @@ export default function UpdateBlog() {
             <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
             <h1 className='blog-update-heading'>Update your blog!</h1>
             <form className='blog-update-form' onSubmit={handleSubmit} encType="multipart/form-data">
+                
                 <label className='blog-update-input'>
                     <span className="update-blog-span">Do you want to change your blog title?</span>
                     <input
@@ -141,6 +142,7 @@ export default function UpdateBlog() {
                             <span className="error">{validationErrors.publicStatus}</span> )}
                     </div>
                 </label>
+
                 {disableButton()}
             </form>
         </div>

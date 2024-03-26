@@ -1,11 +1,17 @@
-import { useSelector } from "react-redux"
-import DeletePost from "./PostOptions/DeletePost"
-import UpdatePost from "./PostOptions/UpdatePost"
+import DeletePost from "./PostOptions/DeletePost";
+import UpdatePost from "./PostOptions/UpdatePost";
+import { FaComment } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import Notes from "../Notes/Notes";
+import { useState } from "react";
 import './Posts.css';
 
 export default function Posts({ post }) {
+    const [toggleNotes, setToggleNotes] = useState(false);
     const user = useSelector(state => state.session.user)
-    
+    const currPost = useSelector(state => state.posts ? state.posts[post.id] : null)
+
+
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {
@@ -14,6 +20,13 @@ export default function Posts({ post }) {
                     <DeletePost postId={post.id} />
                 </div>
             }
+        }
+    }
+
+// todo: state does not have user blogs so blog cannot be selected to post a comment with
+    const displayNotes = () => {
+        if(toggleNotes == true) {
+            return <Notes post={currPost}/>
         }
     }
 
@@ -26,8 +39,17 @@ export default function Posts({ post }) {
                 </div>
                 {userOptions()}
             </div>
+
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <p className="post-caption">{post.caption}</p>
+
+            <div className="notes-container">
+                <div className="note-options">
+                    <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
+                    <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
+                </div>
+                {displayNotes()}
+            </div>
         </div>
     )
 }

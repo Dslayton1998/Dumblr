@@ -1,0 +1,18 @@
+.comment-img {
+    width: 40px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.comment-options {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 10px 5px 10px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px gray;
+}
+
+.comment-details {
+    display: flex;
+    flex-direction: column;
+}

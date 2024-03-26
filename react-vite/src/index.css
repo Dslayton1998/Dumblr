@@ -56,8 +56,6 @@ body {
         background-color: rgba(70, 70, 70, 1);
         transition: all .5s ease-in-out; 
     }
-
-    /* hover can be the boxshadow */
 }
 
 .delete-modal-container {

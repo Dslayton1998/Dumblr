@@ -41,7 +41,6 @@
 .profile-dropdown > li{
   list-style: none;
   padding: 2px;
-  /* cursor: pointer; */
 }
 
 .profile-dropdown > li > button{
@@ -85,6 +84,7 @@
   justify-content: space-between;
   background-color: rgba(32, 32, 32, 1);
   position: fixed;
+  z-index: 9999;
   top: 0;
   width: 100vw;
   box-shadow: 5px 1px 3px 3px white;

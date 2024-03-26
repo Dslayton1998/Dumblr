@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import '../BlogPage.css'
+import '../BlogPage.css';
 
 export default function UpdateBlog ()  { 
     const navigate = useNavigate()

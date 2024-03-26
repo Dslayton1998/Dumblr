@@ -1,16 +1,19 @@
-import { useEffect } from "react"
-import { thunkOneBlog } from "../../redux/blog"
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
-import Posts from "../PostCards/Posts";
+import { useDispatch, useSelector } from "react-redux";
 import UpdateBlog from "./OptionButtons/UpdateButton";
 import DeleteBlog from "./OptionButtons/DeleteButton";
+import { thunkGetUserBlogs } from "../../redux/blog";
+import { thunkAllPosts } from "../../redux/post";
+import { thunkOneBlog } from "../../redux/blog";
+import { useParams } from "react-router-dom";
+import Posts from "../PostCards/Posts";
+import { useEffect } from "react";
 import './BlogPage.css';
 
 export default function BlogPage() {
     const dispatch = useDispatch();
     const { blogId } = useParams();
     const blog = useSelector(state => state.blogs[blogId])
+    // const user = useSelector(state => state.session.user)
     const currentUser = useSelector(state => state.session.user)
 
     let posts;
@@ -18,7 +21,7 @@ export default function BlogPage() {
         if(blog.posts) {
             const postsArr = blog.posts
             const jObj = Object.values(postsArr)
-        // * Using Object.values to parse into javascript object so reverse will work refactor later
+        // * Using Object.values to parse into javascript object so reverse will work
             const reverseArr = jObj.reverse()
             posts = reverseArr
         }
@@ -41,7 +44,18 @@ export default function BlogPage() {
         const oneBlog = async () => {
             await dispatch(thunkOneBlog(blogId))
         }
+
+        const getPosts = async () => {
+            await dispatch(thunkAllPosts())
+        }
+
+        const getCurrUserBlogs = async () => {
+            await dispatch(thunkGetUserBlogs(currentUser.id))
+        }
+
         oneBlog()
+        getPosts()
+        getCurrUserBlogs()
     }, [dispatch])
 
     return (

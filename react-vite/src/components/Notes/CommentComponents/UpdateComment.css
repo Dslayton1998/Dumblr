@@ -1,0 +1,40 @@
+.update-comment-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 550px;
+    height: 220px;
+}
+
+.update-comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update-comment-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 200px;
+}
+
+.update-comment-buttons > button {
+    align-self: center;
+    color: white;
+    background-color: rgba(50, 50, 50, 1);
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    width: 200px;
+    border: solid white 2px;
+    cursor: pointer;
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(70, 70, 70, 1);
+        transition: all .5s ease-in-out; 
+    }
+}

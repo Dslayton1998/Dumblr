@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { NavLink ,useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateBlog } from "../../redux/blog";
-import './CreateBlogForm.css'
+import { useEffect, useState } from "react";
+import './CreateBlogForm.css';
 
 export default function CreateBlogForm() {
     const dispatch = useDispatch();
@@ -84,6 +84,7 @@ export default function CreateBlogForm() {
             <h1 className='create-blog-heading'>Create a new blog!</h1>
             <p className="create-required">( Please fill out *ALL entry fields.)</p>
             <form className='create-blog-form' onSubmit={handleSubmit} encType="multipart/form-data">
+
                 <label className='create-blog-input'>
                     <span className="create-blog-span">* What is the title of your new blog?</span>
                     <input
@@ -99,7 +100,6 @@ export default function CreateBlogForm() {
                         {hasSubmitted && validationErrors.title && (
                             <span className="error">{validationErrors.title}</span> )}
                     </div>
-
                 </label>
 
 
@@ -118,7 +118,6 @@ export default function CreateBlogForm() {
                         {hasSubmitted && validationErrors.blogName && (
                             <span className="error">{validationErrors.blogName}</span> )}
                     </div>
-
                 </label>
 
 
@@ -134,7 +133,6 @@ export default function CreateBlogForm() {
                         {hasSubmitted && validationErrors.profilePicture && (
                             <span className="error">{validationErrors.profilePicture}</span> )}
                     </div>
-
                 </label>
 
 
@@ -150,7 +148,6 @@ export default function CreateBlogForm() {
                         {hasSubmitted && validationErrors.backgroundImage && (
                             <span className="error">{validationErrors.backgroundImage}</span> )}
                     </div>
-
                 </label>
 
 
@@ -166,9 +163,10 @@ export default function CreateBlogForm() {
                         {hasSubmitted && validationErrors.publicStatus && (
                             <span className="error">{validationErrors.publicStatus}</span> )}
                     </div>
-
                 </label>
+
                 <button className='submit-button' type="submit">Submit</button>
+                
             </form>
         </div>
     )

@@ -113,7 +113,94 @@
     align-self: flex-start;
     justify-content: flex-start;
     margin: 10px 0px 10px 0px;
-    padding: 15px 10px;
-    margin: 2px;
+    padding: 15px 10px; 
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px gray;
+    width: 100%;
+}
+
+.note-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.notes-button {
+    border: solid white .5px;
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.notes {
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px gray;
+    margin-top: 10px;
+}
+
+.note-blog-select {
+    width: 100px;
+}
+
+.comment-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 15px 5px 15px;
+    padding: 5px;
+    border-bottom: solid 1px gray;
+}
+
+.comment-icon {
+    width: 40px;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin: 5px 5px 8px 5px;
+    padding: 10px 10px 0px 10px;
+}
+
+.submit-comment {
+    align-self: center;
+    color: white;
+    background-color: rgba(50, 50, 50, 1);
+    padding: 5px 0px 30px 5px;
+    border: none;
+    cursor: pointer;
+
+    &:hover{
+        cursor: pointer;
+        transition: all .5s ease-in-out; 
+    }
+}
+
+.create-comment-error-container {
+    margin-top: 10px;
+    margin-left: 50px;
+    height: max(20px);
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.blog-select-error-container {
+    margin-top: 10px;
+    height: max(20px);
+    width: max(100px);
     background-color: rgba(50, 50, 50, 1);
 }

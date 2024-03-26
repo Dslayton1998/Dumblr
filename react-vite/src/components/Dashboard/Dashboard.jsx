@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
+import { thunkGetUserBlogs } from "../../redux/blog";
 import { thunkAllPosts } from "../../redux/post";
-import PostsCards from "./PostsCards";
-import './Dashboard.css'
+import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
+import PostsCards from "./PostsCards";
+import './Dashboard.css';
 
 export default function Dashboard() {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
+    const user = useSelector(state => state.session.user)
     const allPosts = useSelector(state => state.posts ? Object.values(state.posts): null)
     const reversePosts = allPosts.reverse()
     const posts = [];
@@ -23,7 +25,12 @@ export default function Dashboard() {
             setIsLoading(false)
         }
 
+        const getCurrUserBlogs = async () => {
+            await dispatch(thunkGetUserBlogs(user.id))
+        }
+
         getPosts()
+        getCurrUserBlogs()
     }, [dispatch])
 
 
@@ -31,7 +38,6 @@ export default function Dashboard() {
         return <Loading />
     }
     
-
     return (
         <>
         <div className="dashboard-container">

@@ -1,15 +1,18 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
-import { NavLink, useNavigate } from "react-router-dom";
+import { FaComment } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
 
+
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
-    const [toggleNotes, setToggleNotes] = useState(false)
-    const user = useSelector(state => state.session.user)
-    const commentsArr = post.comments ? Object.values(post.comments) : null
+    const [toggleNotes, setToggleNotes] = useState(false);
+    const user = useSelector(state => state.session.user);
+
 
     const userOptions = () => {
         if(user != null) {
@@ -26,16 +29,12 @@ export default function PostsCards({ post }) {
         navigate(`/blog/${post.blog.id}`)
     }
 
+
     const displayNotes = () => {
         if(toggleNotes == true) {
-            // todo: Should render a new component with "reply" and "likes" displaying respective functionality
-            return  <div>
-                {commentsArr.length ? commentsArr[0].comment : null}
-            </div> 
+            return <Notes post={post}/>
         }
     }
-
-// todo: when you click on the notes button (toggle), the PostCard extends and allows you to view AND create posts
 
     return (
         <div className="post-container">
@@ -46,18 +45,18 @@ export default function PostsCards({ post }) {
                 </div>
                 {userOptions()}
             </div>
+
             {post.image ? <img className="post-image" src={post.image}/> : null}
             <div className="post-caption">{post.caption}</div>
 
 
-            {/* <div>
-                <button onClick={() => setToggleNotes(!toggleNotes)}>Notes</button>
-                <div className="post-options">
-                    <button>Reply</button>
+            <div className="notes-container">
+                <div className="note-options">
+                    <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
+                    <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
                 </div>
                 {displayNotes()}
-            </div> */}
-
+            </div>
 
         </div>
     )
