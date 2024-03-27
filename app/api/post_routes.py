@@ -1,6 +1,6 @@
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 from flask_login import login_required, current_user
-from app.models import Post, Comment, db
+from app.models import Post, Comment, Like, db
 from flask import Blueprint, request
 from ..forms import PostForm, PostUpdateForm, CommentForm, CommentUpdateForm
 
@@ -12,12 +12,19 @@ def get_all_posts():
     Returns a list of all post with blog information included for easier navigation
     """
 # todo: NEEDS a major refactor! there has to be an easier way. Costly in terms of time and efficiency :(
-    comments = [comment for comment in Comment.query.all()]
-    posts = [post.to_dict() for post in Post.query.all()]
 # posts = [post.to_dict() for post in db.session.query(Post).filter(Post.blog.public == True)]
+    comments = [comment for comment in Comment.query.all()]
+    likes = [like for like in Like.query.all()]
+    posts = [post.to_dict() for post in Post.query.all()]
 
     for post in posts:
         post["comments"] = {}
+        post["likes"] = {}
+
+        for like in likes:
+            if like.post_id == post['id']:
+                post["likes"].update( {like.id: like.to_dict()} )
+
         for comment in comments:
             if comment.post_id == post['id']:
                 post["comments"].update( {comment.id: comment.to_dict()} )
@@ -155,7 +162,7 @@ def update_post(id):
 @login_required
 def create_comment():
     """
-    Creates a comment
+    Creates a comment on a post
     """
     form = CommentForm()
 
@@ -214,3 +221,16 @@ def update_comment(id):
     else:
         print(form.errors)
         return form.errors
+    
+
+
+
+######################################## Likes ###########################################
+@post_routes.route('/like', methods=['POST'])
+@login_required
+def like_post():
+    """
+    Creates a like on a post
+    """
+
+    #todo: finish creating route after creating like form
