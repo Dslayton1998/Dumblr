@@ -21,8 +21,8 @@ export default function Notes({ post }) {
             errors.blog = "Select a blog."
         }
 
-        if(comment.length <= 4) {
-            errors.comment = "Comment must me at least 4 characters or longer."
+        if(comment.length < 4) {
+            errors.comment = "Comment must be at least 4 characters or longer."
         }
 
         setValidationsErrors(errors)
