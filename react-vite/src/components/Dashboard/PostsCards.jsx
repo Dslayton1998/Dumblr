@@ -4,6 +4,7 @@ import DeletePost from "./OptionButtons/DeletePost";
 import { FaRegHeart } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { FaHeart } from "react-icons/fa";
 import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
@@ -12,6 +13,8 @@ import './PostsCards.css';
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
     const [toggleNotes, setToggleNotes] = useState(false);
+    const [liked, setLikedStatus] = useState(false);
+    // ^ default value will come from state
     const user = useSelector(state => state.session.user);
 
 
@@ -37,18 +40,25 @@ export default function PostsCards({ post }) {
         }
     }
 
+    const likeStatus = () => {
+        //! might have two functions to dispatch a create like and delete like
+        setLikedStatus(!liked)
+    }
+
     const addLike = () => {
+        // todo: currently just changing the display, no like is created 
         // adds a like to the post, state variable to toggle like status (like or unlike)
-        //// If not logged-in no like button displays
-        // like will be created with users primary blog
+        // like will be created with users primary blog (userBlogs in state can help with this)
         if(user != null) {
-            // another if statement to check like status
-            return (
-            <FaRegHeart />
-            )
+            if(liked === true) {
+                return (<FaHeart onClick={likeStatus}/>)
+            } else {
+                return (<FaRegHeart onClick={likeStatus}/>)
+            }
         }
     }
 
+// addlikes could just return like component after logic is figured out
     return (
         <div className="post-container">
             <div className="dashboard-blog" onClick={onClick}>

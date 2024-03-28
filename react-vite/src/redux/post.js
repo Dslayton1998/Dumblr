@@ -4,7 +4,7 @@ const CREATE_POST = 'posts/CREATE_POST'
 const DELETE_POST = 'posts/DELETE_POST'
 const UPDATE_POST = 'posts/UPDATE_POST'
 
-
+// Comments \\
 const CREATE_COMMENT = 'comment/CREATE_COMMENT'
 const DELETE_COMMENT = 'comment/DELETE_COMMENT'
 const UPDATE_COMMENT = 'comment/UPDATE_COMMENT'
@@ -37,7 +37,7 @@ const updatePost = (postId) => ({
 
 
 
-
+// Comments \\
 const newComment = (post, comment) => ({
     type: CREATE_COMMENT,
     payload: {post, comment}
@@ -131,7 +131,7 @@ export const thunkUpdatePost = (postId, formData) => async (dispatch) => {
 
 
 
-
+// Comments \\
 export const thunkCreateComment = (post, formData) => async (dispatch) => {
     const res = await fetch("/api/post/new/comment", {
         method: 'POST',
@@ -207,6 +207,7 @@ function postReducer(state = {}, action) {
             return newState
         }
 
+// Comments \\
         case CREATE_COMMENT: {
             const post = action.payload.post
             const comment = action.payload.comment
