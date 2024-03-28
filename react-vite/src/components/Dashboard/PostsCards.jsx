@@ -37,6 +37,18 @@ export default function PostsCards({ post }) {
         }
     }
 
+    const addLike = () => {
+        // adds a like to the post, state variable to toggle like status (like or unlike)
+        //// If not logged-in no like button displays
+        // like will be created with users primary blog
+        if(user != null) {
+            // another if statement to check like status
+            return (
+            <FaRegHeart />
+            )
+        }
+    }
+
     return (
         <div className="post-container">
             <div className="dashboard-blog" onClick={onClick}>
@@ -55,7 +67,7 @@ export default function PostsCards({ post }) {
                 <div className="note-options">
                     <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
                     <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
-                    <FaRegHeart />
+                    {addLike()}
                 </div>
                 {displayNotes()}
             </div>
