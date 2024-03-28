@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import IntegerField
 from wtforms.validators import DataRequired
 
-    #todo: continue here Thursday 3/28/24
+
 class LikeForm(FlaskForm):
-    pass
+    blog_id = IntegerField('Blog id', validators=[DataRequired()])
+    post_id = IntegerField('Post id', validators=[DataRequired()])

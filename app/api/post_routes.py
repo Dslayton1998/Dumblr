@@ -2,7 +2,7 @@ from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from
 from flask_login import login_required, current_user
 from app.models import Post, Comment, Like, db
 from flask import Blueprint, request
-from ..forms import PostForm, PostUpdateForm, CommentForm, CommentUpdateForm
+from ..forms import PostForm, PostUpdateForm, CommentForm, CommentUpdateForm, LikeForm
 
 post_routes = Blueprint('post', __name__)
 
@@ -233,4 +233,21 @@ def like_post():
     Creates a like on a post
     """
 
-    #todo: finish creating route after creating like form
+    #todo: Likes should only be created under the primary blog
+    form = LikeForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    print(form["csrf_token"])
+
+    if form.validate_on_submit():
+        new_like = Like(
+            blog_id = form.data['blog_id'],
+            post_id = form.data['post_id'],
+        )
+
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict()
+    else:
+        print(form.errors)
+        return form.errors
