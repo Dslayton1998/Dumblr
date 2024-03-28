@@ -18,6 +18,7 @@ class Blog(db.Model):
     owner = db.relationship("User", back_populates="blogs")
     posts = db.relationship("Post", back_populates="blog", cascade="all, delete")
     comments = db.relationship("Comment", back_populates="blog", cascade="all, delete")
+    likes = db.relationship("Like", back_populates="blog", cascade="all, delete")
 
     def to_dict(self, printer=False):
         return_dict = {
