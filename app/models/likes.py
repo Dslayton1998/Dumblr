@@ -7,7 +7,8 @@ class Like(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    # user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    blog_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("blog.id")))
     post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("posts.id")))
 
     post = db.relationship("Post", back_populates="likes")
@@ -15,7 +16,8 @@ class Like(db.Model):
     def to_dict(self, printer=False):
         return_dict = {
             "id": self.id,
-            "user_id": self.user_id,
+            "blog_id": self.blog_id,
+            # "user_id": self.user_id,
             "post_id": self.post_id,
             "post": self.post.to_dict()
             # ^ Might not need post in this to_dict
