@@ -4,10 +4,16 @@ const CREATE_POST = 'posts/CREATE_POST'
 const DELETE_POST = 'posts/DELETE_POST'
 const UPDATE_POST = 'posts/UPDATE_POST'
 
+
 // Comments \\
 const CREATE_COMMENT = 'comment/CREATE_COMMENT'
 const DELETE_COMMENT = 'comment/DELETE_COMMENT'
 const UPDATE_COMMENT = 'comment/UPDATE_COMMENT'
+
+
+// Likes \\
+const CREATE_LIKE = 'like/CREATE_LIKE'
+const DELETE_LIKE = 'like/DELETE_LIKE'
 
 
 const getPosts = (posts) => ({
@@ -54,6 +60,17 @@ const updateComment = (post, comment) => ({
 })
 
 
+
+// Likes \\
+const newLike = (post, like) => ({
+    type: CREATE_LIKE,
+    payload: {post, like}
+})
+
+const deleteLike = (post, likeId) => ({
+    type: CREATE_LIKE,
+    payload: {post, likeId}
+})
 
 
 
@@ -180,6 +197,11 @@ export const thunkUpdateComment = (post, comment, formData) => async (dispatch) 
 }
 
 
+
+// Likes \\
+export const thunkCreateLike = () => async (dispatch) => {
+    // todo: continue here 
+}
 
 
 function postReducer(state = {}, action) {
