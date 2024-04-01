@@ -16,7 +16,8 @@ export default function PostsCards({ post }) {
     const dispatch = useDispatch();
     const [toggleNotes, setToggleNotes] = useState(false);
     const [liked, setLikedStatus] = useState(false);
-    // ^ default value will come from state
+    // ^ default value will come from state, have to find a way to decide if user has liked or not
+    // (something like if(primaryBlog == likes.blog_id) return true;; else return false?)
     const user = useSelector(state => state.session.user);
     const userBlogs = useSelector(state => state.blogs.userBlogs);
     let primaryBlog;
@@ -24,7 +25,7 @@ export default function PostsCards({ post }) {
         if (userBlogs[blog].primary_blog == true)
         primaryBlog = userBlogs[blog]
     }
-    console.log(post)
+
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {
@@ -54,6 +55,7 @@ export default function PostsCards({ post }) {
         formData.append("post_id", post.id)
         formData.append("blog_id", primaryBlog.id)
         dispatch(thunkCreateLike(post, formData))
+
         setLikedStatus(!liked)
     }
 

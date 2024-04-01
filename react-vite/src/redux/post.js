@@ -268,6 +268,7 @@ function postReducer(state = {}, action) {
 
 // Likes \\
         case CREATE_LIKE: {
+            // Needs to do something else
             return state
         }
 
