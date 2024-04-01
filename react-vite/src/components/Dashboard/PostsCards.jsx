@@ -3,21 +3,28 @@ import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
 import { FaRegHeart } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaHeart } from "react-icons/fa";
 import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
+import { thunkCreateLike } from "../../redux/post";
 
 
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [toggleNotes, setToggleNotes] = useState(false);
     const [liked, setLikedStatus] = useState(false);
     // ^ default value will come from state
     const user = useSelector(state => state.session.user);
-
-
+    const userBlogs = useSelector(state => state.blogs.userBlogs);
+    let primaryBlog;
+    for( let blog in userBlogs ) {
+        if (userBlogs[blog].primary_blog == true)
+        primaryBlog = userBlogs[blog]
+    }
+    console.log(post)
     const userOptions = () => {
         if(user != null) {
             if(post.user_id == user.id) {
@@ -40,8 +47,13 @@ export default function PostsCards({ post }) {
         }
     }
 
-    const likeStatus = () => {
+    const likeStatus = async (e) => {
+        e.preventDefault();
         //! might have two functions to dispatch a create like and delete like
+        const formData = new FormData();
+        formData.append("post_id", post.id)
+        formData.append("blog_id", primaryBlog.id)
+        dispatch(thunkCreateLike(post, formData))
         setLikedStatus(!liked)
     }
 

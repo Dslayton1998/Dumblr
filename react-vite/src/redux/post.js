@@ -199,8 +199,20 @@ export const thunkUpdateComment = (post, comment, formData) => async (dispatch) 
 
 
 // Likes \\
-export const thunkCreateLike = () => async (dispatch) => {
-    // todo: continue here 
+export const thunkCreateLike = (post, formData) => async (dispatch) => {
+    const res = await fetch('/api/post/like', {
+        method: 'POST',
+        body: formData
+    })
+
+    if(res.ok) {
+        const like = await res.json()
+        dispatch(newLike({post, like}))
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
 }
 
 
@@ -252,6 +264,11 @@ function postReducer(state = {}, action) {
             const newState = {...state}
             newState[post.id].comments[comment.id].comment = comment.comment
             return newState
+        }
+
+// Likes \\
+        case CREATE_LIKE: {
+            return state
         }
 
         default:
