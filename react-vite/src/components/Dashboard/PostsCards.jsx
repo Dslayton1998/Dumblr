@@ -17,25 +17,25 @@ export default function PostsCards({ post }) {
     const [toggleNotes, setToggleNotes] = useState(false);
     const user = useSelector(state => state.session.user);
     const userBlogs = useSelector(state => state.blogs.userBlogs);
-    const likes = post.likes
-    let [liked, setLikedStatus] = useState("");
+
+    const [liked, setLikedStatus] = useState("");
     let primaryBlog;
-    let currLike;
+    
     for( let blog in userBlogs ) {
         if (userBlogs[blog].primary_blog == true)
         primaryBlog = userBlogs[blog]
     }
 
-   if(primaryBlog != undefined) {
-       for( let like in likes) {
-            if(likes[like].blog_id == primaryBlog.id) {
-                currLike = likes[like]
-                liked = true
-            } else {
-                liked = false
-            }
-       }
-   }
+//    if(primaryBlog != undefined) {
+//        for( let like in likes) {
+//             if(likes[like].blog_id == primaryBlog.id) {
+//                 currLike = likes[like]
+//                 liked = true
+//             } else {
+//                 liked = false
+//             }
+//        }
+//    }
 
     const userOptions = () => {
         if(user != null) {
@@ -61,7 +61,6 @@ export default function PostsCards({ post }) {
 //! currently just wants to keep creating likes and never delete might have to check out group project to figure out
     const likeStatus = async (e) => {
         e.preventDefault();
-        //! might have two functions to dispatch a create like and delete like
         const formData = new FormData();
         formData.append("post_id", post.id)
         formData.append("blog_id", primaryBlog.id)
@@ -69,13 +68,26 @@ export default function PostsCards({ post }) {
 
         setLikedStatus(!liked)
     }
-    console.log(currLike)
-    const unlikeStatus = async (e) => {
-        e.preventDefault();
-        dispatch(thunkDeleteLike(post, currLike.id))
-
-        setLikedStatus(!liked)
-    }
+    // export default function SongCard({ song, source, playlistId, artistId }) {
+    //     const dispatch = useDispatch();
+    //     const currentUser = useSelector(state => state.session.user)
+    //     const likedSongs = useSelector(state => state.likes)
+    //     const [numLikes, setNumLikes] = useState(song.likes)
+    //     const [deleted, setDeleted] = useState(false)
+    //     const [liked, setLiked] = useState(false)
+    //     const { currentSong, setCurrentSong } = useContext(MusicContext)
+      
+    //     const addLike = async () => {
+    //       await dispatch(addLikeThunk(song.id))
+    //       setLiked(!liked);
+    //       setNumLikes(numLikes + 1);
+    //     }
+      
+    //     const removeLike = async () => {
+    //       await dispatch(removeLikeThunk(song.id))
+    //       setLiked(!liked)
+    //       setNumLikes(numLikes - 1);
+    //     }
 
     const addLike = () => {
         // todo: currently just changing the display, no like is created 
@@ -83,7 +95,7 @@ export default function PostsCards({ post }) {
         // like will be created with users primary blog (userBlogs in state can help with this)
         if(user != null) {
             if(liked === true) {
-                return (<FaHeart onClick={unlikeStatus}/>)
+                return (<FaHeart onClick={likeStatus}/>)
             } else {
                 return (<FaRegHeart onClick={likeStatus}/>)
             }
