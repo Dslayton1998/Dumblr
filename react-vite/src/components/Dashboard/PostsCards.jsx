@@ -15,16 +15,23 @@ export default function PostsCards({ post }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [toggleNotes, setToggleNotes] = useState(false);
-    const [liked, setLikedStatus] = useState(false);
-    // ^ default value will come from state, have to find a way to decide if user has liked or not
-    // (something like if(primaryBlog == likes.blog_id) return true;; else return false?)
     const user = useSelector(state => state.session.user);
     const userBlogs = useSelector(state => state.blogs.userBlogs);
+    const likes = post.likes
+    let [liked, setLikedStatus] = useState("");
     let primaryBlog;
     for( let blog in userBlogs ) {
         if (userBlogs[blog].primary_blog == true)
         primaryBlog = userBlogs[blog]
     }
+
+   if(primaryBlog != undefined) {
+       for( let like in likes) {
+            if(likes[like].blog_id == primaryBlog.id) {
+                liked = true
+            }
+       }
+   }
 
     const userOptions = () => {
         if(user != null) {
