@@ -216,6 +216,21 @@ export const thunkCreateLike = (post, formData) => async (dispatch) => {
 }
 
 
+export const thunkDeleteLike = (post, likeId) => async (dispatch) => {
+    const res = await fetch(`/api/post/${likeId}/delete/like`, {
+        method: 'DELETE'
+    })
+
+    if(res.ok) {
+        dispatch(deleteLike(post, likeId))
+    } else {
+        const error = await res.json()
+        console.log(error)
+        return error
+    }
+}
+
+
 function postReducer(state = {}, action) {
     switch (action.type) {
         case GET_POSTS: {
@@ -269,6 +284,10 @@ function postReducer(state = {}, action) {
 // Likes \\
         case CREATE_LIKE: {
             // Needs to do something else
+            return state
+        }
+
+        case DELETE_LIKE: {
             return state
         }
 
