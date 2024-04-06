@@ -8,7 +8,7 @@ import { FaHeart } from "react-icons/fa";
 import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
-import { thunkCreateLike } from "../../redux/post";
+import { thunkCreateLike, thunkDeleteLike } from "../../redux/post";
 
 
 export default function PostsCards({ post }) {
@@ -20,6 +20,7 @@ export default function PostsCards({ post }) {
     const likes = post.likes
     let [liked, setLikedStatus] = useState("");
     let primaryBlog;
+    let currLike;
     for( let blog in userBlogs ) {
         if (userBlogs[blog].primary_blog == true)
         primaryBlog = userBlogs[blog]
@@ -28,7 +29,10 @@ export default function PostsCards({ post }) {
    if(primaryBlog != undefined) {
        for( let like in likes) {
             if(likes[like].blog_id == primaryBlog.id) {
+                currLike = likes[like]
                 liked = true
+            } else {
+                liked = false
             }
        }
    }
@@ -54,7 +58,7 @@ export default function PostsCards({ post }) {
             return <Notes post={post}/>
         }
     }
-
+//! currently just wants to keep creating likes and never delete might have to check out group project to figure out
     const likeStatus = async (e) => {
         e.preventDefault();
         //! might have two functions to dispatch a create like and delete like
@@ -65,6 +69,13 @@ export default function PostsCards({ post }) {
 
         setLikedStatus(!liked)
     }
+    console.log(currLike)
+    const unlikeStatus = async (e) => {
+        e.preventDefault();
+        dispatch(thunkDeleteLike(post, currLike.id))
+
+        setLikedStatus(!liked)
+    }
 
     const addLike = () => {
         // todo: currently just changing the display, no like is created 
@@ -72,7 +83,7 @@ export default function PostsCards({ post }) {
         // like will be created with users primary blog (userBlogs in state can help with this)
         if(user != null) {
             if(liked === true) {
-                return (<FaHeart onClick={likeStatus}/>)
+                return (<FaHeart onClick={unlikeStatus}/>)
             } else {
                 return (<FaRegHeart onClick={likeStatus}/>)
             }
