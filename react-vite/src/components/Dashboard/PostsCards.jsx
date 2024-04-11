@@ -8,7 +8,7 @@ import { FaHeart } from "react-icons/fa";
 import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
-import { thunkCreateLike, thunkDeleteLike } from "../../redux/post";
+import { thunkCreateLike, thunkDeleteLike } from "../../redux/likes";
 
 
 export default function PostsCards({ post }) {
