@@ -12,8 +12,8 @@ const UPDATE_COMMENT = 'comment/UPDATE_COMMENT'
 
 
 // Likes \\
-const CREATE_LIKE = 'like/CREATE_LIKE'
-const DELETE_LIKE = 'like/DELETE_LIKE'
+// const CREATE_LIKE = 'like/CREATE_LIKE'
+// const DELETE_LIKE = 'like/DELETE_LIKE'
 
 
 const getPosts = (posts) => ({
@@ -61,16 +61,16 @@ const updateComment = (post, comment) => ({
 
 
 
-// Likes \\
-const newLike = (post, like) => ({
-    type: CREATE_LIKE,
-    payload: {post, like}
-})
+// // Likes \\
+// const newLike = (post, like) => ({
+//     type: CREATE_LIKE,
+//     payload: {post, like}
+// })
 
-const deleteLike = (post, likeId) => ({
-    type: CREATE_LIKE,
-    payload: {post, likeId}
-})
+// const deleteLike = (post, likeId) => ({
+//     type: CREATE_LIKE,
+//     payload: {post, likeId}
+// })
 
 
 
@@ -199,36 +199,36 @@ export const thunkUpdateComment = (post, comment, formData) => async (dispatch) 
 
 
 // Likes \\
-export const thunkCreateLike = (post, formData) => async (dispatch) => {
-    const res = await fetch('/api/post/like', {
-        method: 'POST',
-        body: formData
-    })
+// export const thunkCreateLike = (post, formData) => async (dispatch) => {
+//     const res = await fetch('/api/post/like', {
+//         method: 'POST',
+//         body: formData
+//     })
 
-    if(res.ok) {
-        const like = await res.json()
-        dispatch(newLike({post, like}))
-    } else {
-        const error = await res.json()
-        console.log(error)
-        return error
-    }
-}
+//     if(res.ok) {
+//         const like = await res.json()
+//         dispatch(newLike({post, like}))
+//     } else {
+//         const error = await res.json()
+//         console.log(error)
+//         return error
+//     }
+// }
 
 
-export const thunkDeleteLike = (post, likeId) => async (dispatch) => {
-    const res = await fetch(`/api/post/${likeId}/delete/like`, {
-        method: 'DELETE'
-    })
+// export const thunkDeleteLike = (post, likeId) => async (dispatch) => {
+//     const res = await fetch(`/api/post/${likeId}/delete/like`, {
+//         method: 'DELETE'
+//     })
 
-    if(res.ok) {
-        dispatch(deleteLike(post, likeId))
-    } else {
-        const error = await res.json()
-        console.log(error)
-        return error
-    }
-}
+//     if(res.ok) {
+//         dispatch(deleteLike(post, likeId))
+//     } else {
+//         const error = await res.json()
+//         console.log(error)
+//         return error
+//     }
+// }
 
 
 function postReducer(state = {}, action) {

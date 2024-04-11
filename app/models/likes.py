@@ -18,10 +18,9 @@ class Like(db.Model):
         return_dict = {
             "id": self.id,
             "blog_id": self.blog_id,
-            # "user_id": self.user_id,
             "post_id": self.post_id,
-            "post": self.post.to_dict()
-            # ^ Might not need post in this to_dict
+            # "post": self.post.to_dict()
+            # # ^ Might not need post in this to_dict
         }
 
         if printer:
