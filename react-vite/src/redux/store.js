@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import blogReducer from "./blog";
 import postReducer from "./post";
+import likesReducer from "./likes";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   blogs: blogReducer,
-  posts: postReducer
+  posts: postReducer,
+  likes: likesReducer
 });
 
 let enhancer;

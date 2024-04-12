@@ -25,7 +25,7 @@ class Post(db.Model):
             "image": self.image,
             "caption": self.caption,
             "blog": self.blog.to_dict(),
-            "likes": len(self.likes)
+            "likes": [like.to_dict() for like in self.likes]
             # "comments": {{comment.id:comment.to_dict} for comment in self.comments} #?????!?!?
         }
 
