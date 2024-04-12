@@ -29,7 +29,8 @@ class Blog(db.Model):
             "profile_picture": self.profile_picture,
             "background_image": self.background_image,
             "primary_blog": self.primary_blog,
-            "public": self.public
+            "public": self.public,
+            "likes": [like.to_dict() for like in self.likes]
         }
 
         if printer:
