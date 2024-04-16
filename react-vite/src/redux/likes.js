@@ -1,4 +1,4 @@
-const GET_LIKES = '/likes/GET_LIKES'
+const GET_LIKES = 'likes/GET_LIKES'
 
 const getLikes = (likes) => ({
   type: GET_LIKES,
@@ -26,6 +26,7 @@ export const thunkCreateLike = (post, formData) => async (dispatch) => {
     if(res.ok) {
         const like = await res.json()
         dispatch(getLikes({post, like}))
+        return like
     } else {
         const error = await res.json()
         console.log(error)

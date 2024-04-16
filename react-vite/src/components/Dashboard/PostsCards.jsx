@@ -17,25 +17,27 @@ export default function PostsCards({ post }) {
     const [toggleNotes, setToggleNotes] = useState(false);
     const user = useSelector(state => state.session.user);
     const userBlogs = useSelector(state => state.blogs.userBlogs);
-    //     const likedSongs = useSelector(state => state.likes)
-    //     const [numLikes, setNumLikes] = useState(song.likes)
-    //     const [deleted, setDeleted] = useState(false)
-    //     const [liked, setLiked] = useState(false)
-    //     const { currentSong, setCurrentSong } = useContext(MusicContext)
+    const [numLikes, setNumLikes] = useState(post.likes.length)
+    const [liked, setLikedStatus] = useState(false);
+    let newLike;
       
-    //     const addLike = async () => {
-    //       await dispatch(addLikeThunk(song.id))
-    //       setLiked(!liked);
-    //       setNumLikes(numLikes + 1);
-    //     }
-      
-    //     const removeLike = async () => {
-    //       await dispatch(removeLikeThunk(song.id))
-    //       setLiked(!liked)
-    //       setNumLikes(numLikes - 1);
-    //     }
+        const addLike = async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("post_id", post.id)
+            formData.append("blog_id", primaryBlog.id)
+            newLike = await dispatch(thunkCreateLike(post, formData))
+    
+            setLikedStatus(!liked)
+            setNumLikes(numLikes + 1);
+        }
+      console.log(newLike)
+        const removeLike = async () => {
+          await dispatch(thunkDeleteLike(post, newLike.id))
+          setLikedStatus(!liked)
+          setNumLikes(numLikes - 1);
+        }
 
-    const [liked, setLikedStatus] = useState("");
     let primaryBlog;
     
     for( let blog in userBlogs ) {
@@ -53,15 +55,15 @@ export default function PostsCards({ post }) {
         setLikedStatus(!liked)
     }
 
-    const addLike = () => {
+    const toggleLike = () => {
         // todo: currently just changing the display, no like is created 
         // adds a like to the post, state variable to toggle like status (like or unlike)
         // like will be created with users primary blog (userBlogs in state can help with this)
         if(user != null) {
             if(liked === true) {
-                return (<FaHeart onClick={likeStatus}/>)
+                return (<FaHeart onClick={removeLike}/>)
             } else {
-                return (<FaRegHeart onClick={likeStatus}/>)
+                return (<FaRegHeart onClick={addLike}/>)
             }
         }
     }
@@ -107,7 +109,7 @@ export default function PostsCards({ post }) {
                 <div className="note-options">
                     <div className="notes-button" onClick={() => setToggleNotes(!toggleNotes)}>Notes</div>
                     <FaComment className="comment-icon" onClick={() => setToggleNotes(!toggleNotes)}/>
-                    {addLike()}
+                    {toggleLike()}
                 </div>
                 {displayNotes()}
             </div>
