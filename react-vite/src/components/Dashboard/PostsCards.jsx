@@ -19,19 +19,19 @@ export default function PostsCards({ post }) {
     const userBlogs = useSelector(state => state.blogs.userBlogs);
     const [numLikes, setNumLikes] = useState(post.likes.length)
     const [liked, setLikedStatus] = useState(false);
-    let newLike;
+
       
         const addLike = async (e) => {
             e.preventDefault();
             const formData = new FormData();
             formData.append("post_id", post.id)
             formData.append("blog_id", primaryBlog.id)
-            newLike = await dispatch(thunkCreateLike(post, formData))
+            await dispatch(thunkCreateLike(post, formData))
     
             setLikedStatus(!liked)
             setNumLikes(numLikes + 1);
         }
-      console.log(newLike)
+
         const removeLike = async () => {
           await dispatch(thunkDeleteLike(post, newLike.id))
           setLikedStatus(!liked)
@@ -44,7 +44,7 @@ export default function PostsCards({ post }) {
         if (userBlogs[blog].primary_blog == true)
         primaryBlog = userBlogs[blog]
 }
-//! currently just wants to keep creating likes and never delete might have to check out group project to figure out
+//! currently just wants to keep creating likes and never delete, delete may need to just involve post ID
     const likeStatus = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -56,8 +56,7 @@ export default function PostsCards({ post }) {
     }
 
     const toggleLike = () => {
-        // todo: currently just changing the display, no like is created 
-        // adds a like to the post, state variable to toggle like status (like or unlike)
+        // todo: currently just changing the display 
         // like will be created with users primary blog (userBlogs in state can help with this)
         if(user != null) {
             if(liked === true) {

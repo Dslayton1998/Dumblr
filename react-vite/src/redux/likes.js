@@ -36,11 +36,12 @@ export const thunkCreateLike = (post, formData) => async (dispatch) => {
 
 
 export const thunkDeleteLike = (post, likeId) => async (dispatch) => {
-    const res = await fetch(`/api/post/${likeId}/delete/like`, {
+    const res = await fetch(`/api/post/${likeId}/unlike`, {
         method: 'DELETE'
     })
 
     if(res.ok) {
+      // DELETE SHOULD JUST GO OFF OF POST ID
         dispatch(deleteLike(post, likeId))
     } else {
         const error = await res.json()

@@ -253,12 +253,13 @@ def like_post():
         return form.errors
     
 
-@post_routes.route('/<int:id>/delete/like', methods=['DELETE'])
+@post_routes.route('/<int:id>/unlike', methods=['DELETE'])
 @login_required
 def delete_like(id):
     """
     Deletes a comment based on Id
     """
+    
     target_like = Like.query.get(id)
     
     db.session.delete(target_like)
