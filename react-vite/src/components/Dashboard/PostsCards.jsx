@@ -1,24 +1,24 @@
+import { thunkCreateLike, thunkDeleteLike } from "../../redux/likes";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import UpdatePost from "./OptionButtons/UpdatePost";
 import DeletePost from "./OptionButtons/DeletePost";
 import { FaRegHeart } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
 import { FaHeart } from "react-icons/fa";
 import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
-import { thunkCreateLike, thunkDeleteLike } from "../../redux/likes";
 
 
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [numLikes, setNumLikes] = useState(post.likes.length);
     const [toggleNotes, setToggleNotes] = useState(false);
-    const user = useSelector(state => state.session.user);
-    const userBlogs = useSelector(state => state.blogs.userBlogs);
-    const [numLikes, setNumLikes] = useState(post.likes.length)
     const [liked, setLikedStatus] = useState(false);
+    const userBlogs = useSelector(state => state.blogs.userBlogs);
+    const user = useSelector(state => state.session.user);
 
       
         const addLike = async (e) => {
@@ -45,19 +45,18 @@ export default function PostsCards({ post }) {
         primaryBlog = userBlogs[blog]
 }
 //! currently just wants to keep creating likes and never delete, delete may need to just involve post ID
-    const likeStatus = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("post_id", post.id)
-        formData.append("blog_id", primaryBlog.id)
-        dispatch(thunkCreateLike(post, formData))
+    // const likeStatus = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append("post_id", post.id)
+    //     formData.append("blog_id", primaryBlog.id)
+    //     dispatch(thunkCreateLike(post, formData))
 
-        setLikedStatus(!liked)
-    }
+    //     setLikedStatus(!liked)
+    // }
 
     const toggleLike = () => {
         // todo: currently just changing the display 
-        // like will be created with users primary blog (userBlogs in state can help with this)
         if(user != null) {
             if(liked === true) {
                 return (<FaHeart onClick={removeLike}/>)
@@ -89,7 +88,7 @@ export default function PostsCards({ post }) {
         }
     }
 
-// addlikes could just return like component after logic is figured out
+// toggleLike could just return like component after logic is figured out
     return (
         <div className="post-container">
             <div className="dashboard-blog" onClick={onClick}>

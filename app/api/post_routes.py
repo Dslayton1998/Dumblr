@@ -232,8 +232,6 @@ def like_post():
     """
     Creates a like on a post
     """
-
-    #todo: Likes should only be created under the primary blog
     form = LikeForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -259,7 +257,7 @@ def delete_like(id):
     """
     Deletes a comment based on Id
     """
-    
+# todo: needs a refactor
     target_like = Like.query.get(id)
     
     db.session.delete(target_like)
