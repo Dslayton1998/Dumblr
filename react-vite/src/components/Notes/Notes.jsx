@@ -1,9 +1,9 @@
 import { thunkCreateComment } from "../../redux/post";
 import Comments from "./CommentComponents/Comments";
 import { LuSendHorizonal } from "react-icons/lu";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 
 export default function Notes({ post }) {
     const dispatch = useDispatch();

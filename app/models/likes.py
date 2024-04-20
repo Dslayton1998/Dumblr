@@ -19,14 +19,9 @@ class Like(db.Model):
             "id": self.id,
             "blog_id": self.blog_id,
             "post_id": self.post_id,
-            # "post": self.post.to_dict()
-            # # ^ Might not need post in this to_dict
         }
 
         if printer:
             print(return_dict)
 
         return return_dict
-    
-
-# Might refactor, if you want to display who has liked this post, blog_id / primary_blog
