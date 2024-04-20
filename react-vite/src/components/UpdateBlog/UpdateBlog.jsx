@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { thunkOneBlog, thunkUpdateBlog } from "../../redux/blog";
-import './UpdateBlog.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import './UpdateBlog.css';
 
 
 export default function UpdateBlog() {
