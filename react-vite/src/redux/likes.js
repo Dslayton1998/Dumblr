@@ -1,21 +1,21 @@
 //todo: could use getLikes to help with delete
-// const GET_LIKES = 'likes/GET_LIKES'
+const GET_LIKES = 'likes/GET_LIKES'
 
-// const getLikes = (likes) => ({
-//   type: GET_LIKES,
-//   payload: likes
-// })
+const getLikes = (likes) => ({
+  type: GET_LIKES,
+  payload: likes
+})
 
-// export const getLikesThunk = () => async (dispatch) => {
-//     // const res = await fetch('/api/users/likes')
-//     if (res.ok) {
-//       const likes = await res.json()
-//       dispatch(getLikes(likes))
-//     } else {
-//       const error = await res.json();
-//       return error
-//     }
-//   }
+export const getLikesThunk = () => async (dispatch) => {
+    // const res = await fetch('/api/users/likes')
+    if (res.ok) {
+      const likes = await res.json()
+      dispatch(getLikes(likes))
+    } else {
+      const error = await res.json();
+      return error
+    }
+  }
 
 
 export const thunkCreateLike = (post, formData) => async (dispatch) => {
