@@ -1,7 +1,6 @@
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import SignupFormModal from "../SignupFormModal";
 import LoginFormModal from "../LoginFormModal";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './LandingPage.css';
 
@@ -18,7 +17,6 @@ export default function LandingPage() {
             return Math.floor(Math.random() * max)
         }
     const selectedBackground = backgrounds[randomInt(numImages)]
-    const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false);
 
 

@@ -1,8 +1,8 @@
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
+from ..forms import PostForm, PostUpdateForm, CommentForm, CommentUpdateForm, LikeForm
 from flask_login import login_required, current_user
 from app.models import Post, Comment, Like, db
 from flask import Blueprint, request
-from ..forms import PostForm, PostUpdateForm, CommentForm, CommentUpdateForm, LikeForm
 
 post_routes = Blueprint('post', __name__)
 
@@ -144,9 +144,6 @@ def update_post(id):
                 remove_file_from_s3(old_image)
 
             target_post.image = upload["url"]
-
-
-        # if form.data['caption']:
         target_post.caption = form.data['caption']
 
         db.session.commit()
@@ -213,7 +210,6 @@ def update_comment(id):
     if form.validate_on_submit():
         target_comment = Comment.query.get(id)
 
-        # if form.data['caption']:
         target_comment.comment = form.data['comment']
 
         db.session.commit()
@@ -258,6 +254,15 @@ def delete_like(id):
     Deletes a comment based on Id
     """
 # todo: needs a refactor
+#   song = Song.query.get(id)
+
+#   if current_user in song.song_likes:
+#     song.song_likes.remove(current_user)
+
+#     db.session.commit()
+
+#   returnDict = [song.id for song in current_user.liked_songs]
+
     target_like = Like.query.get(id)
     
     db.session.delete(target_like)

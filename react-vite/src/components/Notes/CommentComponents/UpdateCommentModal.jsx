@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
-import { useModal } from "../../../context/Modal";
-import { useState } from "react";
 import { thunkUpdateComment } from "../../../redux/post";
-import "./UpdateComment.css"
+import { useModal } from "../../../context/Modal";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import "./UpdateComment.css";
 
 export default function UpdateCommentModal({ comment, post }) {
     const dispatch = useDispatch();
@@ -52,8 +52,3 @@ export default function UpdateCommentModal({ comment, post }) {
         </div>
     )
 }
-
-/*
-    todo: Add error handling for comment length
-        - Could also make a profanity filter??
-*/

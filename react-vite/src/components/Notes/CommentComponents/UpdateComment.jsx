@@ -1,15 +1,12 @@
-
-import UpdateCommentModal from "./UpdateCommentModal";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
-
+import UpdateCommentModal from "./UpdateCommentModal";
 
 export default function UpdateComment ({ comment, post })  {
-    // console.log(comment)
   return (
     <>
-    <button className="">
-      <OpenModalMenuItem itemText={'Update'} modalComponent={<UpdateCommentModal comment={comment} post={post}/>} />
-    </button>
+      <button className="">
+        <OpenModalMenuItem itemText={'Update'} modalComponent={<UpdateCommentModal comment={comment} post={post}/>} />
+      </button>
     </>
   )
 }
