@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 60px;
+    background-attachment: fixed;
 }
 
 .dashboard-header {
