@@ -7,6 +7,7 @@
     margin: 20px 50px 15px 50px;
     width: 600px;
     background-color: rgba(50, 50, 50, 1);
+    opacity: .96;
 }
 
 .dashboard-blog {
@@ -27,6 +28,7 @@
     &:hover > div {
         cursor: pointer;
         background-color: rgba(70, 70, 70, 1);
+        text-decoration: underline;
     }
 }
 

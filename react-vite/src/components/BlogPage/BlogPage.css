@@ -25,6 +25,7 @@
     border: 5px solid rgba(50, 50, 50, 1);
     margin-bottom: 75px;
     margin-top: 350px;
+    object-fit: cover;
 }
 
 .blog-details {
