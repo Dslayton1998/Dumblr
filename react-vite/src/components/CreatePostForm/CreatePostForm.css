@@ -119,3 +119,8 @@
     height: max(20px);
     width: max(210px);
 }
+
+.create-post-text-box:focus ~ .testingCSS {
+    color: red;
+    text-decoration: underline;
+}

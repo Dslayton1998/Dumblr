@@ -78,7 +78,9 @@ export default function CreatePostForm() {
             <h1>Please sign in to create a post!</h1>
         )
     };
-
+/*
+    Instead of a placeholder have a span on top of input with a focus effect(~) to change the span when clicked
+*/
     return (
         <div className="create-post-container">
             <NavLink className="back-button" to={-1}>{'<'} Back</NavLink>
@@ -101,6 +103,7 @@ export default function CreatePostForm() {
 
                 <label className="create-post-input">
                     <span className="create-post-span">* Provide a caption for your post?</span>
+                    <span className="testingCSS">This is a test</span>
                     <textarea
                     className="create-post-text-box"
                     type='text'
