@@ -8,13 +8,13 @@ import './CreatePostForm.css'
 export default function CreatePostForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [caption, setCaption] = useState("")
-    const [image, setImage] = useState("")
-    const [blog, setBlog] = useState(0)
-    const [hasSubmitted, setHasSubmitted] = useState(false)
-    const [validationErrors, setValidationsErrors] = useState({})
-    const user = useSelector(state => state.session ? state.session.user : null)
-    const blogs= useSelector(state => state.blogs ? Object.values(state.blogs) : null)
+    const [caption, setCaption] = useState("");
+    const [image, setImage] = useState("");
+    const [blog, setBlog] = useState(0);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [validationErrors, setValidationsErrors] = useState({});
+    const user = useSelector(state => state.session ? state.session.user : null);
+    const blogs= useSelector(state => state.blogs ? Object.values(state.blogs) : null);
 
     let userBlogs = [];
     blogs.map(blog => {
@@ -108,7 +108,7 @@ export default function CreatePostForm() {
                     className="create-post-text-box"
                     type='text'
                     value={caption}
-                    placeholder="What's on your mind?"
+                    // placeholder="What's on your mind?"
                     onChange={(e) => setCaption(e.target.value)}
                     // required
                     />
