@@ -120,11 +120,7 @@
     width: max(210px);
 }
 
-/* .create-post-text-box:focus ~ .testingCSS {
-    color: red;
-    text-decoration: underline;
-} */
-
 /*
 *Input button is inheriting css from CreateBlogForm.css (input::file-selector-button)
+still need to keep messing with styles
 */
