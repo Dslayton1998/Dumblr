@@ -4,7 +4,7 @@
     align-items: center;
     margin-top: 60px;
     background-attachment: fixed;
-    /* object-fit: cover; */
+    background-size: 100vw 100vh;
 }
 
 .dashboard-header {
