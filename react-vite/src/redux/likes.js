@@ -1,9 +1,15 @@
 //todo: could use getLikes to help with delete
 const GET_LIKES = 'likes/GET_LIKES'
+const DELETE_LIKE = 'likes/DELETE_LIKE'
 
 const getLikes = (likes) => ({
   type: GET_LIKES,
   payload: likes
+})
+
+const deleteLike = (likeId) => ({
+  type: DELETE_LIKE,
+  payload: likeId
 })
 
 export const getLikesThunk = () => async (dispatch) => {
@@ -36,14 +42,13 @@ export const thunkCreateLike = (post, formData) => async (dispatch) => {
 }
 
 
-export const thunkDeleteLike = (post, likeId) => async (dispatch) => {
+export const thunkDeleteLike = (likeId) => async (dispatch) => {
     const res = await fetch(`/api/post/${likeId}/unlike`, {
         method: 'DELETE'
     })
 
     if(res.ok) {
-      // DELETE SHOULD JUST GO OFF OF POST ID
-        dispatch(deleteLike(post, likeId))
+        dispatch(deleteLike(likeId))
     } else {
         const error = await res.json()
         console.log(error)

@@ -20,8 +20,21 @@ export default function PostsCards({ post }) {
     const [liked, setLikedStatus] = useState(false);
     const userBlogs = useSelector(state => state.blogs.userBlogs);
     const user = useSelector(state => state.session.user);
+    let primaryBlog;
+    let like;
+    
+    for( let blog in userBlogs ) {
+        if (userBlogs[blog].primary_blog == true)
+        primaryBlog = userBlogs[blog]
+    };
 
-      
+    for(let index in post.likes) {
+        if(post.likes[index].blog_id == primaryBlog.id) {
+            like = post.likes[index]
+        }
+    }
+//todo: Select the like using the post and the users primary blog
+// console.log(like)
         const addLike = async (e) => {
             e.preventDefault();
             const formData = new FormData();
@@ -34,17 +47,10 @@ export default function PostsCards({ post }) {
         }
 
         const removeLike = async () => {
-          await dispatch(thunkDeleteLike(post, newLike.id))
+          await dispatch(thunkDeleteLike(like.id))
           setLikedStatus(!liked)
           setNumLikes(numLikes - 1);
         }
-
-    let primaryBlog;
-    
-    for( let blog in userBlogs ) {
-        if (userBlogs[blog].primary_blog == true)
-        primaryBlog = userBlogs[blog]
-}
 //! currently just wants to keep creating likes and never delete, delete may need to just involve post ID
     // const likeStatus = async (e) => {
     //     e.preventDefault();
