@@ -253,16 +253,7 @@ def delete_like(id):
     """
     Deletes a comment based on Id
     """
-# todo: needs a refactor
-#   song = Song.query.get(id)
-
-#   if current_user in song.song_likes:
-#     song.song_likes.remove(current_user)
-
-#     db.session.commit()
-
-#   returnDict = [song.id for song in current_user.liked_songs]
-
+# todo: needs a refactor, select the like from the post with the user primary blog
     target_like = Like.query.get(id)
     
     db.session.delete(target_like)
