@@ -12,7 +12,7 @@ export default function Notes({ post }) {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [validationErrors, setValidationsErrors] = useState({});
     const commentsArr = post.comments ? Object.values(post.comments) : null;
-    const userBlogs = useSelector(state => state.blogs.userBlogs ? Object.values(state.blogs.userBlogs) : null);
+    const userBlogs = useSelector(state => state.session.user ? state.session.user.userBlogs : null);
 
     useEffect(() => {
         const errors = {}

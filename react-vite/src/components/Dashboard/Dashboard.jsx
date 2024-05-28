@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetUserBlogs } from "../../redux/blog";
+import { thunkGetLikes } from "../../redux/likes";
 import { thunkAllPosts } from "../../redux/post";
 import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import PostsCards from "./PostsCards";
 import './Dashboard.css';
-import { thunkGetLikes } from "../../redux/likes";
 
 export default function Dashboard() {
     const backgrounds = ['https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background.jpeg',
@@ -39,10 +38,6 @@ export default function Dashboard() {
             await dispatch(thunkAllPosts())
             setIsLoading(false)
         }
-//* Might not need get currentUserBlogs
-        // const getCurrUserBlogs = async () => {
-        //     await dispatch(thunkGetUserBlogs(user.id))
-        // }
 
         const getUserLikes = async () => {
             await dispatch(thunkGetLikes(user.primaryBlog.id))
@@ -53,8 +48,7 @@ export default function Dashboard() {
             getUserLikes()
         }
         getPosts()
-        // getCurrUserBlogs()
-    }, [dispatch])
+    }, [dispatch, user])
 
 
     if(isLoading) {

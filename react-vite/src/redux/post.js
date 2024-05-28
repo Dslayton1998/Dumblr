@@ -62,7 +62,7 @@ export const thunkAllPosts = () => async (dispatch) => {
         const posts = await res.json();
         dispatch(getPosts(posts))
     } else {
-        error = await res.json()
+        const error = await res.json()
         console.log(error)
         return error
     }
@@ -118,7 +118,6 @@ export const thunkUpdatePost = (postId, formData) => async (dispatch) => {
     })
 
     if(res.ok) {
-        const post = await res.json()
         dispatch(updatePost(postId))
     } else {
         const error = await res.json()

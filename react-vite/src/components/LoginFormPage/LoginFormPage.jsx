@@ -44,7 +44,7 @@ function LoginFormPage() {
       setErrors(serverResponse)
     } else {
       navigate('/dashboard')
-      closeModal()
+      // closeModal()
     }
   };
 

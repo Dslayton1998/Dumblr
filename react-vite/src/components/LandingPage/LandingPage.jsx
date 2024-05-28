@@ -23,10 +23,8 @@ export default function LandingPage() {
     useEffect(() => {
         if (!showMenu) return;
     
-        const closeMenu = (e) => {
-          if (ulRef.current && !ulRef.current.contains(e.target)) {
+        const closeMenu = () => {
             setShowMenu(false);
-          }
         };
     
         document.addEventListener("click", closeMenu);
@@ -44,7 +42,7 @@ export default function LandingPage() {
 
                     <div className="landing-sign-up">
                         <p style={{"fontWeight": "bold", "fontSize": "16px"}} >Sign-up!</p>
-                        <p>Don't have an account?</p>
+                        <p>{`Don't have an account?`}</p>
                         <OpenModalMenuItem
                             itemText="Sign Up"
                             className={"landing-link"}

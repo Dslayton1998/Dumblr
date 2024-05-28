@@ -55,7 +55,7 @@ export default function BlogPage() {
         oneBlog()
         getPosts()
         getCurrUserBlogs()
-    }, [dispatch])
+    }, [dispatch, blogId, currentUser])
 
     return (
         <div className="blog-page-container">

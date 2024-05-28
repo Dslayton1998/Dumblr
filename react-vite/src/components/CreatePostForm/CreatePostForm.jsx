@@ -77,7 +77,7 @@ export default function CreatePostForm() {
         return (
             <h1>Please sign in to create a post!</h1>
         )
-    };
+    }
 /*
     Instead of a placeholder have a span on top of input with a focus effect(~) to change the span when clicked
 */
@@ -120,7 +120,7 @@ export default function CreatePostForm() {
                     <select onChange={(e) => setBlog(e.target.value)}>
                     <option value="" disabled selected key="0">Select a blog</option>
                          {userBlogs.map(blog => (
-                            <option value={blog.id}>{blog.title}</option>
+                            <option value={blog.id} key={blog.id}>{blog.title}</option>
                         ))}
                     </select>
                     <div className="error-container-select">
