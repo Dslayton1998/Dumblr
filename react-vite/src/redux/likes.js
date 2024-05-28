@@ -20,6 +20,16 @@ const deleteLike = (likeId) => ({
 
 export const thunkGetLikes = (blogId) => async (dispatch) => {
   const res = await fetch(`/api/post/${blogId}/likes`)
+
+  if(res.ok) {
+    const likes = await res.json()
+    dispatch(getLikes(likes))
+    return likes
+  } else {
+    const error = await res.json()
+    console.log(error)
+    return error
+  }
 }
 
 
@@ -58,9 +68,18 @@ export const thunkDeleteLike = (likeId) => async (dispatch) => {
 
 function likesReducer(state = {}, action) {
     switch (action.type) {
+      case GET_LIKES: {
+        const likesArr = action.payload
+        const newSet = {}
+        likesArr.forEach(like => {
+          newSet[like.post_id] = like
+        });
+        return newSet
+      }
+
       case CREATE_LIKES: {
         const newState = {...state}
-        return {...newState, [action.payload.like.id]: action.payload}
+        return {...newState, [action.payload.like.post_id]: action.payload.like}
       }
 
       case DELETE_LIKE: {

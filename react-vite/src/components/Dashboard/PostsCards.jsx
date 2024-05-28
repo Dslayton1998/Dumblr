@@ -11,55 +11,44 @@ import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
 
-
+// todo: Likes are working, now just display a like count, get likes to persist, and refactor
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [numLikes, setNumLikes] = useState(post.likes.length);
     const [toggleNotes, setToggleNotes] = useState(false);
     const [liked, setLikedStatus] = useState(false);
-    const userBlogs = useSelector(state => state.blogs.userBlogs);
     const user = useSelector(state => state.session.user);
-    const likes = post.likes
-    let primaryBlog;
-    for (const blog in userBlogs) {
-        if(userBlogs[blog].primary_blog == true) {
-            primaryBlog = userBlogs[blog]
+    const likes = useSelector(state => state.likes)
+    
+    let currLike;
+    if(user != null) {
+        for(const like in likes) {
+            if(likes[like].post_id == post.id) {
+                currLike = likes[like]
+            }
         }
     }
-    // console.log(userBlogs)
-    // console.log(likes)
 
+    const addLike = async (e) => {
+         e.preventDefault();
+        const formData = new FormData();
+        formData.append("post_id", post.id)
+        formData.append("blog_id", user.primaryBlog.id)
+        await dispatch(thunkCreateLike(post, formData))
     
-        for(let like in likes){
-            console.log(likes[like])
-        }
-    
+        setLikedStatus(!liked)
+        setNumLikes(numLikes + 1);
+    }
 
-//todo: Select the like using the post and the users primary blog
-
-        const addLike = async (e) => {
-            e.preventDefault();
-            const formData = new FormData();
-            formData.append("post_id", post.id)
-            formData.append("blog_id", primaryBlog.id)
-            await dispatch(thunkCreateLike(post, formData))
-    
-            setLikedStatus(!liked)
-            setNumLikes(numLikes + 1);
-        }
-
-        const removeLike = async () => {
-            post.likes
-
-          await dispatch(thunkDeleteLike())
-          setLikedStatus(!liked)
-          setNumLikes(numLikes - 1);
-        }
-//! currently just wants to keep creating likes and never delete
+    const removeLike = async () => {
+        await dispatch(thunkDeleteLike(currLike.id))
+        setLikedStatus(!liked)
+        setNumLikes(numLikes - 1);
+    }
 
     const toggleLike = () => {
-        // todo: currently just changing the display 
+        // todo: currently just changing the display, does not persist
         if(user != null) {
             if(liked === true) {
                 return (<FaHeart onClick={removeLike}/>)
