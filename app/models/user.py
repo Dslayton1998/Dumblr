@@ -38,5 +38,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'userBlogs': [blog.to_dict() for blog in self.blogs],
             'primaryBlog': p_blog.to_dict()
         }

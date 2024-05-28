@@ -12,7 +12,7 @@ export default function UpdateCommentModal({ comment, post }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+// todo: error handling for updating comments 
         if (Object.values(validationErrors).length) {
             return;
         }

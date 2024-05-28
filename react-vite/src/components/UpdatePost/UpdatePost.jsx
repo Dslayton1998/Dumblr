@@ -41,7 +41,7 @@ export default function UpdatePost() {
         }
 
         setValidationsErrors(errors)
-    }, [dispatch, caption]);
+    }, [dispatch, caption, image]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
