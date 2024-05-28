@@ -29,8 +29,14 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        p_blog = ""
+        for blog in self.blogs:
+            if blog.primary_blog == True:
+                p_blog = blog
+                
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'primaryBlog': p_blog.to_dict()
         }
