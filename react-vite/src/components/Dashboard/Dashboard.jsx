@@ -14,6 +14,7 @@ export default function Dashboard() {
     'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-bakcground-3.jpeg',
     'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-4.jpeg',
     'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-5.jpeg' ]
+//! Background changes on EVERY rerender, give a select option for users !\\
 
     const numImages = backgrounds.length
     const randomInt = (max) => {
@@ -38,19 +39,21 @@ export default function Dashboard() {
             await dispatch(thunkAllPosts())
             setIsLoading(false)
         }
-
-        const getCurrUserBlogs = async () => {
-            await dispatch(thunkGetUserBlogs(user.id))
-        }
+//* Might not need get currentUserBlogs
+        // const getCurrUserBlogs = async () => {
+        //     await dispatch(thunkGetUserBlogs(user.id))
+        // }
 
         const getUserLikes = async () => {
-            await dispatch(thunkGetLikes(user.primary_blog.id))
+            await dispatch(thunkGetLikes(user.primaryBlog.id))
         }
       
 
-        getUserLikes()
+        if(user != null) {
+            getUserLikes()
+        }
         getPosts()
-        getCurrUserBlogs()
+        // getCurrUserBlogs()
     }, [dispatch])
 
 

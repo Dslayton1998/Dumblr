@@ -228,7 +228,11 @@ def get_likes(id):
     """
     Gets a list of the current users likes, based on primary blog id
     """
-
+# [post.to_dict() for post in db.session.query(Post).filter(Post.blog.public == True)]
+    # Select the likes where blog_id == id
+    likes = [like.to_dict() for like in db.session.query(Like).filter(Like.blog_id == id)]
+    print(likes)
+    return likes
 
 
 
