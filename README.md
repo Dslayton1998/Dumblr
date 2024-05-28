@@ -34,8 +34,6 @@ Tools
 * Render for deployment and publishing
 
 ## Todo:
-### Comments
-### Likes
 ### Reblogging
 ### Following/Followers
 ### Color Themes
