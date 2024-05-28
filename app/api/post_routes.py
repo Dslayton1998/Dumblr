@@ -222,6 +222,16 @@ def update_comment(id):
 
 
 ######################################## Likes ###########################################
+@post_routes.route('/<int:id>/likes')
+@login_required
+def get_likes(id):
+    """
+    Gets a list of the current users likes, based on primary blog id
+    """
+
+
+
+
 @post_routes.route('/like', methods=['POST'])
 @login_required
 def like_post():

@@ -1,9 +1,15 @@
 //todo: could use getLikes to help with delete
-const GET_LIKES = 'likes/GET_LIKES'
+const GET_LIKES = '/likes/GET_LIKES'
+const CREATE_LIKES = 'likes/GET_LIKES'
 const DELETE_LIKE = 'likes/DELETE_LIKE'
 
 const getLikes = (likes) => ({
   type: GET_LIKES,
+  payload: likes
+})
+
+const createLikes = (likes) => ({
+  type: CREATE_LIKES,
   payload: likes
 })
 
@@ -12,16 +18,9 @@ const deleteLike = (likeId) => ({
   payload: likeId
 })
 
-export const getLikesThunk = () => async (dispatch) => {
-    // const res = await fetch('/api/users/likes')
-    if (res.ok) {
-      const likes = await res.json()
-      dispatch(getLikes(likes))
-    } else {
-      const error = await res.json();
-      return error
-    }
-  }
+export const thunkGetLikes = (blogId) => async (dispatch) => {
+  const res = await fetch(`/api/post/${blogId}/likes`)
+}
 
 
 export const thunkCreateLike = (post, formData) => async (dispatch) => {
@@ -32,7 +31,7 @@ export const thunkCreateLike = (post, formData) => async (dispatch) => {
 
     if(res.ok) {
         const like = await res.json()
-        dispatch(getLikes({post, like}))
+        dispatch(createLikes({post, like}))
         return like
     } else {
         const error = await res.json()
@@ -59,9 +58,17 @@ export const thunkDeleteLike = (likeId) => async (dispatch) => {
 
 function likesReducer(state = {}, action) {
     switch (action.type) {
-      case GET_LIKES: {
-        return action.payload
+      case CREATE_LIKES: {
+        const newState = {...state}
+        return {...newState, [action.payload.like.id]: action.payload}
       }
+
+      case DELETE_LIKE: {
+        const newState = {...state}
+        delete newState[action.payload]
+        return newState
+      }
+
       default:
         return state
     }
