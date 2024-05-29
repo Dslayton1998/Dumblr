@@ -230,7 +230,6 @@ def get_likes(id):
     """
 # [post.to_dict() for post in db.session.query(Post).filter(Post.blog.public == True)]
     likes = [like.to_dict() for like in db.session.query(Like).filter(Like.blog_id == id)]
-    print(likes)
     return likes
 
 
