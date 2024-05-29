@@ -58,6 +58,8 @@ export const thunkDeleteLike = (postId, likeId) => async (dispatch) => {
 
     if(res.ok) {
         dispatch(deleteLike(postId, likeId))
+                            // *^ likesStore is normalized with postId, and only displays currUsers likes
+                          // So even if postId is not "unique" users can only react with a post once (unique to each user)
     } else {
         const error = await res.json()
         console.log(error)
