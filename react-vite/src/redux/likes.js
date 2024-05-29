@@ -13,9 +13,9 @@ const createLikes = (likes) => ({
   payload: likes
 })
 
-const deleteLike = (likeId) => ({
+const deleteLike = (postId, likeId) => ({
   type: DELETE_LIKE,
-  payload: likeId
+  payload: {postId, likeId}
 })
 
 export const thunkGetLikes = (blogId) => async (dispatch) => {
@@ -51,13 +51,13 @@ export const thunkCreateLike = (post, formData) => async (dispatch) => {
 }
 
 
-export const thunkDeleteLike = (likeId) => async (dispatch) => {
+export const thunkDeleteLike = (postId, likeId) => async (dispatch) => {
     const res = await fetch(`/api/post/${likeId}/unlike`, {
         method: 'DELETE'
     })
 
     if(res.ok) {
-        dispatch(deleteLike(likeId))
+        dispatch(deleteLike(postId, likeId))
     } else {
         const error = await res.json()
         console.log(error)
@@ -84,7 +84,7 @@ function likesReducer(state = {}, action) {
 
       case DELETE_LIKE: {
         const newState = {...state}
-        delete newState[action.payload]
+        delete newState[action.payload.postId]
         return newState
       }
 

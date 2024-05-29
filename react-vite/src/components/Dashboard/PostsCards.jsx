@@ -11,16 +11,15 @@ import Notes from "../Notes/Notes";
 import { useState } from "react";
 import './PostsCards.css';
 
-// todo: Likes are working, now just display a like count, get likes to persist, and refactor
+// todo: Likes are working, get likes to persist, and refactor
 export default function PostsCards({ post }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [numLikes, setNumLikes] = useState(post.likes.length);
+    const [numLikes, setNumLikes] = useState(Object.values(post.likes).length);
     const [toggleNotes, setToggleNotes] = useState(false);
-    const [liked, setLikedStatus] = useState(false);
     const user = useSelector(state => state.session.user);
     const likes = useSelector(state => state.likes)
-    
+
     let currLike;
     if(user != null) {
         for(const like in likes) {
@@ -37,23 +36,24 @@ export default function PostsCards({ post }) {
         formData.append("blog_id", user.primaryBlog.id)
         await dispatch(thunkCreateLike(post, formData))
     
-        setLikedStatus(!liked)
         setNumLikes(numLikes + 1);
     }
 
-    const removeLike = async () => {
-        await dispatch(thunkDeleteLike(currLike.id))
-        setLikedStatus(!liked)
+    const removeLike = async (e) => {
+        e.preventDefault();
+        await dispatch(thunkDeleteLike(post.id, currLike.id))
+
         setNumLikes(numLikes - 1);
     }
 
     const toggleLike = () => {
-        // todo: currently just changing the display, does not persist
         if(user != null) {
-            if(liked === true) {
-                return (<FaHeart onClick={removeLike}/>)
+            if(likes[post.id] != undefined) {
+                // console.log('HAS VALUE')
+                return <><FaHeart onClick={removeLike}/> {numLikes} </>
             } else {
-                return (<FaRegHeart onClick={addLike}/>)
+                // console.log('HAS NO VALUE')
+                return <><FaRegHeart onClick={addLike}/> {numLikes} </>
             }
         }
     }
