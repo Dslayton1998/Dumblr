@@ -7,14 +7,15 @@ import PostsCards from "./PostsCards";
 import './Dashboard.css';
 
 export default function Dashboard() {
-    const backgrounds = ['https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background.jpeg',
-    'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background.jpeg',
-    'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-2.jpeg',
-    'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-bakcground-3.jpeg',
-    'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-4.jpeg',
-    'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-5.jpeg' ]
 //! Background changes on EVERY rerender, give a select option for users !\\
-
+    const backgrounds = [
+    // 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/testing-LP-background.jpeg', // CoCo
+    // 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background.jpeg', // Beach
+    // 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-2.jpeg', //PurpleMountain
+    // 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-bakcground-3.jpeg', //NightSkyForest
+    'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-4.jpeg', // SpookySwamp
+    // 'https://dumblr-bucket.s3.us-east-2.amazonaws.com/LP-background-5.jpeg' // City 
+    ]
     const numImages = backgrounds.length
     const randomInt = (max) => {
         return Math.floor(Math.random() * max)
@@ -42,7 +43,6 @@ export default function Dashboard() {
         const getUserLikes = async () => {
             await dispatch(thunkGetLikes(user.primaryBlog.id))
         }
-      
 
         if(user != null) {
             getUserLikes()

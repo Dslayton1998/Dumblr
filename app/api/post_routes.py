@@ -51,7 +51,7 @@ def create_post():
     form = PostForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print(form["csrf_token"])
+    # print(form["csrf_token"])
 
     if form.validate_on_submit():
         """
@@ -164,7 +164,7 @@ def create_comment():
     form = CommentForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print(form["csrf_token"])
+    # print(form["csrf_token"])
 
     if form.validate_on_submit():
         new_comment = Comment(
@@ -243,7 +243,7 @@ def like_post():
     form = LikeForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print(form["csrf_token"])
+    # print(form["csrf_token"])
 
     if form.validate_on_submit():
         new_like = Like(
@@ -265,7 +265,6 @@ def delete_like(id):
     """
     Deletes a comment based on Id
     """
-# todo: needs a refactor, select the like from the post with the user primary blog
     target_like = Like.query.get(id)
     
     db.session.delete(target_like)
